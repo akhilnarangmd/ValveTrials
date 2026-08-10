@@ -1,22 +1,7 @@
 #!/usr/bin/env python3
 """
 valve_trials.py — Build ValveTrials.org (multi-page static site).
-
-Pages written:
-  index.html      Home — the three valves as clickable tiles.
-  aortic.html     Full aortic trial list (search, filters, chronological,
-                  collapsible categories, expandable rows, paper links).
-  mitral.html     Coming-soon page with planned section scaffolding.
-  tricuspid.html  Coming-soon page with planned section scaffolding.
-
-Add a valve's trials later by giving Trial entries valve="Mitral" /
-"Tricuspid" in trials_data.py — the matching page fills in automatically.
-
-Usage:
-    python valve_trials.py            # writes the 4 pages to ./ (or OUTDIR)
-    python valve_trials.py <outdir>   # writes them into <outdir>
 """
-
 from __future__ import annotations
 import html
 import math
@@ -25,25 +10,17 @@ import re
 import sys
 from urllib.parse import quote
 from typing import List, Tuple
-
 from model import Trial, CATEGORIES
 from data import TRIALS
-
 EXCLUDE_SIGNALS = {"negative"}
-
 # --- Valves (home tiles + pages) --------------------------------------------
-# key, label, hue, leaflet count (anatomy!), descriptor
-
 VALVES = [
     ("aortic", "Aortic", "#146C7A", 3, ""),
     ("mitral", "Mitral", "#B23A5B", 2, ""),
     ("tricuspid", "Tricuspid", "#6D5AB6", 3, ""),
-
 ]
 VALVE_LABEL = {k: lbl for k, lbl, _, _, _ in VALVES}
 VALVE_HUE = {k: h for k, _, h, _, _ in VALVES}
-
-# Placeholder section scaffolding so the space is visibly reserved.
 PLANNED_SECTIONS = {
     "mitral": ["Secondary MR — TEER", "Primary / degenerative MR",
                "Transcatheter mitral replacement (TMVR)",
@@ -52,7 +29,6 @@ PLANNED_SECTIONS = {
                   "Heterotopic / caval valve implantation",
                   "Annuloplasty & repair devices", "Frontier / next-gen devices"],
 }
-
 CATEGORY_HUE = {
     "Inoperable / High-Risk AS":  "#B03A2E",
     "Intermediate-Risk AS":       "#B9770E",
@@ -77,8 +53,6 @@ CATEGORY_HUE = {
     "Tricuspid Heterotopic / Caval":             "#B65AA0",
     "Tricuspid Frontier / Next-Gen Device":      "#5A78B6",
 }
-
-# Which categories belong to which valve (drives the Editor's category picker).
 VALVE_CATEGORIES = {
     "Aortic": [c for c in CATEGORIES if c in {
         "Inoperable / High-Risk AS", "Intermediate-Risk AS", "Low-Risk AS",
@@ -93,26 +67,18 @@ STATUS_META = {
     "ongoing":    ("🔵", "Ongoing"),
     "terminated": ("⛔", "Terminated"),
 }
-
-
 def e(text) -> str:
     return html.escape(str(text), quote=True)
-
-
 def link_nct(nct: str) -> str:
     if not nct:
         return ""
     if nct.upper().startswith("ISRCTN"):
         return f"https://www.isrctn.com/{e(nct)}"
     return f"https://clinicaltrials.gov/study/{e(nct)}"
-
-
 def trials_for(valve_key: str) -> List[Trial]:
     label = VALVE_LABEL[valve_key].lower()
     return [t for t in TRIALS
             if t.signal not in EXCLUDE_SIGNALS and (t.valve or "aortic").lower() == label]
-
-
 def sort_year(t: Trial) -> int:
     for src in (t.year, t.enrollment):
         if src:
@@ -120,27 +86,14 @@ def sort_year(t: Trial) -> int:
             if m:
                 return int(m.group())
     return 9999
-
-
 # --- paper links -------------------------------------------------------------
 def _pubmed_query(t) -> str:
-    """Build a precise PubMed query for trials lacking a verified DOI/PMID.
-
-    Uses the trial acronym plus a first-author field tag (e.g. "Sorajja P"[Author]),
-    which reliably surfaces the primary paper and disambiguates generic acronyms
-    (MITRAL, SCOUT, HOVER...). Falls back to acronym + valve + journal when no
-    author is recorded. Never fabricates an identifier — this is a search, not a link.
-    """
     acr = re.sub(r"\s+", " ", re.sub(r"[()]", " ", t.acronym or "")).strip()
     first_author = t.authors.split(",")[0].strip() if t.authors else ""
     if first_author:
         return f'{acr} AND "{first_author}"[Author]'
-    # No author recorded: use the descriptive title words (indexed in PubMed)
-    # rather than internal shorthand acronyms, plus valve and year to narrow.
     title = re.sub(r"\s+", " ", re.sub(r"[^A-Za-z0-9 ]", " ", t.full_name or acr)).strip()
     return " ".join(b for b in [title, (t.valve or ""), (t.year or "")] if b)
-
-
 def paper_links(t: Trial) -> List[Tuple[str, str, str]]:
     out: List[Tuple[str, str, str]] = []
     if t.doi:
@@ -154,26 +107,18 @@ def paper_links(t: Trial) -> List[Tuple[str, str, str]]:
         label = "ISRCTN" if t.nct.upper().startswith("ISRCTN") else "ClinicalTrials.gov"
         out.append((label, link_nct(t.nct), "registry"))
     return out
-
-
 # --- small HTML helpers ------------------------------------------------------
 def bullets(items: List[str]) -> str:
     if not items:
         return "<p class='empty'>—</p>"
     return "<ul class='bul'>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
-
-
 def result_bullets(items: List[str]) -> str:
     if not items:
         return "<p class='empty'>No results yet — trial ongoing.</p>"
     return "<ul class='results'>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
-
-
 def status_badge(t: Trial) -> str:
     icon, label = STATUS_META.get(t.status, ("•", t.status.title()))
     return f"<span class='badge status-{t.status}'>{icon} {e(label)}</span>"
-
-
 def row_dates(t: Trial) -> str:
     bits = []
     if t.enrollment:
@@ -183,8 +128,6 @@ def row_dates(t: Trial) -> str:
     elif t.status == "ongoing":
         bits.append("<span class='d-pub'>Not yet published</span>")
     return "<span class='dates'>" + "".join(bits) + "</span>"
-
-
 def overview_table(t: Trial) -> str:
     rows = [
         ("Device", t.device), ("Intervention", t.intervention), ("Comparator", t.comparator),
@@ -193,8 +136,6 @@ def overview_table(t: Trial) -> str:
     ]
     body = "".join(f"<tr><th>{e(k)}</th><td>{e(v) if v else '—'}</td></tr>" for k, v in rows)
     return f"<table class='overview'><tbody>{body}</tbody></table>"
-
-
 def paper_bar(t: Trial) -> str:
     links = paper_links(t)
     if not links:
@@ -207,8 +148,6 @@ def paper_bar(t: Trial) -> str:
     if t.year: cite.append(e(t.year))
     cite_line = f"<span class='paper-cite'>{' · '.join(cite)}</span>" if cite else ""
     return f"<div class='paperbar'><div class='plinks'>{''.join(a)}</div>{cite_line}</div>"
-
-
 def _followup_sort_key(p: dict):
     """Order follow-ups sequentially: by publication year, then by the follow-up
     duration named in the label (30-day < 6-month < 1-year < 2-year ...)."""
@@ -249,7 +188,6 @@ def key_papers_section(t: Trial) -> str:
             f"<span class='pc-count'>{len(papers)}</span></h3>"
             f"<p class='pc-hint'>Click a follow-up to reveal its paper links.</p>"
             f"<div class='papers'>{''.join(rows)}</div></section>")
-
 def detail_body(t: Trial) -> str:
     caveat = f"<div class='d-caveat'>⚠ {e(t.caveat)}</div>" if t.caveat else ""
     return f"""
@@ -289,8 +227,6 @@ def detail_body(t: Trial) -> str:
   </div>
 </div>
 """.strip()
-
-
 def render_row(t: Trial) -> str:
     hue = CATEGORY_HUE.get(t.category, "#4A5D75")
     haystack = " ".join([t.acronym, t.full_name, t.device, t.comparator, t.population,
@@ -316,8 +252,6 @@ def render_row(t: Trial) -> str:
   {detail_body(t)}
 </details>
 """.strip()
-
-
 def category_chips(trials: List[Trial]) -> str:
     present = [c for c in CATEGORIES if any(t.category == c for t in trials)]
     out = ["<button class='fchip active' data-filter='all'>All</button>"]
@@ -327,8 +261,6 @@ def category_chips(trials: List[Trial]) -> str:
         out.append(f"<button class='fchip' data-filter='cat' data-value=\"{e(c)}\" "
                    f"style='--hue:{hue}'>{e(c)} <span class='fn'>{n}</span></button>")
     return "".join(out)
-
-
 def render_list(trials: List[Trial]) -> str:
     present = [c for c in CATEGORIES if any(t.category == c for t in trials)]
     blocks = []
@@ -343,11 +275,7 @@ def render_list(trials: List[Trial]) -> str:
             f"<div class='rows'>{rows}</div></details>"
         )
     return "".join(blocks)
-
-
 def valve_glyph(n_leaflets: int, hue: str) -> str:
-    """En-face closed-valve motif: 3 coaptation lines (tri-leaflet) or a
-    single curved coaptation line (bi-leaflet, mitral)."""
     cx, cy, r = 50, 50, 38
     parts = [f"<circle cx='{cx}' cy='{cy}' r='{r}' fill='{hue}' fill-opacity='0.08' "
              f"stroke='{hue}' stroke-width='2.5'/>"]
@@ -363,8 +291,6 @@ def valve_glyph(n_leaflets: int, hue: str) -> str:
                          f"stroke='{hue}' stroke-width='2.5' stroke-linecap='round'/>")
     parts.append(f"<circle cx='{cx}' cy='{cy}' r='2.6' fill='{hue}'/>")
     return f"<svg viewBox='0 0 100 100' class='vglyph' aria-hidden='true'>{''.join(parts)}</svg>"
-
-
 # --- shared shell ------------------------------------------------------------
 def site_header(active: str) -> str:
     nav = "".join(
@@ -376,8 +302,6 @@ def site_header(active: str) -> str:
   <a class="brand" href="index.html">Valve<span>Trials</span>.org</a>
   <nav class="site-nav">{nav}</nav>
 </header>""".strip()
-
-
 def page_shell(title: str, active: str, body: str, script: str = "") -> str:
     js = f"<script>{script}</script>" if script else ""
     return f"""<!doctype html>
@@ -401,8 +325,6 @@ def page_shell(title: str, active: str, body: str, script: str = "") -> str:
 </body>
 </html>
 """
-
-
 # --- home --------------------------------------------------------------------
 def build_home() -> str:
     cards = []
@@ -441,8 +363,6 @@ def build_home() -> str:
 </main>
 """
     return page_shell("ValveTrials.org — Valve Trial Reference", "home", body)
-
-
 # --- aortic (full list) ------------------------------------------------------
 def build_valve_list_page(valve_key: str) -> str:
     lbl = VALVE_LABEL[valve_key]
@@ -450,22 +370,21 @@ def build_valve_list_page(valve_key: str) -> str:
     n = len(trials)
     n_pub = sum(1 for t in trials if t.status == "published")
     n_ongoing = sum(1 for t in trials if t.status == "ongoing")
-     n_excluded = sum(1 for t in TRIALS
+    n_excluded = sum(1 for t in TRIALS
                      if (t.valve or "aortic").lower() == lbl.lower() and t.signal in EXCLUDE_SIGNALS)
     n_analyses = sum(len(t.key_papers or []) for t in trials)
     body = f"""
-
 <header class="mast">
   <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · {e(lbl)}</p>
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
      collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
   <p class="meta">{n} trials · {n_pub} published · {n_ongoing} ongoing · {n_analyses} linked analyses · {n_excluded} negative-result trials excluded · antiplatelet/anticoagulant trials excluded by design</p>
+  <div class="legend">
     <span>🟢 Published</span><span>🔵 Ongoing</span>
     <span>Sorted oldest → newest within each category</span><span>⚠ Caveat inside</span>
   </div>
 </header>
-
 <div class="controls">
   <div class="controls-inner">
     <div class="searchbar">
@@ -477,7 +396,7 @@ def build_valve_list_page(valve_key: str) -> str:
       </div>
       <div class="seg" data-group="pc">
         <button class="active" data-value="0">All</button>
-        
+
       </div>
       <div class="actions">
         <button id="expandAll">Expand all</button>
@@ -488,15 +407,12 @@ def build_valve_list_page(valve_key: str) -> str:
     <div class="countline"><span id="count">{n} / {n} trials shown</span></div>
   </div>
 </div>
-
 <main class="list">
   {render_list(trials)}
   <p id="noresults" class="noresults">No trials match those filters. Clear the search or pick “All”.</p>
 </main>
 """
     return page_shell(f"{lbl} Valve Trials — ValveTrials.org", valve_key, body, LIST_JS)
-
-
 # --- coming-soon page --------------------------------------------------------
 def build_coming_soon_page(valve_key: str) -> str:
     lbl = VALVE_LABEL[valve_key]
@@ -526,8 +442,6 @@ def build_coming_soon_page(valve_key: str) -> str:
 </main>
 """
     return page_shell(f"{lbl} Valve Trials — Coming soon — ValveTrials.org", valve_key, body)
-
-
 # ---------------------------------------------------------------------------
 # Editor page — add / edit / delete trials via a form; exports trials.json
 # ---------------------------------------------------------------------------
@@ -581,15 +495,12 @@ EDITOR_FIELDS = [
     ("doi", "DOI", "text"),
     ("pmid", "PubMed ID", "text"),
 ]
-
 SELECT_OPTIONS = {
     "valve": ["Aortic", "Mitral", "Tricuspid"],
     "status": ["published", "ongoing", "terminated"],
     "signal": ["positive", "neutral", "negative", "descriptive", "pending"],
     "category": [],  # populated dynamically from valve
 }
-
-
 def _editor_field_html(key: str, label: str, kind: str) -> str:
     if key == "__section__":
         return f"<h3 class='ed-sec'>{e(label)}</h3>"
@@ -612,13 +523,9 @@ def _editor_field_html(key: str, label: str, kind: str) -> str:
         return (f"<label class='ed-field'><span>{e(label)}</span>"
                 f"<select id='{fid}' data-key='{key}'>{opts}</select></label>")
     return ""
-
-
 def build_editor_page() -> str:
     import json as _json
     fields_html = "".join(_editor_field_html(k, lbl, kind) for k, lbl, kind in EDITOR_FIELDS)
-
-    # Embed the current data + config so the editor works offline (no fetch).
     trials_json = _json.dumps([t.to_dict() for t in TRIALS], ensure_ascii=False)
     cats_by_valve = _json.dumps(VALVE_CATEGORIES, ensure_ascii=False)
     text_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "text"]
@@ -626,7 +533,6 @@ def build_editor_page() -> str:
     list_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "list"]
     sel_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "select"]
     bool_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "bool"]
-
     body = f"""
 <main class="editor">
   <div class="ed-intro">
@@ -643,13 +549,11 @@ def build_editor_page() -> str:
       <span id="edDirty" class="ed-dirty" hidden>● unsaved changes (not yet exported)</span>
     </div>
   </div>
-
   <div class="ed-cols">
     <aside class="ed-side">
       <input id="edSearch" class="ed-search" type="search" placeholder="Filter trials…">
       <div id="edList" class="ed-listbox"></div>
     </aside>
-
     <section class="ed-form">
       <div class="ed-formhead">
         <h2 id="edFormTitle">New trial</h2>
@@ -661,7 +565,6 @@ def build_editor_page() -> str:
       <div class="ed-grid">{fields_html}</div>
     </section>
   </div>
-
   <dialog id="exportDlg" class="ed-dialog">
     <form method="dialog"><button class="ed-x" aria-label="Close">✕</button></form>
     <h3>Export</h3>
@@ -671,7 +574,6 @@ def build_editor_page() -> str:
     <div class="ed-dialog-actions"><button id="btnCopyJson" class="ed-btn">⧉ Copy JSON</button></div>
   </dialog>
 </main>
-
 <script>
 const TRIALS = {trials_json};
 const CATS_BY_VALVE = {cats_by_valve};
@@ -680,24 +582,19 @@ const TA = {_json.dumps(ta_keys)};
 const LISTF = {_json.dumps(list_keys)};
 const SEL = {_json.dumps(sel_keys)};
 const BOOLF = {_json.dumps(bool_keys)};
-
-let editIndex = -1;      // -1 = new trial
+let editIndex = -1;
 let dirty = false;
-
 const $ = s => document.querySelector(s);
 const listEl = $('#edList');
 const searchEl = $('#edSearch');
-
 function markDirty(v){{ dirty = v; $('#edDirty').hidden = !v; }}
 function setCount(){{ $('#edCount').textContent = TRIALS.length + ' trials in memory'; }}
-
 function catOptions(valve, selected){{
   const cats = CATS_BY_VALVE[valve] || [];
   const sel = $('#f_category');
   sel.innerHTML = '<option value=""></option>' +
     cats.map(c => `<option value="${{c.replace(/"/g,'&quot;')}}" ${{c===selected?'selected':''}}>${{c}}</option>`).join('');
 }}
-
 function renderList(){{
   const q = (searchEl.value||'').toLowerCase();
   const groups = {{}};
@@ -719,24 +616,20 @@ function renderList(){{
   listEl.innerHTML = html || '<p class="ed-empty">No matches.</p>';
   listEl.querySelectorAll('.ed-item').forEach(b=>b.addEventListener('click',()=>loadTrial(+b.dataset.i)));
 }}
-
 function blank(){{
   const o = {{practice_changing:false, landmark:false, evidence_stars:0, intervention:'', valve:'Aortic'}};
   return o;
 }}
-
 function populate(t){{
   TEXT.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = t[k]||''; }});
   TA.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = t[k]||''; }});
   LISTF.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = Array.isArray(t[k])?t[k].join('\\n'):''; }});
   BOOLF.forEach(k=> {{ const el=$('#f_'+k); if(el) el.checked = !!t[k]; }});
-  // selects
   $('#f_valve').value = t.valve||'Aortic';
   $('#f_status').value = t.status||'published';
   $('#f_signal').value = t.signal||'descriptive';
   catOptions(t.valve||'Aortic', t.category||'');
 }}
-
 function readForm(){{
   const o = {{}};
   TEXT.forEach(k=> o[k] = $('#f_'+k).value.trim());
@@ -750,7 +643,6 @@ function readForm(){{
   o.evidence_stars = 0;
   return o;
 }}
-
 function loadTrial(i){{
   if(dirty && !confirm('Discard unsaved changes to the current trial?')) return;
   editIndex = i;
@@ -760,7 +652,6 @@ function loadTrial(i){{
   markDirty(false);
   renderList();
 }}
-
 function newTrial(){{
   if(dirty && !confirm('Discard unsaved changes to the current trial?')) return;
   editIndex = -1;
@@ -770,7 +661,6 @@ function newTrial(){{
   markDirty(false);
   renderList();
 }}
-
 function apply(){{
   const o = readForm();
   if(!o.acronym){{ alert('Acronym is required.'); return; }}
@@ -780,21 +670,18 @@ function apply(){{
   $('#btnDelete').hidden = false;
   markDirty(false); setCount(); renderList();
 }}
-
 function del(){{
   if(editIndex === -1) return;
   if(!confirm('Delete "'+(TRIALS[editIndex].acronym||'this trial')+'" from the list?')) return;
   TRIALS.splice(editIndex,1);
   newTrial(); setCount();
 }}
-
 function download(name, text){{
   const blob = new Blob([text], {{type:'application/json'}});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a'); a.href=url; a.download=name; a.click();
   URL.revokeObjectURL(url);
 }}
-
 function exportJson(){{
   const text = JSON.stringify(TRIALS, null, 2);
   download('trials.json', text);
@@ -802,7 +689,6 @@ function exportJson(){{
   $('#exportDlg').showModal();
   markDirty(false);
 }}
-
 function pyStr(s){{ return '"' + String(s).replace(/\\\\/g,'\\\\\\\\').replace(/"/g,'\\\\"') + '"'; }}
 function toPython(o){{
   const lines = ['Trial('];
@@ -823,7 +709,6 @@ function toPython(o){{
   lines.push(')');
   return lines.join('\\n');
 }}
-
 $('#btnNew').addEventListener('click', newTrial);
 $('#btnApply').addEventListener('click', apply);
 $('#btnDelete').addEventListener('click', del);
@@ -840,13 +725,10 @@ document.querySelectorAll('.ed-grid [data-key]').forEach(el=>{{
   el.addEventListener(ev, ()=>markDirty(true));
 }});
 $('#f_valve').addEventListener('change', ()=> catOptions($('#f_valve').value, ''));
-
 setCount(); newTrial();
 </script>
 """
     return page_shell("Trial editor — ValveTrials.org", "editor", body)
-
-
 # ---------------------------------------------------------------------------
 CSS = r"""
 :root{--ink:#0E262B;--page:#EAEFEE;--card:#FFFFFF;--line:#D2DEDB;--muted:#5B6E6B;
@@ -857,7 +739,6 @@ body{margin:0;background:var(--page);color:var(--ink);
 font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
 .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
-/* site header */
 .site{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 24px;background:var(--ink);color:#fff;flex-wrap:wrap}
 .brand{font-family:"Archivo",sans-serif;font-weight:800;font-size:19px;letter-spacing:-.01em;color:#fff;text-decoration:none}
 .brand span{color:#E8846F}
@@ -865,7 +746,6 @@ a{color:var(--accent)}
 .site-nav a{color:#c7d3d1;text-decoration:none;font-size:14px;padding:7px 13px;border-radius:8px;transition:background .15s,color .15s}
 .site-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
 .site-nav a.active{background:#fff;color:var(--ink);font-weight:600}
-/* mast */
 .mast{padding:40px 24px 20px;max-width:1080px;margin:0 auto;border-bottom:1px solid var(--line)}
 .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
 .crumb{color:var(--muted);text-decoration:none}.crumb:hover{color:var(--accent)}
@@ -874,7 +754,6 @@ a{color:var(--accent)}
 .mast .meta{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);margin-top:14px}
 .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:16px;font-size:12.5px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:5px}
-/* home */
 .home{max-width:1080px;margin:0 auto;padding:56px 24px 90px}
 .home .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 .home-h1{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(32px,5.5vw,54px);line-height:1.02;letter-spacing:-.025em;margin:0 0 14px;max-width:17ch}
@@ -890,7 +769,6 @@ a{color:var(--accent)}
 .vcard .go{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--vhue);font-weight:600}
 .vcard.soon{opacity:.96}
 .vcard.soon .go{color:var(--muted)}
-/* controls */
 .controls{position:sticky;top:0;z-index:20;background:rgba(234,239,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px}
 .controls-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
 .searchbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -909,7 +787,6 @@ a{color:var(--accent)}
 .fchip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .fchip.active .fn{color:#cdd8d6}
 .countline{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
-/* list + dropdowns */
 .list{max-width:1080px;margin:22px auto 80px;padding:0 24px}
 details.group{margin-bottom:20px}
 summary.grouphead{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;margin:0;padding:8px 4px;font-family:"Archivo",sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--hue);border-bottom:2px solid var(--hue)}
@@ -940,7 +817,6 @@ details.row[open] > summary .chev{transform:rotate(45deg)}
 .status-terminated{background:#f4e7e6;color:#9c3a2f;border-color:#eccdc9}
 .dates{display:flex;flex-direction:column;align-items:flex-end;gap:1px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);line-height:1.35}
 .dates .d-pub{color:#33474a}
-/* expanded body */
 .body-inner{padding:2px 18px 20px;border-top:1px solid var(--line)}
 .paperbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:14px 0 6px;padding:12px 14px;background:#f5f8f7;border:1px solid var(--line);border-radius:10px}
 .paperbar.none{color:var(--muted);font-style:italic}
@@ -957,7 +833,7 @@ ul.papers .plink{font-size:11.5px;padding:2px 8px;margin-left:4px}
 .pc-hint{font-size:12px;color:var(--muted);margin:0 0 8px}
 details.pc{border-top:1px solid #eef2f1}
 details.pc:first-of-type{border-top:0}
-details.pc > summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:8px;padding:9px 0}
+details.pc > summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:8px;padding:9px 0;grid-template-columns:none}
 details.pc > summary::-webkit-details-marker{display:none}
 details.pc > summary:hover{color:var(--accent)}
 .pc-chev{flex:0 0 auto;width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .16s;position:relative;top:-1px}
@@ -996,7 +872,6 @@ h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11p
 .qf p{margin:0 0 2px;font-size:13px}
 .qf .bul{font-size:13px}
 .noresults{text-align:center;color:var(--muted);padding:50px 20px;font-size:16px;display:none}
-/* coming soon */
 .soon-box{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--hue);border-radius:16px;padding:28px 26px;max-width:640px}
 .soon-box h2{font-family:"Archivo",sans-serif;font-weight:800;font-size:24px;margin:0 0 8px}
 .soon-box p{color:#33474a;margin:0 0 16px}
@@ -1065,7 +940,6 @@ footer.pagefoot{max-width:1080px;margin:0 auto;padding:22px 24px;border-top:1px 
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 """
-
 LIST_JS = r"""
 const $ = s => document.querySelector(s);
 const rows = Array.from(document.querySelectorAll('details.row'));
@@ -1110,8 +984,6 @@ $('#expandAll').addEventListener('click',()=>{groups.forEach(g=>g.open=true);row
 $('#collapseAll').addEventListener('click',()=>{rows.forEach(r=>r.open=false);groups.forEach(g=>g.open=false);});
 apply();
 """
-
-
 def main():
     outdir = sys.argv[1] if len(sys.argv) > 1 else "."
     os.makedirs(outdir, exist_ok=True)
@@ -1125,7 +997,5 @@ def main():
     counts = {k: len(trials_for(k)) for k, *_ in VALVES}
     print("Wrote:", ", ".join(pages))
     print("Trial counts:", counts)
-
-
 if __name__ == "__main__":
     main()
