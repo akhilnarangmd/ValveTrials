@@ -1,44 +1,44 @@
 #!/usr/bin/env python3
 """
 pubmed_linker.py — find and confidence-score the PubMed paper(s) for a clinical trial.
-
 It mirrors how a human decides whether a paper is *about* a trial vs merely *mentions* it.
-
 STRATEGY (in order of reliability):
   1. Registry link (most reliable): PubMed indexes each paper's declared ClinicalTrials.gov
      number in the [si] field.  `NCT03904147[si]` returns exactly the papers whose authors
      linked that registration -- this works even when the acronym never appears in the
      title/abstract, and even when the paper has NO abstract.
-  2. Acronym + author + year/journal queries, then score every candidate on transparent,
-     weighted signals (title hit, author match, publication type, registry link, ...).
+  2. Acronym + author + year/journal + device queries, then score every candidate on
+     transparent, weighted signals (title hit, author match, publication type, registry
+     link, device/valve/procedure topic, sample-size fingerprint, ...).
   3. Classify each hit as PRIMARY / SUBANALYSIS-or-FOLLOWUP / MENTION and assign a
      0-100 confidence with a per-signal breakdown, so a human can audit every decision.
-
 The scoring/classification logic is pure Python and unit-tested offline (`--selftest`).
 Live queries need internet (PubMed E-utilities); run locally or in CI, not in a
 network-restricted sandbox.  Be polite: set NCBI_API_KEY to raise the rate limit.
+
+Revised (see change log): device matching strips the manufacturer so the model matches;
+strong content evidence lifts the ambiguous-acronym cap; score_candidate returns
+`nct_declared` so discover_updates.py can self-heal missing NCTs and route grey-zone hits
+to a human-review bucket.
 """
 from __future__ import annotations
-
 import json
 import re
 import sys
 import time
 from dataclasses import dataclass, field
 from typing import List, Optional
-
 # --------------------------------------------------------------------------------------
 # Domain knowledge -- the "how a human reads it" rules, made explicit and tunable.
 # --------------------------------------------------------------------------------------
-
 # Acronyms that are also ordinary words / very generic -> high false-positive risk.
-# For these, an acronym hit alone is NOT enough; we require corroboration (NCT or author).
+# For these, an acronym hit alone is NOT enough; we require corroboration (NCT, author,
+# or STRONG CONTENT — device-in-title / sample-size fingerprint / full topic match).
 AMBIGUOUS_ACRONYMS = {
     "scout", "mitral", "hover", "summit", "tact", "travel", "active", "choice",
     "partner", "surtavi", "reprise", "restore", "encircle", "apollo", "tiara",
     "cephea", "intrepid", "sapien", "notion", "everest", "harpoon", "tandem",
 }
-
 # Publication types that mark a paper as a PRIMARY trial report.
 PRIMARY_PUBTYPES = {
     "randomized controlled trial", "controlled clinical trial", "clinical trial",
@@ -46,14 +46,12 @@ PRIMARY_PUBTYPES = {
     "clinical trial, phase iv", "multicenter study", "pragmatic clinical trial",
     "observational study", "clinical trial protocol",
 }
-
 # Publication types that mark a paper as SECONDARY literature (about trials, not a trial).
 SECONDARY_PUBTYPES = {
     "review", "systematic review", "meta-analysis", "editorial", "comment",
     "letter", "news", "guideline", "practice guideline", "published erratum",
     "case reports", "historical article",
 }
-
 # Title/abstract cues that a paper is a follow-up or subanalysis rather than the primary.
 SUBSTUDY_CUES = [
     r"\b\d+[- ]year\b", r"\b\d+[- ]month\b", r"\bpost[- ]?hoc\b", r"\bsub[- ]?analysis\b",
@@ -63,7 +61,6 @@ SUBSTUDY_CUES = [
     r"\bcost[- ]effective", r"\blong[- ]term\b", r"\bfinal\b", r"\bextended\b",
     r"\baccording to\b", r"\bstratified by\b", r"\bimpact of\b", r"\bassociation of\b",
 ]
-
 # Phrases that signal the acronym is being used as a COMPARATOR / reference (a mention),
 # e.g. "compared with COAPT", "as seen in MITRA-FR".
 COMPARATOR_CUES = [
@@ -71,8 +68,13 @@ COMPARATOR_CUES = [
     r"in line with", r"consistent with", r"as (?:seen|shown|reported) in",
     r"following (?:the )?", r"building on", r"after the",
 ]
-
-
+# Manufacturer / filler words to strip so the *device model* is what we match on. Without
+# this, "Jenscare LuX-Valve" reduced to "jenscare" and matched nothing (the TRAVEL miss).
+VENDOR_WORDS = {
+    "edwards", "lifesciences", "abbott", "medtronic", "boston", "scientific",
+    "jenscare", "jc", "medical", "croivalve", "biotronik", "gore", "jena",
+    "the", "system", "inc", "sas", "ltd", "co",
+}
 @dataclass
 class Candidate:
     """A PubMed record, parsed to just the fields the scorer needs."""
@@ -88,8 +90,6 @@ class Candidate:
     volume: str = ""
     issue: str = ""
     pages: str = ""
-
-
 @dataclass
 class Trial:
     """Only the fields the linker reasons over (a subset of the site's Trial)."""
@@ -103,16 +103,11 @@ class Trial:
     disease: str = ""
     procedure: str = ""
     sample_size: str = ""
-
-
 # --------------------------------------------------------------------------------------
 # Text helpers
 # --------------------------------------------------------------------------------------
-
 def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", (s or "")).strip().lower()
-
-
 def _acronym_variants(acr: str) -> List[str]:
     """'TRI-FR' -> ['tri-fr','tri fr','trifr']; strip parentheticals."""
     a = re.sub(r"\(.*?\)", " ", acr or "").strip().lower()
@@ -121,14 +116,10 @@ def _acronym_variants(acr: str) -> List[str]:
         return []
     v = {a, a.replace("-", " "), a.replace("-", ""), a.replace(" ", "")}
     return [x for x in v if x]
-
-
 def _whole_word_hit(text: str, needle: str) -> bool:
     if not needle:
         return False
     return re.search(r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])", text) is not None
-
-
 def _first_author_surname(authors_str: str) -> str:
     """'Sorajja P, Whisenant B, et al.' -> 'sorajja'."""
     first = (authors_str or "").split(",")[0].strip()
@@ -138,8 +129,6 @@ def _first_author_surname(authors_str: str) -> str:
     if len(parts) >= 2 and re.fullmatch(r"[A-Za-z]{1,3}\.?", parts[-1]):
         parts = parts[:-1]
     return _norm(" ".join(parts))
-
-
 def _all_surnames(authors_str: str) -> List[str]:
     out = []
     for chunk in (authors_str or "").split(","):
@@ -153,22 +142,21 @@ def _all_surnames(authors_str: str) -> List[str]:
         if s:
             out.append(s)
     return out
-
-
 def _year_int(y) -> Optional[int]:
     m = re.search(r"\d{4}", str(y or ""))
     return int(m.group()) if m else None
-
-
+def _device_token(device: str) -> str:
+    """Vendor-stripped device model, e.g. 'Jenscare LuX-Valve / ...' -> 'lux-valve'."""
+    dev = _norm(re.split(r"[/(]", device or "")[0])
+    toks = [t for t in dev.split() if t not in VENDOR_WORDS]
+    return " ".join(toks).strip() or (dev.split()[0] if dev else "")
 # --------------------------------------------------------------------------------------
 # Classification: primary vs subanalysis/follow-up vs mention
 # --------------------------------------------------------------------------------------
-
 def _concept_terms(trial: Trial):
     """Extract (device, valve, procedure) keywords a human would look for together."""
-    dev = _norm(re.split(r"[/(]", trial.device or "")[0])
-    dev = re.sub(r"\b(edwards|abbott|medtronic|boston scientific|the|system|inc|sas)\b", "", dev).strip()
-    dev = dev.split()[0] if dev else ""                       # e.g. 'mitraclip', 'pascal', 'evoque'
+    dev = _device_token(trial.device)
+    dev = dev.split()[0] if dev else ""                       # e.g. 'mitraclip', 'pascal', 'lux-valve'
     valve = _norm(trial.valve) or ""
     if not valve:                                            # fall back to disease text
         for v in ("tricuspid", "mitral", "aortic"):
@@ -188,8 +176,6 @@ def _concept_terms(trial: Trial):
     elif "repair" in p:
         proc = "repair"
     return dev, valve, proc
-
-
 def topic_signal(trial: Trial, cand: Candidate):
     """+points when device + valve (+procedure) co-occur -> the paper is ABOUT this concept."""
     dev, valve, proc = _concept_terms(trial)
@@ -209,8 +195,6 @@ def topic_signal(trial: Trial, cand: Candidate):
     if dev_hit or valve_hit:
         return 5, f"+5 partial topic match ({'device' if dev_hit else 'valve'} only)"
     return 0, None
-
-
 def fingerprint_signal(trial: Trial, cand: Candidate):
     """+points when the trial's own sample size shows up as the study's N in the abstract."""
     m = re.search(r"\d{2,4}", trial.sample_size or "")
@@ -222,15 +206,12 @@ def fingerprint_signal(trial: Trial, cand: Candidate):
        re.search(rf"\b(included|enrolled|treated|total of)\b[^.]{{0,20}}\b{n}\b", abst):
         return 10, f"+10 content fingerprint: study N ({n}) matches the abstract"
     return 0, None
-
-
 def classify_kind(cand: Candidate, acronym: str) -> str:
     pts = set(cand.pubtypes)
     text = _norm(cand.title + " . " + cand.abstract)
     title = _norm(cand.title)
     variants = _acronym_variants(acronym)
     in_title = any(_whole_word_hit(title, v) for v in variants)
-
     if pts & SECONDARY_PUBTYPES and not (pts & PRIMARY_PUBTYPES):
         return "mention"                    # review/editorial/meta -> secondary literature
     if in_title and any(re.search(c, title) for c in SUBSTUDY_CUES):
@@ -242,33 +223,26 @@ def classify_kind(cand: Candidate, acronym: str) -> str:
     if (pts & PRIMARY_PUBTYPES):
         return "primary"                    # trial pubtype but acronym elsewhere/absent
     return "mention"
-
-
 # --------------------------------------------------------------------------------------
 # The scorer: transparent, weighted, auditable.  Returns 0-100 + per-signal reasons.
 # --------------------------------------------------------------------------------------
-
 def score_candidate(trial: Trial, cand: Candidate) -> dict:
     reasons: List[str] = []
     score = 0.0
-
     acr = _norm(trial.acronym)
     variants = _acronym_variants(trial.acronym)
     title = _norm(cand.title)
     abstract = _norm(cand.abstract)
     pts = set(cand.pubtypes)
     ambiguous = acr in AMBIGUOUS_ACRONYMS or len(acr.replace(" ", "")) <= 4
-
     # --- 1. Registry link: the single most reliable signal ---------------------------
     nct_match = bool(trial.nct) and trial.nct.upper() in {a.upper() for a in cand.nct_accessions}
     if nct_match:
         score += 55
         reasons.append("+55 registry link: paper declares this trial's NCT ([si] match)")
-
     # --- 2. Acronym location ----------------------------------------------------------
     in_title = any(_whole_word_hit(title, v) for v in variants)
     in_abstract = any(_whole_word_hit(abstract, v) for v in variants)
-
     # Is the abstract hit a *named study* usage or a *comparator* usage?
     named_ctx = comparator_ctx = False
     if in_abstract:
@@ -280,7 +254,6 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
                     named_ctx = True
                 if any(re.search(c, window) for c in COMPARATOR_CUES):
                     comparator_ctx = True
-
     title_pts = 30
     abs_pts = 12 if named_ctx else (3 if in_abstract else 0)
     if ambiguous and not (nct_match):
@@ -298,7 +271,6 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
     if comparator_ctx and not in_title and not nct_match:
         score -= 18
         reasons.append("-18 acronym used only as a comparator/reference (a mention)")
-
     # --- 3. Author match --------------------------------------------------------------
     t_first = _first_author_surname(trial.authors)
     c_surnames = _all_surnames(", ".join(cand.authors)) or [_first_author_surname(a) for a in cand.authors]
@@ -311,7 +283,6 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
         elif t_first in c_surnames:
             score += 8
             reasons.append(f"+8 known trial author present ({t_first.title()})")
-
     # --- 4. Publication type ----------------------------------------------------------
     if pts & PRIMARY_PUBTYPES:
         score += 12
@@ -319,7 +290,6 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
     if pts & SECONDARY_PUBTYPES and not (pts & PRIMARY_PUBTYPES):
         score -= 25
         reasons.append("-25 publication type is secondary literature (review/editorial/meta)")
-
     # --- 5. Journal & year fit --------------------------------------------------------
     if trial.journal and cand.journal:
         tj, cj = _norm(trial.journal), _norm(cand.journal)
@@ -334,15 +304,14 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
         elif abs(ty - cy) >= 6:
             score -= 6
             reasons.append("-6 year far from expected")
-
-    # --- 6. Device name ---------------------------------------------------------------
+    # --- 6. Device name (vendor-stripped) --------------------------------------------
+    device_in_title = False
     if trial.device:
-        dev = _norm(re.split(r"[/(]", trial.device)[0])
-        dev = re.sub(r"\b(edwards|abbott|medtronic|the|system|inc)\b", "", dev).strip()
+        dev = _device_token(trial.device)
         if dev and (dev in title or dev in abstract):
             score += 8
             reasons.append(f"+8 device name present ('{dev}')")
-
+            device_in_title = dev in title
     # --- 7. Topic match (device+valve+procedure) and content fingerprint (N) ---------
     tpts, tnote = topic_signal(trial, cand)
     if tpts:
@@ -352,26 +321,29 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
     if fpts:
         score += fpts
         reasons.append(fnote)
-
     score = max(0.0, min(100.0, score))
-    # Ambiguous acronym with no corroboration can never be "High".
-    if ambiguous and not nct_match and t_first not in c_surnames and score > 40:
+    # Ambiguous bare-word acronyms (TRAVEL, SCOUT, HOVER...) need corroboration. STRONG
+    # CONTENT evidence — device name in the title, an exact sample-size fingerprint, or a
+    # full device+valve+procedure topic match — now counts too, not only NCT/author. This
+    # surfaces papers like the TRAVEL/LuX-Valve study the bare acronym would otherwise cap.
+    author_match = bool(t_first) and t_first in c_surnames
+    strong_content = device_in_title or (fpts > 0) or (tpts >= 12)
+    if ambiguous and not (nct_match or author_match or strong_content) and score > 40:
         score = 40.0
-        reasons.append("(capped at 40: ambiguous acronym without NCT/author corroboration)")
-
+        reasons.append("(capped at 40: ambiguous acronym without corroboration)")
+    elif ambiguous and not (nct_match or author_match) and strong_content:
+        reasons.append("(ambiguous acronym, but strong content corroboration — cap lifted)")
     label = "HIGH" if score >= 75 else ("MEDIUM" if score >= 45 else "LOW")
     return {
         "pmid": cand.pmid, "doi": cand.doi, "title": cand.title,
         "score": round(score, 1), "confidence": label,
         "kind": classify_kind(cand, trial.acronym),
+        "nct_declared": list(cand.nct_accessions),   # discover_updates uses this to self-heal/review
         "reasons": reasons,
     }
-
-
 # --------------------------------------------------------------------------------------
 # Query construction
 # --------------------------------------------------------------------------------------
-
 def build_queries(trial: Trial) -> List[tuple]:
     """Ordered (strategy, query) pairs; the caller runs them until it has enough."""
     q = []
@@ -383,19 +355,19 @@ def build_queries(trial: Trial) -> List[tuple]:
         q.append(("acronym+author", f'"{acr}" AND {first}[Author]'))
     if acr:
         q.append(("acronym", f'"{acr}"'))
+    # Device query: catches trials with no NCT and a title that hides the acronym
+    # (e.g. TRAVEL's "the Novel System") by anchoring on the device model + valve.
+    dev = _device_token(trial.device)
+    if dev and trial.valve:
+        q.append(("device", f'"{dev}" AND {trial.valve.lower()}[tiab]'))
     return q
-
-
 # --------------------------------------------------------------------------------------
 # Live PubMed client (E-utilities).  Needs internet; parses just what the scorer needs.
 # --------------------------------------------------------------------------------------
-
 class PubMedClient:
     BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-
     def __init__(self, api_key: Optional[str] = None, tool="valvetrials", email=""):
         self.api_key, self.tool, self.email = api_key, tool, email
-
     def _get(self, endpoint: str, params: dict) -> bytes:
         import urllib.parse
         import urllib.request
@@ -407,7 +379,6 @@ class PubMedClient:
             data = r.read()
         time.sleep(0.11 if self.api_key else 0.34)   # respect NCBI rate limits
         return data
-
     def esearch(self, term: str, retmax=20, reldate=None, datetype=None) -> List[str]:
         import xml.etree.ElementTree as ET
         params = {"db": "pubmed", "term": term, "retmax": retmax}
@@ -417,7 +388,6 @@ class PubMedClient:
         xml = self._get("esearch.fcgi", params)
         root = ET.fromstring(xml)
         return [e.text for e in root.findall(".//IdList/Id")]
-
     def efetch(self, pmids: List[str]) -> List[Candidate]:
         import xml.etree.ElementTree as ET
         if not pmids:
@@ -450,8 +420,6 @@ class PubMedClient:
                     c.doi = (aid.text or "").strip()
             out.append(c)
         return out
-
-
 def link_trial(trial: Trial, client: PubMedClient, retmax=15) -> List[dict]:
     """Run the strategies, dedupe by PMID, score, and return ranked results."""
     seen, cands = set(), []
@@ -464,15 +432,11 @@ def link_trial(trial: Trial, client: PubMedClient, retmax=15) -> List[dict]:
     scored = [score_candidate(trial, c) for c in cands]
     scored.sort(key=lambda r: r["score"], reverse=True)
     return scored
-
-
 # --------------------------------------------------------------------------------------
 # Offline self-test: proves the logic on the exact cases the user described.
 # --------------------------------------------------------------------------------------
-
 def _selftest() -> int:
     cases = []
-
     # 1) Primary RCT, acronym in title, NCT linked -> HIGH / primary
     cases.append((
         "TRILUMINATE Pivotal primary",
@@ -485,7 +449,6 @@ def _selftest() -> int:
                   nct_accessions=["NCT03904147"]),
         ("HIGH", "primary"),
     ))
-
     # 2) Review that merely MENTIONS TRILUMINATE, no NCT -> LOW / mention
     cases.append((
         "Review mentioning TRILUMINATE",
@@ -497,7 +460,6 @@ def _selftest() -> int:
                   pubtypes=["review"], nct_accessions=[]),
         ("LOW", "mention"),
     ))
-
     # 3) Ambiguous acronym SCOUT but registry + author corroborate -> HIGH / primary
     cases.append((
         "SCOUT (ambiguous) with NCT + author",
@@ -510,7 +472,6 @@ def _selftest() -> int:
                   nct_accessions=["NCT02574650"]),
         ("HIGH", "primary"),
     ))
-
     # 4) Ambiguous acronym SCOUT matched only by the word, unrelated paper -> LOW
     cases.append((
         "SCOUT bare word, unrelated",
@@ -522,7 +483,6 @@ def _selftest() -> int:
                   pubtypes=["journal article"], nct_accessions=[]),
         ("LOW", "mention"),
     ))
-
     # 5) Subanalysis: acronym in title + substudy cue + trial pubtype -> HIGH / subanalysis
     cases.append((
         "TRILUMINATE renal/liver subanalysis",
@@ -535,7 +495,6 @@ def _selftest() -> int:
                   nct_accessions=["NCT03904147"]),
         ("HIGH", "subanalysis"),
     ))
-
     # 6) No abstract, acronym NOT in title, but NCT + author + RCT -> HIGH / primary
     cases.append((
         "No abstract, name absent, NCT carries it",
@@ -547,7 +506,6 @@ def _selftest() -> int:
                   nct_accessions=["NCT04097145"]),
         ("HIGH", "primary"),
     ))
-
     # 7) No name, no NCT, weak pubtype -- resolved by topic + fingerprint + author
     cases.append((
         "MitraClip-in-TR (no acronym, no NCT)",
@@ -563,7 +521,20 @@ def _selftest() -> int:
                   pubtypes=["observational study"], nct_accessions=[]),
         ("HIGH", "primary"),
     ))
-
+    # 8) TRAVEL/LuX-Valve: ambiguous bare word, title hides device, NO NCT match, but strong
+    #    content (device+valve+procedure topic) lifts the cap -> MEDIUM instead of capped LOW.
+    cases.append((
+        "TRAVEL/LuX-Valve (ambiguous, no NCT, strong content)",
+        Trial(acronym="TRAVEL", nct="", authors="", device="Jenscare LuX-Valve / LuX-Valve Plus",
+              valve="Tricuspid", procedure="Transcatheter tricuspid replacement", sample_size="126"),
+        Candidate(pmid="40208152", doi="10.1016/j.jcin.2024.12.030",
+                  title="Transcatheter Tricuspid Valve Replacement With the Novel System: 1-Year Outcomes From the TRAVEL Study",
+                  abstract=("The TRAVEL study with the LuX-Valve system for severe TR. 126 patients underwent "
+                            "TTVR using the LuX-Valve system."),
+                  authors=["Pan X"], journal="JACC Cardiovasc Interv", year="2025",
+                  pubtypes=["journal article", "multicenter study"], nct_accessions=["NCT04436653"]),
+        ("MEDIUM", "subanalysis"),
+    ))
     ok = 0
     for name, trial, cand, (exp_label, exp_kind) in cases:
         r = score_candidate(trial, cand)
@@ -578,8 +549,6 @@ def _selftest() -> int:
         print()
     print(f"{ok}/{len(cases)} cases passed")
     return 0 if ok == len(cases) else 1
-
-
 def _cli():
     import argparse
     ap = argparse.ArgumentParser(description="Link trials to PubMed papers with confidence.")
@@ -590,12 +559,9 @@ def _cli():
     ap.add_argument("--apply-high", action="store_true",
                     help="write back doi/pmid for HIGH-confidence PRIMARY hits (with --file)")
     args = ap.parse_args()
-
     if args.selftest:
         return _selftest()
-
     client = PubMedClient(api_key=__import__("os").environ.get("NCBI_API_KEY"))
-
     if args.acronym:
         t = Trial(acronym=args.acronym, nct=args.nct or "", authors=args.authors,
                   journal=args.journal, year=args.year)
@@ -603,7 +569,6 @@ def _cli():
             print(f"{r['confidence']:6s} {r['score']:5.1f} [{r['kind']:11s}] "
                   f"PMID {r['pmid']:>9} doi:{r['doi'] or '-'}\n        {r['title']}")
         return 0
-
     if args.file:
         data = json.load(open(args.file, encoding="utf-8"))
         changed = 0
@@ -631,10 +596,7 @@ def _cli():
             json.dump(data, open(args.file, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
             print(f"\nWrote {changed} high-confidence links to {args.file}")
         return 0
-
     ap.print_help()
     return 0
-
-
 if __name__ == "__main__":
     sys.exit(_cli())
