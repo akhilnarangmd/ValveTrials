@@ -192,6 +192,12 @@
         "citation": "Naik H, et al. JACC Clin Electrophysiol 2025;11(5):1012-1020.",
         "doi": "10.1016/j.jacep.2025.01.001",
         "pmid": "39903153"
+      },
+      {
+        "label": "Transcatheter EdgetoEdge Repair inPatients With",
+        "citation": "Adams DH, et al. JACC. Cardiovascular interventions 2024;17(23):2749-2760.",
+        "doi": "10.1016/j.jcin.2024.08.035",
+        "pmid": "39663056"
       }
     ]
   },
@@ -267,6 +273,12 @@
         "citation": "Donal E, et al. JACC Cardiovasc Imaging 2025.",
         "doi": "10.1016/j.jcmg.2025.09.010",
         "pmid": "41258847"
+      },
+      {
+        "label": "Multicentric randomized evaluation of a",
+        "citation": "Donal E, et al. European heart journal. Cardiovascular Imaging 2022;23(12):1617-1627.",
+        "doi": "10.1093/ehjci/jeab255",
+        "pmid": "34871375"
       }
     ]
   },
@@ -337,6 +349,18 @@
         "citation": "Lurz P, et al. J Am Coll Cardiol 2023;82(4):281-291.",
         "doi": "10.1016/j.jacc.2023.05.008",
         "pmid": "37207923"
+      },
+      {
+        "label": "Characterization of Tricuspid Valve Anatomy",
+        "citation": "Donal E, et al. Journal of the American Society of Echocardiography : official publication of the American Society of Echocardiography 2024;37(4):397-404.",
+        "doi": "10.1016/j.echo.2023.12.002",
+        "pmid": "38072288"
+      },
+      {
+        "label": "Outcomes of tricuspid transcatheter edgetoedge",
+        "citation": "Goebel B, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(5):e253-e261.",
+        "doi": "10.4244/eij-d-23-01033",
+        "pmid": "40028727"
       }
     ]
   },
@@ -542,6 +566,42 @@
         "citation": "Kodali S, Hahn RT, Makkar R, et al. Eur Heart J 2023;44(46):4862-4873.",
         "doi": "10.1093/eurheartj/ehad667",
         "pmid": "37930776"
+      },
+      {
+        "label": "1-year",
+        "citation": "Arnold SV, et al. Journal of the American College of Cardiology 2025;85(3):206-216.",
+        "doi": "10.1016/j.jacc.2024.10.067",
+        "pmid": "39480380"
+      },
+      {
+        "label": "TRISCEND II Novel Randomized Trial",
+        "citation": "Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.",
+        "doi": "10.1016/j.amjcard.2024.06.009",
+        "pmid": "38897265"
+      },
+      {
+        "label": "Tricuspid valve replacement outcomes by",
+        "citation": "Lurz P, et al. European heart journal 2026;47(17):2059-2073.",
+        "doi": "10.1093/eurheartj/ehaf676",
+        "pmid": "40878717"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Sannino A, et al. JACC. Cardiovascular imaging 2026.",
+        "doi": "10.1016/j.jcmg.2026.05.019",
+        "pmid": "42470411"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Grangeon A, et al. ESC heart failure 2026.",
+        "doi": "10.1093/eschf/xvag137",
+        "pmid": "42120016"
+      },
+      {
+        "label": "Clinical Characteristics and Outcomes of",
+        "citation": "Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.",
+        "doi": "10.1016/j.jcin.2025.06.002",
+        "pmid": "42111092"
       }
     ]
   },
@@ -633,13 +693,43 @@
         "citation": "Grayburn PA, Kodali SK, Hahn RT, et al. Am J Cardiol 2024.",
         "doi": "",
         "pmid": ""
+      },
+      {
+        "label": "30-day",
+        "citation": "Kodali S, et al. JACC. Cardiovascular interventions 2022;15(5):471-480.",
+        "doi": "10.1016/j.jcin.2022.01.016",
+        "pmid": "35272771"
+      },
+      {
+        "label": "TRISCEND II Novel Randomized Trial",
+        "citation": "Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.",
+        "doi": "10.1016/j.amjcard.2024.06.009",
+        "pmid": "38897265"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Sannino A, et al. JACC. Cardiovascular imaging 2026.",
+        "doi": "10.1016/j.jcmg.2026.05.019",
+        "pmid": "42470411"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Grangeon A, et al. ESC heart failure 2026.",
+        "doi": "10.1093/eschf/xvag137",
+        "pmid": "42120016"
+      },
+      {
+        "label": "Clinical Characteristics and Outcomes of",
+        "citation": "Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.",
+        "doi": "10.1016/j.jcin.2025.06.002",
+        "pmid": "42111092"
       }
     ]
   },
   {
     "acronym": "LuX-Valve",
     "full_name": "LuX-Valve / LuX-Valve Plus Transcatheter Tricuspid Replacement Program",
-    "nct": "",
+    "nct": "NCT04436653",
     "category": "Tricuspid Transcatheter Replacement (TTVR)",
     "tags": [
       "LuX-Valve",
@@ -685,12 +775,26 @@
     "timeline": [
       "Early series and iterations ongoing"
     ],
-    "authors": "",
-    "journal": "",
-    "year": "",
-    "doi": "",
-    "pmid": "",
-    "caveat": "Primarily Chinese experience; Western pivotal data limited. NCT not confirmed here."
+    "authors": "Pan X, et al.",
+    "journal": "JACC. Cardiovascular interventions",
+    "year": "2025",
+    "doi": "10.1016/j.jcin.2024.12.030",
+    "pmid": "40208152",
+    "caveat": "Primarily Chinese experience; Western pivotal data limited. NCT not confirmed here.",
+    "key_papers": [
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Huang L, et al. Frontiers in cardiovascular medicine 2024;11:1417757.",
+        "doi": "10.3390/jcdd9120435",
+        "pmid": "39161660"
+      },
+      {
+        "label": "1-year",
+        "citation": "Stolz L, et al. European journal of heart failure 2025;27(11):2644-2648.",
+        "doi": "10.1002/ejhf.3529",
+        "pmid": "40879890"
+      }
+    ]
   },
   {
     "acronym": "TRI-REPAIR",
@@ -1123,6 +1227,12 @@
         "citation": "Orban M, et al. JACC Heart Fail 2020;8(4):265-276.",
         "doi": "10.1016/j.jchf.2019.12.006",
         "pmid": "32241534"
+      },
+      {
+        "label": "Impact of baseline tricuspid regurgitation",
+        "citation": "Schueler R, et al. Clinical research in cardiology : official journal of the German Cardiac Society 2017;106(5):350-358.",
+        "doi": "10.1007/s00392-016-1062-1",
+        "pmid": "27999930"
       }
     ],
     "caveat": "Off-label early experience with the mitral device, before dedicated tricuspid systems."
@@ -1130,7 +1240,7 @@
   {
     "acronym": "TriValve Registry",
     "full_name": "International Multisite Transcatheter Tricuspid Valve Therapies (TriValve) Registry",
-    "nct": "",
+    "nct": "NCT03416166",
     "category": "Tricuspid TEER",
     "tags": [
       "TriValve",
@@ -1203,6 +1313,42 @@
         "citation": "Mehr M, et al. JACC Cardiovasc Interv 2019;12(15):1451-1461.",
         "doi": "10.1016/j.jcin.2019.04.019",
         "pmid": "31395215"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Taramasso M, et al. JACC. Cardiovascular interventions 2020;13(5):554-564.",
+        "doi": "10.1016/j.jcin.2019.10.058",
+        "pmid": "31954676"
+      },
+      {
+        "label": "Mitral regurgitation evolution after transcatheter",
+        "citation": "Cannata F, et al. European heart journal. Cardiovascular Imaging 2024;26(1):135-147.",
+        "doi": "10.1093/ehjci/jeae227",
+        "pmid": "39189600"
+      },
+      {
+        "label": "Effects of tricuspid transcatheter edgetoedge",
+        "citation": "Russo G, et al. International journal of cardiology 2024;405:131934.",
+        "doi": "10.1016/j.ijcard.2024.131934",
+        "pmid": "38437953"
+      },
+      {
+        "label": "Transcatheter Tricuspid Valve Intervention in",
+        "citation": "Muntané-Carol G, et al. Circulation. Cardiovascular interventions 2021;14(2):e009685.",
+        "doi": "10.1161/circinterventions.120.009685",
+        "pmid": "33541097"
+      },
+      {
+        "label": "Incidence Predictors and Outcomes of",
+        "citation": "Dykun I, et al. JACC. Cardiovascular interventions 2026;19(6):711-722.",
+        "doi": "10.1016/j.jcin.2026.01.288",
+        "pmid": "41881647"
+      },
+      {
+        "label": "Right VentricularPulmonary Arterial Coupling and",
+        "citation": "Brener MI, et al. Journal of the American College of Cardiology 2022;79(5):448-461.",
+        "doi": "10.1016/j.jacc.2021.11.031",
+        "pmid": "35115101"
       }
     ],
     "caveat": "Multi-device registry (TEER plus other devices); propensity-matched, not randomized."
@@ -1210,7 +1356,7 @@
   {
     "acronym": "EuroTR Registry",
     "full_name": "European Real-World Registry of Transcatheter Leaflet Repair for Tricuspid Regurgitation (EuroTR)",
-    "nct": "",
+    "nct": "NCT06307262",
     "category": "Tricuspid TEER",
     "tags": [
       "EuroTR",
@@ -1271,6 +1417,24 @@
         "citation": "Wild MG, et al. JACC Cardiovasc Interv 2022;15(13):1352-1363.",
         "doi": "10.1016/j.jcin.2022.05.041",
         "pmid": "35798479"
+      },
+      {
+        "label": "Invasive Hemodynamics and Risk Stratification",
+        "citation": "Masiero G, et al. Circulation. Cardiovascular interventions 2026;19(1):e015964.",
+        "doi": "10.1161/circinterventions.125.015964",
+        "pmid": "41235431"
+      },
+      {
+        "label": "Residual tricuspid regurgitation after tricuspid",
+        "citation": "Stolz L, et al. European journal of heart failure 2024;26(8):1850-1860.",
+        "doi": "10.1002/ejhf.3274",
+        "pmid": "38812292"
+      },
+      {
+        "label": "Prognostic Value of NTproBNP in",
+        "citation": "von Stein J, et al. JACC. Cardiovascular interventions 2026;19(10):1225-1239.",
+        "doi": "10.1016/j.jcin.2026.02.013",
+        "pmid": "41777168"
       }
     ],
     "caveat": ""
