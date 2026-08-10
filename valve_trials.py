@@ -409,8 +409,7 @@ def build_home() -> str:
 <main class="home">
   <p class="kicker">Cardiology · Valvular Heart Disease · Trial Reference</p>
   <h1 class="home-h1">Every landmark valve trial, in one place.</h1>
-  <p class="home-lede">Choose a valve to browse its trials — grouped by category, ordered oldest to newest,
-     each linked to the paper. Aortic is live now; mitral and tricuspid are on the way.</p>
+  <p class="home-lede">Choose a valve to browse its trials — grouped by category, ordered oldest to newest.</p>
   <div class="valve-cards">{''.join(cards)}</div>
 </main>
 """
