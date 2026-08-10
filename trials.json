@@ -177,6 +177,84 @@
         "citation": "Blood Pressure and Arterial Load After Transcatheter Aortic Valve Replacement fo… PMID 28701528.",
         "doi": "10.1161/CIRCIMAGING.116.006308",
         "pmid": "28701528"
+      },
+      {
+        "label": "Propensitymatched comparisons of clinical outcomes",
+        "citation": "Blackstone EH, et al. Circulation 2015;131(22):1989-2000.",
+        "doi": "10.1161/circulationaha.114.012525",
+        "pmid": "25832034"
+      },
+      {
+        "label": "Appropriate patient selection or health",
+        "citation": "Szeto WY, et al. The Journal of thoracic and cardiovascular surgery 2015;150(3):557-68.e11.",
+        "doi": "10.1016/j.jtcvs.2015.05.073",
+        "pmid": "26238287"
+      },
+      {
+        "label": "Quality of life",
+        "citation": "Gada H, et al. Circulation. Cardiovascular quality and outcomes 2015;8(4):338-46.",
+        "doi": "10.1161/circoutcomes.114.001335",
+        "pmid": "26058718"
+      },
+      {
+        "label": "5-year",
+        "citation": "Mack MJ, et al. Lancet (London, England) 2015;385(9986):2477-84.",
+        "doi": "10.1016/s0140-6736(15)60308-7",
+        "pmid": "25788234"
+      },
+      {
+        "label": "Longitudinal Hemodynamics of Transcatheter and",
+        "citation": "Douglas PS, et al. JAMA cardiology 2017;2(11):1197-1206.",
+        "doi": "10.1177/0962280214537255",
+        "pmid": "28973520"
+      },
+      {
+        "label": "NeutrophiltoLymphocyte Ratios in Patients Undergoing",
+        "citation": "Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.",
+        "doi": "10.1093/eurheartj/ehu384",
+        "pmid": "35656983"
+      },
+      {
+        "label": "Endocarditis",
+        "citation": "Summers MR, et al. Circulation 2019;140(24):1984-1994.",
+        "doi": "10.1161/circulationaha.119.041399",
+        "pmid": "31690104"
+      },
+      {
+        "label": "Stroke After Surgical Versus Transfemoral",
+        "citation": "Kapadia SR, et al. Journal of the American College of Cardiology 2018;72(20):2415-2426.",
+        "doi": "10.1016/j.jacc.2018.08.2172",
+        "pmid": "30442284"
+      },
+      {
+        "label": "Transapical Transcatheter Aortic Valve Replacement",
+        "citation": "Elmariah S, et al. JACC. Cardiovascular interventions 2017;10(23):2414-2422.",
+        "doi": "10.1016/j.jcin.2017.09.023",
+        "pmid": "29217004"
+      },
+      {
+        "label": "Insights Into Timing Risk Factors",
+        "citation": "Kapadia S, et al. Circulation. Cardiovascular interventions 2016;9(9).",
+        "doi": "10.1161/circinterventions.115.002981",
+        "pmid": "27601428"
+      },
+      {
+        "label": "Evaluation of Flow After Transcatheter",
+        "citation": "Anjan VY, et al. JAMA cardiology 2016;1(5):584-92.",
+        "doi": "10.1001/jamacardio.2016.0759",
+        "pmid": "27437665"
+      },
+      {
+        "label": "Sex differences",
+        "citation": "Kodali S, et al. Annals of internal medicine 2016;164(6):377-84.",
+        "doi": "10.7326/m15-0121",
+        "pmid": "26903039"
+      },
+      {
+        "label": "Atrial Fibrillation Is Associated With",
+        "citation": "Biviano AB, et al. Circulation. Cardiovascular interventions 2016;9(1):e002766.",
+        "doi": "10.1161/circinterventions.115.002766",
+        "pmid": "26733582"
       }
     ]
   },
@@ -406,6 +484,30 @@
         "citation": "Transapical Transcatheter Aortic Valve Replacement Is Associated With Increased… PMID 29217004.",
         "doi": "10.1016/j.jcin.2017.09.023",
         "pmid": "29217004"
+      },
+      {
+        "label": "5-year",
+        "citation": "Kapadia SR, et al. Lancet (London, England) 2015;385(9986):2485-91.",
+        "doi": "10.1016/s0140-6736(15)60290-2",
+        "pmid": "25788231"
+      },
+      {
+        "label": "NeutrophiltoLymphocyte Ratios in Patients Undergoing",
+        "citation": "Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.",
+        "doi": "10.1093/eurheartj/ehu384",
+        "pmid": "35656983"
+      },
+      {
+        "label": "Risk stratification in patients with",
+        "citation": "Lindman BR, et al. Heart (British Cardiac Society) 2015;101(20):1656-64.",
+        "doi": "10.1136/heartjnl-2015-308001",
+        "pmid": "26264371"
+      },
+      {
+        "label": "Outcomes in Nonagenarians Undergoing Transcatheter",
+        "citation": "Thourani VH, et al. The Annals of thoracic surgery 2015;100(3):785-92; discussion 793.",
+        "doi": "10.1016/j.athoracsur.2015.05.021",
+        "pmid": "26242213"
       }
     ]
   },
@@ -543,6 +645,72 @@
         "citation": "Self-expanding transcatheter aortic valve replacement using alternative access s… PMID 25152474.",
         "doi": "10.1016/j.jtcvs.2014.07.020",
         "pmid": "25152474"
+      },
+      {
+        "label": "5-year",
+        "citation": "Gleason TG, et al. Journal of the American College of Cardiology 2018;72(22):2687-2696.",
+        "doi": "10.1016/j.jacc.2018.08.2146",
+        "pmid": "30249462"
+      },
+      {
+        "label": "3-year",
+        "citation": "Deeb GM, et al. Journal of the American College of Cardiology 2016;67(22):2565-74.",
+        "doi": "10.1016/j.jacc.2016.03.506",
+        "pmid": "27050187"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Reynolds MR, et al. Journal of the American College of Cardiology 2016;67(1):29-38.",
+        "doi": "10.1016/j.jacc.2015.10.046",
+        "pmid": "26764063"
+      },
+      {
+        "label": "Health Status After Transcatheter or",
+        "citation": "Arnold SV, et al. JACC. Cardiovascular interventions 2015;8(9):1207-1217.",
+        "doi": "10.1016/j.jcin.2015.04.018",
+        "pmid": "26292584"
+      },
+      {
+        "label": "2-year",
+        "citation": "Reardon MJ, et al. Journal of the American College of Cardiology 2015;66(2):113-21.",
+        "doi": "10.1016/j.jacc.2015.05.017",
+        "pmid": "26055947"
+      },
+      {
+        "label": "Durability",
+        "citation": "O'Hair D, et al. JAMA cardiology 2023;8(2):111-119.",
+        "doi": "10.1016/j.jcin.2019.12.026",
+        "pmid": "36515976"
+      },
+      {
+        "label": "Early Recovery of Left Ventricular",
+        "citation": "Dauerman HL, et al. Circulation. Cardiovascular interventions 2016;9(6).",
+        "doi": "10.1161/circinterventions.115.003425",
+        "pmid": "27296201"
+      },
+      {
+        "label": "Outcomes in the Randomized CoreValve",
+        "citation": "Reardon MJ, et al. JAMA cardiology 2016;1(8):945-949.",
+        "doi": "10.1001/jamacardio.2016.2257",
+        "pmid": "27541162"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Little SH, et al. Circulation. Cardiovascular interventions 2016;9(6).",
+        "doi": "10.1161/circinterventions.115.003426",
+        "pmid": "27313280"
+      },
+      {
+        "label": "Endocarditis",
+        "citation": "Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.",
+        "doi": "10.1016/j.jcmg.2017.05.016",
+        "pmid": "34581194"
+      },
+      {
+        "label": "FiveYear Health Status After Selfexpanding",
+        "citation": "Arnold SV, et al. JAMA cardiology 2021;6(1):97-101.",
+        "doi": "10.1016/j.ahj.2004.12.010",
+        "pmid": "32997095"
       }
     ]
   },
@@ -718,6 +886,42 @@
         "citation": "2-Year Outcomes in Patients Undergoing Surgical or Self-Expanding Transcatheter… PMID 26055947.",
         "doi": "10.1016/j.jacc.2015.05.017",
         "pmid": "26055947"
+      },
+      {
+        "label": "Health status after transcatheter aortic",
+        "citation": "Osnabrugge RL, et al. JACC. Cardiovascular interventions 2015;8(2):315-323.",
+        "doi": "10.1016/j.jcin.2014.08.016",
+        "pmid": "25700755"
+      },
+      {
+        "label": "2-year",
+        "citation": "Yakubov SJ, et al. Journal of the American College of Cardiology 2015;66(12):1327-34.",
+        "doi": "10.1016/j.jacc.2015.07.042",
+        "pmid": "26383718"
+      },
+      {
+        "label": "Selfexpanding transcatheter aortic valve replacement",
+        "citation": "Reardon MJ, et al. The Journal of thoracic and cardiovascular surgery 2014;148(6):2869-76.e1-7.",
+        "doi": "10.1016/j.jtcvs.2014.07.020",
+        "pmid": "25152474"
+      },
+      {
+        "label": "LongTerm Health Benefit of TranscatheterAortic",
+        "citation": "Crestanello JA, et al. JACC. Cardiovascular interventions 2017;10(22):2283-2293.",
+        "doi": "10.1016/j.jcin.2017.07.025",
+        "pmid": "29102579"
+      },
+      {
+        "label": "Quality of life",
+        "citation": "Arnold SV, et al. Circulation. Cardiovascular interventions 2021;14(6):e010258.",
+        "doi": "10.1161/circinterventions.120.010258",
+        "pmid": "34092091"
+      },
+      {
+        "label": "Transcatheter or Surgical Aortic Valve",
+        "citation": "Conte JV, et al. The Annals of thoracic surgery 2016;101(1):72-9; discussion 79.",
+        "doi": "10.1016/j.athoracsur.2015.06.067",
+        "pmid": "26433523"
       }
     ]
   },
@@ -874,6 +1078,42 @@
         "citation": "Effect of tricuspid regurgitation and the right heart on survival after transcat… PMID 25855679.",
         "doi": "10.1161/CIRCINTERVENTIONS.114.002073",
         "pmid": "25855679"
+      },
+      {
+        "label": "Outcomes of SAPIEN 3 Transcatheter",
+        "citation": "Madhavan MV, et al. Journal of the American College of Cardiology 2023;82(2):109-123.",
+        "doi": "10.1016/j.jacc.2023.04.049",
+        "pmid": "37407110"
+      },
+      {
+        "label": "OneYear Clinical Outcomes With SAPIEN",
+        "citation": "Herrmann HC, et al. Circulation 2016;134(2):130-40.",
+        "doi": "10.1161/circulationaha.116.022797",
+        "pmid": "27400898"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Kodali S, et al. European heart journal 2016;37(28):2252-62.",
+        "doi": "10.1002/ccd.26120",
+        "pmid": "27190101"
+      },
+      {
+        "label": "Transcatheter Aortic Valve Implantation Within",
+        "citation": "Webb JG, et al. Journal of the American College of Cardiology 2017;69(18):2253-2262.",
+        "doi": "10.1016/j.jacc.2017.02.057",
+        "pmid": "28473128"
+      },
+      {
+        "label": "Transcatheter Versus Surgical AorticValve Replacement",
+        "citation": "Chen S, et al. JACC. Cardiovascular interventions 2018;11(21):2207-2216.",
+        "doi": "10.1016/j.jcin.2018.08.006",
+        "pmid": "30409278"
+      },
+      {
+        "label": "Suprasternal Transcatheter Aortic Valve Replacement",
+        "citation": "Kiser AC, et al. Innovations (Philadelphia, Pa.) 2018;13(1):1-4.",
+        "doi": "10.1097/imi.0000000000000462",
+        "pmid": "29462049"
       }
     ]
   },
@@ -994,6 +1234,42 @@
         "citation": "Impact of Repositioning on Outcomes Following Transcatheter Aortic Valve Replace… PMID 32763073.",
         "doi": "10.1016/j.jcin.2020.04.028",
         "pmid": "32763073"
+      },
+      {
+        "label": "Comparison of Outcomes After Transcatheter",
+        "citation": "Reardon MJ, et al. JAMA cardiology 2019;4(8):810-814.",
+        "doi": "10.1016/j.ijcard.2016.04.033",
+        "pmid": "31215985"
+      },
+      {
+        "label": "Endocarditis",
+        "citation": "Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.",
+        "doi": "10.1016/j.jcmg.2017.05.016",
+        "pmid": "34581194"
+      },
+      {
+        "label": "Durability",
+        "citation": "O'Hair D, et al. JAMA cardiology 2023;8(2):111-119.",
+        "doi": "10.1016/j.jcin.2019.12.026",
+        "pmid": "36515976"
+      },
+      {
+        "label": "1-year",
+        "citation": "Piazza N, et al. JACC. Cardiovascular interventions 2013;6(5):443-51.",
+        "doi": "10.1016/j.jcin.2013.01.136",
+        "pmid": "23702009"
+      },
+      {
+        "label": "Examining the typical hemodynamic performance",
+        "citation": "Klautz RJM, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2024;65(5).",
+        "doi": "10.1093/ejcts/ezae122",
+        "pmid": "38710669"
+      },
+      {
+        "label": "Oneyear outcomes of patients with",
+        "citation": "Serruys PW, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2018;14(8):877-883.",
+        "doi": "10.4244/eij-d-18-00460",
+        "pmid": "29992904"
       }
     ]
   },
@@ -1066,7 +1342,27 @@
     "year": "2022",
     "doi": "10.1001/jama.2022.5776",
     "pmid": "35579641",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Preprocedural pacing bias among transcatheter",
+        "citation": "Hilling-Smith R, et al. Heart and vessels 2021;36(3):408-413.",
+        "doi": "10.1093/eurheartj/ehs255",
+        "pmid": "32951086"
+      },
+      {
+        "label": "Durability",
+        "citation": "Ali N, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2023;101(5):932-942.",
+        "doi": "10.1002/ccd.30627",
+        "pmid": "36924015"
+      },
+      {
+        "label": "The UK TAVI trial an",
+        "citation": "Vergallo R, et al. European heart journal 2022;43(31):2919-2920.",
+        "doi": "10.1093/eurheartj/ehac345",
+        "pmid": "35751527"
+      }
+    ]
   },
   {
     "acronym": "PARTNER 3",
@@ -1189,6 +1485,24 @@
         "citation": "Impact of Aortic Annulus Size on Outcomes After Aortic Valve Replacement.",
         "doi": "",
         "pmid": "42508852"
+      },
+      {
+        "label": "Economic Outcomes of Transcatheter Versus",
+        "citation": "Galper BZ, et al. Circulation 2023;147(21):1594-1605.",
+        "doi": "10.1161/circulationaha.122.062481",
+        "pmid": "37154049"
+      },
+      {
+        "label": "Five Year Outcomes in LowRisk",
+        "citation": "Thourani VH, et al. The Annals of thoracic surgery 2025;119(3):555-566.",
+        "doi": "10.1016/j.athoracsur.2024.11.025",
+        "pmid": "39694217"
+      },
+      {
+        "label": "OneYear Outcomes of Transseptal Mitral",
+        "citation": "Malaisrie SC, et al. Circulation. Cardiovascular interventions 2024;17(8):e013782.",
+        "doi": "10.1161/circinterventions.123.013782",
+        "pmid": "39034924"
       }
     ]
   },
@@ -1322,6 +1636,24 @@
         "citation": "Use of Claims to Assess Outcomes and Treatment Effects in the Evolut Low Risk Tr… PMID 39836743.",
         "doi": "10.1161/CIRCINTERVENTIONS.124.014592",
         "pmid": "39836743"
+      },
+      {
+        "label": "Endocarditis",
+        "citation": "Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.",
+        "doi": "10.1016/j.jcmg.2017.05.016",
+        "pmid": "34581194"
+      },
+      {
+        "label": "Examining the typical hemodynamic performance",
+        "citation": "Klautz RJM, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2024;65(5).",
+        "doi": "10.1093/ejcts/ezae122",
+        "pmid": "38710669"
+      },
+      {
+        "label": "3-year",
+        "citation": "Zahr F, et al. JACC. Cardiovascular interventions 2024;17(14):1667-1675.",
+        "doi": "10.1016/j.jcin.2024.05.017",
+        "pmid": "39048253"
       }
     ]
   },
@@ -1437,6 +1769,24 @@
         "citation": "Transcatheter or surgical aortic valve implantation: 10-year outcomes of the NOTION trial.",
         "doi": "10.1093/eurheartj/ehae043",
         "pmid": "38321820"
+      },
+      {
+        "label": "Differences in left ventricular remodelling",
+        "citation": "Ngo A, et al. European heart journal. Cardiovascular Imaging 2018;19(1):39-46.",
+        "doi": "10.1093/ehjci/jew321",
+        "pmid": "28158582"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Geisler BP, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2019;15(11):e959-e967.",
+        "doi": "10.4244/eij-d-18-00847",
+        "pmid": "31422922"
+      },
+      {
+        "label": "No clinical effect of prosthesispatient",
+        "citation": "Thyregod HG, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2016;50(4):721-728.",
+        "doi": "10.1093/ejcts/ezw095",
+        "pmid": "27005980"
       }
     ]
   },
@@ -1517,6 +1867,12 @@
         "citation": "Three-Year Follow-Up of the NOTION-2 Trial: TAVR Versus SAVR to Treat Younger Lo… PMID 40884768.",
         "doi": "10.1161/CIRCULATIONAHA.125.076678",
         "pmid": "40884768"
+      },
+      {
+        "label": "Transcatheter or surgical aortic valve",
+        "citation": "Jørgensen TH, et al. American heart journal 2025;284:67-70.",
+        "doi": "10.1016/j.ahj.2025.02.003",
+        "pmid": "39952377"
       }
     ]
   },
@@ -1589,7 +1945,21 @@
     "year": "2024",
     "doi": "10.1056/NEJMoa2400685",
     "pmid": "38588025",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Sex differences",
+        "citation": "Bleiziffer S, et al. European heart journal 2026;47(11):1339-1353.",
+        "doi": "10.1093/eurheartj/ehaf519",
+        "pmid": "40900118"
+      },
+      {
+        "label": "Transcatheter aortic valve implantation versus",
+        "citation": "Seiffert M, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2023;19(8):652-658.",
+        "doi": "10.4244/eij-d-23-00232",
+        "pmid": "37655862"
+      }
+    ]
   },
   {
     "acronym": "CHOICE",
@@ -1672,6 +2042,18 @@
         "citation": "1-Year Outcomes After Transcatheter Aortic Valve Replacement With Balloon-Expand… PMID 26271061.",
         "doi": "10.1016/j.jacc.2015.06.026",
         "pmid": "26271061"
+      },
+      {
+        "label": "Bioprosthetic Valve Performance AfterTranscatheter Aortic",
+        "citation": "Abdelghani M, et al. JACC. Cardiovascular interventions 2018;11(24):2507-2518.",
+        "doi": "10.1016/j.jcin.2018.07.050",
+        "pmid": "30503595"
+      },
+      {
+        "label": "Comparison of a Pure PlugBased",
+        "citation": "Abdel-Wahab M, et al. Circulation 2022;145(3):170-183.",
+        "doi": "10.1161/circulationaha.121.057856",
+        "pmid": "34738828"
       }
     ]
   },
@@ -1741,7 +2123,51 @@
     "year": "2018",
     "doi": "10.1001/jama.2017.19132",
     "pmid": "29297076",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Longterm Outcomes of Transcatheter Aortic",
+        "citation": "Rizik DG, et al. JAMA network open 2022;5(10):e2238792.",
+        "doi": "10.1093/icvts/ivy190",
+        "pmid": "36301543"
+      },
+      {
+        "label": "TwoYear Outcomes After Transcatheter Aortic",
+        "citation": "Reardon MJ, et al. JAMA cardiology 2019;4(3):223-229.",
+        "doi": "10.1016/j.jcin.2017.07.027",
+        "pmid": "30810703"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Asch FM, et al. Circulation 2018;137(24):2557-2567.",
+        "doi": "10.1161/circulationaha.118.034129",
+        "pmid": "29530883"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Meduri CU, et al. Journal of the American Heart Association 2019;8(21):e012594.",
+        "doi": "10.1161/jaha.119.012594",
+        "pmid": "31640455"
+      },
+      {
+        "label": "Secondary analysis of REPRISE III",
+        "citation": "Kotit S, et al. Global cardiology science & practice 2023;2023(4):e202330.",
+        "doi": "10.5339/gcsp.2014.11",
+        "pmid": "38404629"
+      },
+      {
+        "label": "Clinical Implications of Physical Function",
+        "citation": "Goel K, et al. Journal of the American Heart Association 2020;9(17):e017075.",
+        "doi": "10.1161/jaha.118.010139",
+        "pmid": "32856530"
+      },
+      {
+        "label": "Transcatheter aortic valve replacement with",
+        "citation": "Barker CM, et al. Future cardiology 2018;14(5):367-373.",
+        "doi": "10.2217/fca-2018-0044",
+        "pmid": "30141342"
+      }
+    ]
   },
   {
     "acronym": "Portico IDE",
@@ -1821,6 +2247,18 @@
         "citation": "Five-year clinical outcomes and durability of the Portico self-expanding transcatheter heart valve.",
         "doi": "10.1161/CIRCINTERVENTIONS.125.015430",
         "pmid": "41133305"
+      },
+      {
+        "label": "Prosthesispatient mismatch with intraannular selfexpanding",
+        "citation": "Fontana GP, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(13):e741-e747.",
+        "doi": "10.4244/eij-d-26-00158",
+        "pmid": "42405628"
+      },
+      {
+        "label": "Safety Profile of an IntraAnnular",
+        "citation": "Fontana GP, et al. JACC. Cardiovascular interventions 2020;13(21):2467-2478.",
+        "doi": "10.1016/j.jcin.2020.06.041",
+        "pmid": "33153563"
       }
     ]
   },
@@ -1914,6 +2352,12 @@
         "citation": "One-Year Outcomes of a Randomized Trial Comparing a Self-Expanding With a Balloo… PMID 33750210.",
         "doi": "10.1161/CIRCULATIONAHA.120.052251",
         "pmid": "33750210"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Nakase M, et al. Cardiovascular revascularization medicine : including molecular interventions 2026;85:12-20.",
+        "doi": "10.1016/j.carrev.2025.06.020",
+        "pmid": "40592695"
       }
     ]
   },
@@ -2072,6 +2516,18 @@
         "citation": "General Versus Local Anesthesia With Conscious Sedation in Transcatheter Aortic… PMID 32819145.",
         "doi": "10.1161/CIRCULATIONAHA.120.046451",
         "pmid": "32819145"
+      },
+      {
+        "label": "Fractal dimension of the aortic",
+        "citation": "Stachel G, et al. The international journal of cardiovascular imaging 2022;38(11):2469-2478.",
+        "doi": "10.1161/circimaging.114.002411",
+        "pmid": "36434335"
+      },
+      {
+        "label": "5-year",
+        "citation": "Feistritzer HJ, et al. Journal of the American College of Cardiology 2025;85(1):74-82.",
+        "doi": "10.1016/j.jacc.2024.09.007",
+        "pmid": "39503651"
       }
     ]
   },
@@ -2148,6 +2604,12 @@
         "citation": "Rationale and design of the SMall Annuli Randomized To Evolut or SAPIEN Trial (S… PMID 34587510.",
         "doi": "10.1016/j.ahj.2021.09.011",
         "pmid": "34587510"
+      },
+      {
+        "label": "Transcatheter Aortic Valve Implantation by",
+        "citation": "Tchétché D, et al. JAMA cardiology 2024;9(12):1106-1114.",
+        "doi": "10.1016/j.shj.2022.100118",
+        "pmid": "39382856"
       }
     ]
   },
@@ -2242,6 +2704,12 @@
         "citation": "Rationale and design of a randomized clinical trial comparing safety and efficac… PMID 33160946.",
         "doi": "10.1016/j.ahj.2020.11.001",
         "pmid": "33160946"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Tobe A, et al. International journal of cardiology 2026;456:134525.",
+        "doi": "10.1016/j.ijcard.2026.134525",
+        "pmid": "42044716"
       }
     ]
   },
@@ -2313,12 +2781,26 @@
     "year": "2025",
     "doi": "10.1016/S0140-6736(25)00319-8",
     "pmid": "40412426",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Valve Underexpansion and Clinical Outcomes",
+        "citation": "Makkar RR, et al. Journal of the American College of Cardiology 2025;86(4):225-238.",
+        "doi": "10.1016/j.jacc.2025.05.011",
+        "pmid": "40406945"
+      },
+      {
+        "label": "1-year",
+        "citation": "Rück A, et al. JACC. Cardiovascular interventions 2025;18(22):2790-2801.",
+        "doi": "10.1016/j.jcin.2025.09.025",
+        "pmid": "41297993"
+      }
+    ]
   },
   {
     "acronym": "REPRISE I",
     "full_name": "Repositionable Percutaneous Replacement of Stenotic Aortic Valve I (Feasibility)",
-    "nct": "",
+    "nct": "NCT01627691",
     "category": "Platform Comparison",
     "tags": [
       "Lotus",
@@ -2384,6 +2866,18 @@
         "citation": "Final results from the REPRISE I study: five-year clinical outcomes with the Lotus valve.",
         "doi": "10.4244/EIJ-D-18-00664",
         "pmid": ""
+      },
+      {
+        "label": "1-year",
+        "citation": "Meredith IT, et al. JACC. Cardiovascular interventions 2016;9(4):376-384.",
+        "doi": "10.1016/j.jcin.2015.10.024",
+        "pmid": "26892084"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Dumonteil N, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;13(7):796-803.",
+        "doi": "10.4244/eij-d-16-01025",
+        "pmid": "28506942"
       }
     ]
   },
@@ -2451,7 +2945,33 @@
     "year": "2016",
     "doi": "",
     "pmid": "26892084",
-    "caveat": "NCT provisional — not confirmed against a ClinicalTrials.gov record."
+    "caveat": "NCT provisional — not confirmed against a ClinicalTrials.gov record.",
+    "key_papers": [
+      {
+        "label": "Predictors of Paravalvular Regurgitation After",
+        "citation": "Blackman DJ, et al. The American journal of cardiology 2017;120(2):292-299.",
+        "doi": "10.1016/j.amjcard.2017.04.026",
+        "pmid": "28535962"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Dumonteil N, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;13(7):796-803.",
+        "doi": "10.4244/eij-d-16-01025",
+        "pmid": "28506942"
+      },
+      {
+        "label": "30-day",
+        "citation": "Meredith Am IT, et al. Journal of the American College of Cardiology 2014;64(13):1339-48.",
+        "doi": "10.1016/j.jacc.2014.05.067",
+        "pmid": "25257635"
+      },
+      {
+        "label": "Conduction/pacemaker",
+        "citation": "Rampat R, et al. JACC. Cardiovascular interventions 2017;10(12):1247-1253.",
+        "doi": "10.1016/j.jcin.2017.03.044",
+        "pmid": "28641846"
+      }
+    ]
   },
   {
     "acronym": "EARLY TAVR",
@@ -2545,6 +3065,12 @@
         "citation": "Design and rationale of the evaluation of transcatheter aortic valve replacement… PMID 38056546.",
         "doi": "10.1016/j.ahj.2023.11.019",
         "pmid": "38056546"
+      },
+      {
+        "label": "Design and rationale of the",
+        "citation": "Généreux P, et al. American heart journal 2026;297:107433.",
+        "doi": "10.1016/j.ahj.2026.107433",
+        "pmid": "41895563"
       }
     ]
   },
@@ -2779,7 +3305,15 @@
     "year": "2024",
     "doi": "10.1016/j.jacc.2024.10.070",
     "pmid": "39480381",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Rationale and design of the",
+        "citation": "Spitzer E, et al. American heart journal 2016;182:80-88.",
+        "doi": "10.1016/j.ahj.2016.08.009",
+        "pmid": "27914503"
+      }
+    ]
   },
   {
     "acronym": "PARTNER 2 ViV",
@@ -2858,6 +3392,12 @@
         "citation": "Valve-in-valve TAVR for failed surgical bioprostheses: 5-year outcomes.",
         "doi": "10.1016/j.jcin.2022.02.014",
         "pmid": "35393102"
+      },
+      {
+        "label": "NeutrophiltoLymphocyte Ratios in Patients Undergoing",
+        "citation": "Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.",
+        "doi": "10.1093/eurheartj/ehu384",
+        "pmid": "35656983"
       }
     ]
   },
@@ -2926,7 +3466,15 @@
     "year": "2020",
     "doi": "10.1016/j.jacc.2020.02.051",
     "pmid": "32327098",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Coronary Access Following Redo TAVR",
+        "citation": "Meier D, et al. JACC. Cardiovascular interventions 2022;15(15):1519-1531.",
+        "doi": "10.1016/j.jcin.2022.05.005",
+        "pmid": "35926919"
+      }
+    ]
   },
   {
     "acronym": "VIVID",
@@ -2992,12 +3540,32 @@
     "year": "2014",
     "doi": "10.1001/jama.2014.7246",
     "pmid": "25005653",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Mortality prediction after transcatheter treatment",
+        "citation": "Aziz M, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2018;92(6):1163-1170.",
+        "doi": "10.1002/ccd.27714",
+        "pmid": "30079597"
+      },
+      {
+        "label": "Incidence predictors and clinical outcomes",
+        "citation": "Ribeiro HB, et al. European heart journal 2018;39(8):687-695.",
+        "doi": "10.1093/eurheartj/ehx455",
+        "pmid": "29020413"
+      },
+      {
+        "label": "Matched Comparison of SelfExpanding Transcatheter",
+        "citation": "Alnasser S, et al. Circulation. Cardiovascular interventions 2017;10(4).",
+        "doi": "10.1161/circinterventions.116.004392",
+        "pmid": "28400461"
+      }
+    ]
   },
   {
     "acronym": "PARTNER 3 Bicuspid",
     "full_name": "PARTNER 3 Low-Risk Bicuspid Registry",
-    "nct": "",
+    "nct": "NCT03222128",
     "category": "Bicuspid",
     "tags": [
       "Bicuspid",
@@ -3060,7 +3628,15 @@
     "year": "2022",
     "doi": "10.1016/j.jcin.2022.01.279",
     "pmid": "35272777",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "10-year",
+        "citation": "Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.",
+        "doi": "10.1016/j.jacc.2026.03.170",
+        "pmid": "42300820"
+      }
+    ]
   },
   {
     "acronym": "Evolut Bicuspid",
@@ -3136,6 +3712,18 @@
         "citation": "Transcatheter aortic valve replacement in low-risk patients with bicuspid aortic valve stenosis.",
         "doi": "",
         "pmid": "33031491"
+      },
+      {
+        "label": "Bicuspid",
+        "citation": "Forrest JK, et al. JACC. Cardiovascular interventions 2020;13(15):1749-1759.",
+        "doi": "10.1016/j.jcin.2020.03.022",
+        "pmid": "32473890"
+      },
+      {
+        "label": "1-year",
+        "citation": "Deeb GM, et al. JACC. Cardiovascular interventions 2022;15(5):511-522.",
+        "doi": "10.1016/j.jcin.2021.10.027",
+        "pmid": "35272776"
       }
     ]
   },
@@ -3246,6 +3834,12 @@
         "citation": "Transcatheter Aortic Valve Replacement in Low-Risk Patients With Symptomatic Sev… PMID 30170075.",
         "doi": "10.1016/j.jacc.2018.08.1033",
         "pmid": "30170075"
+      },
+      {
+        "label": "Lifetime management of patients with",
+        "citation": "Medranda GA, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2022;18(5):e407-e416.",
+        "doi": "10.4244/eij-d-21-01091",
+        "pmid": "35321859"
       }
     ]
   },
@@ -3628,7 +4222,21 @@
     "year": "2022",
     "doi": "",
     "pmid": "34991828",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "FiveYear Clinical and Hemodynamic Evaluation",
+        "citation": "Bajoras V, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2026;107(6):1782-1790.",
+        "doi": "10.1002/ccd.70536",
+        "pmid": "41772370"
+      },
+      {
+        "label": "ThreeYear Clinical and Hemodynamic Evaluation",
+        "citation": "Bajoras V, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;105(2):292-300.",
+        "doi": "10.1002/ccd.31285",
+        "pmid": "39527003"
+      }
+    ]
   },
   {
     "acronym": "Navitor Global",
@@ -4190,7 +4798,21 @@
     "year": "2019",
     "doi": "10.1016/j.jchf.2019.06.011",
     "pmid": "31521683",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "A randomized doubleblind trial of",
+        "citation": "Goldberg SL, et al. American heart journal 2017;188:167-174.",
+        "doi": "10.1016/j.ahj.2017.02.032",
+        "pmid": "28577672"
+      },
+      {
+        "label": "Functional outcomes with Carillon device",
+        "citation": "Khan MS, et al. ESC heart failure 2021;8(2):872-878.",
+        "doi": "10.1002/ehf2.13273",
+        "pmid": "33619896"
+      }
+    ]
   },
   {
     "acronym": "EMPOWER",
@@ -4406,6 +5028,60 @@
         "citation": "Percutaneous mitral repair with the MitraClip system: safety and midterm durabil… PMID 19679246.",
         "doi": "10.1016/j.jacc.2009.03.077",
         "pmid": "19679246"
+      },
+      {
+        "label": "EVEREST II randomized clinical trial",
+        "citation": "Glower D, et al. The Journal of thoracic and cardiovascular surgery 2012;143(4 Suppl):S60-3.",
+        "doi": "10.1016/j.jtcvs.2012.01.047",
+        "pmid": "22423604"
+      },
+      {
+        "label": "Effects of atrial fibrillation on",
+        "citation": "Herrmann HC, et al. Journal of the American College of Cardiology 2012;59(14):1312-9.",
+        "doi": "10.1016/j.jacc.2011.12.023",
+        "pmid": "22464260"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Mealing S, et al. Journal of medical economics 2013;16(11):1317-26.",
+        "doi": "10.3111/13696998.2013.834823",
+        "pmid": "24040937"
+      },
+      {
+        "label": "Surgical revision after percutaneous mitral",
+        "citation": "Argenziano M, et al. The Annals of thoracic surgery 2010;89(1):72-80; discussion p 80.",
+        "doi": "10.1016/j.athoracsur.2009.08.063",
+        "pmid": "20103209"
+      },
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Armstrong EJ, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2013;82(4):673-9.",
+        "doi": "10.1002/ccd.24645",
+        "pmid": "22936628"
+      },
+      {
+        "label": "Sixyear findings of polypoidal choroidal",
+        "citation": "Yanagi Y, et al. Japanese journal of ophthalmology 2025;69(6):894-901.",
+        "doi": "10.1007/s10384-025-01228-w",
+        "pmid": "40504425"
+      },
+      {
+        "label": "PREDICTORS AND IMPORTANCE OF COMPLETE",
+        "citation": "Tan CS, et al. Retina (Philadelphia, Pa.) 2022;42(11):2091-2098.",
+        "doi": "10.1097/iae.0000000000003595",
+        "pmid": "35963005"
+      },
+      {
+        "label": "Comparison of Ranibizumab With or",
+        "citation": "Lim TH, et al. JAMA ophthalmology 2020;138(9):935-942.",
+        "doi": "10.1007/s00417-016-3333-y",
+        "pmid": "32672800"
+      },
+      {
+        "label": "Fiveyear outcomes of transcatheter reduction",
+        "citation": "Kar S, et al. Heart (British Cardiac Society) 2019;105(21):1622-1628.",
+        "doi": "10.1136/heartjnl-2017-312605",
+        "pmid": "30077993"
       }
     ]
   },
@@ -4490,6 +5166,72 @@
         "citation": "Evaluation of renal function before and after percutaneous mitral valve repair. PMID 25593120.",
         "doi": "10.1161/CIRCINTERVENTIONS.113.001349",
         "pmid": "25593120"
+      },
+      {
+        "label": "5-year",
+        "citation": "Feldman T, et al. Journal of the American College of Cardiology 2015;66(25):2844-2854.",
+        "doi": "10.1016/j.jacc.2015.10.018",
+        "pmid": "26718672"
+      },
+      {
+        "label": "Relationship between the magnitude of",
+        "citation": "Grayburn PA, et al. Circulation 2013;128(15):1667-74.",
+        "doi": "10.1161/circulationaha.112.001039",
+        "pmid": "24014834"
+      },
+      {
+        "label": "4-year",
+        "citation": "Mauri L, et al. Journal of the American College of Cardiology 2013;62(4):317-28.",
+        "doi": "10.1016/j.jacc.2013.04.030",
+        "pmid": "23665364"
+      },
+      {
+        "label": "The acute hemodynamic effects of",
+        "citation": "Siegel RJ, et al. Journal of the American College of Cardiology 2011;57(16):1658-65.",
+        "doi": "10.1016/j.jacc.2010.11.043",
+        "pmid": "21492763"
+      },
+      {
+        "label": "Durability",
+        "citation": "Feldman T, et al. Journal of the American College of Cardiology 2009;54(8):686-94.",
+        "doi": "10.1016/j.jacc.2009.03.077",
+        "pmid": "19679246"
+      },
+      {
+        "label": "Percutaneous mitral valve repair in",
+        "citation": "Foster E, et al. Circulation. Cardiovascular imaging 2013;6(4):522-30.",
+        "doi": "10.1161/circimaging.112.000098",
+        "pmid": "23633132"
+      },
+      {
+        "label": "The EVEREST II Trial design",
+        "citation": "Mauri L, et al. American heart journal 2010;160(1):23-9.",
+        "doi": "10.1016/j.ahj.2010.04.009",
+        "pmid": "20598968"
+      },
+      {
+        "label": "Pathological healing response of explanted",
+        "citation": "Ladich E, et al. Circulation 2011;123(13):1418-27.",
+        "doi": "10.1161/circulationaha.110.978130",
+        "pmid": "21422390"
+      },
+      {
+        "label": "Impact of the MitraClip Procedure",
+        "citation": "Gucuk Ipek E, et al. Circulation. Cardiovascular imaging 2018;11(3):e006553.",
+        "doi": "10.1161/circimaging.117.006553",
+        "pmid": "29535132"
+      },
+      {
+        "label": "Percutaneous repair or surgery for",
+        "citation": "Feldman T, et al. The New England journal of medicine 2011;364(15):1395-406.",
+        "doi": "10.1056/nejmoa1009355",
+        "pmid": "21463154"
+      },
+      {
+        "label": "Fiveyear outcomes of transcatheter reduction",
+        "citation": "Kar S, et al. Heart (British Cardiac Society) 2019;105(21):1622-1628.",
+        "doi": "10.1136/heartjnl-2017-312605",
+        "pmid": "30077993"
       }
     ]
   },
@@ -4568,6 +5310,18 @@
         "citation": "Szerlip M, Spargias KS, Makkar R, et al. JACC Cardiovasc Interv 2021;14(14):1538-1548.",
         "doi": "10.1016/j.jcin.2021.04.001",
         "pmid": ""
+      },
+      {
+        "label": "Randomized Comparison of Transcatheter EdgetoEdge",
+        "citation": "Lim DS, et al. JACC. Cardiovascular interventions 2022;15(24):2523-2536.",
+        "doi": "10.1016/j.jcin.2022.09.005",
+        "pmid": "36121247"
+      },
+      {
+        "label": "Early outcomes from the CLASP",
+        "citation": "Lim DS, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2021;98(4):E637-E646.",
+        "doi": "10.1002/ccd.29749",
+        "pmid": "34004077"
       }
     ]
   },
@@ -4665,6 +5419,24 @@
         "citation": "Echocardiographic Outcomes With Transcatheter Edge-to-Edge Repair for Degenerati… PMID 38099912.",
         "doi": "10.1016/j.jcmg.2023.09.015",
         "pmid": "38099912"
+      },
+      {
+        "label": "Early outcomes from the CLASP",
+        "citation": "Lim DS, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2021;98(4):E637-E646.",
+        "doi": "10.1002/ccd.29749",
+        "pmid": "34004077"
+      },
+      {
+        "label": "Sex differences",
+        "citation": "Szerlip M, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2025;4(8):103713.",
+        "doi": "10.1159/000524378",
+        "pmid": "41019910"
+      },
+      {
+        "label": "2-year",
+        "citation": "Szerlip M, et al. JACC. Cardiovascular interventions 2021;14(14):1538-1548.",
+        "doi": "10.1016/j.jcin.2021.04.001",
+        "pmid": "34020928"
       }
     ]
   },
@@ -4724,7 +5496,21 @@
     "year": "",
     "doi": "",
     "pmid": "",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Percutaneous MitraClip Device or Surgical",
+        "citation": "McCarthy PM, et al. Journal of the American Heart Association 2023;12(4):e027504.",
+        "doi": "10.1056/nejmoa2101897",
+        "pmid": "36752231"
+      },
+      {
+        "label": "Mitral Valve Surgery After Transcatheter",
+        "citation": "Kaneko T, et al. JACC. Cardiovascular interventions 2021;14(18):2010-2021.",
+        "doi": "10.1016/j.jcin.2021.07.029",
+        "pmid": "34556275"
+      }
+    ]
   },
   {
     "acronym": "COAPT",
@@ -4959,6 +5745,54 @@
         "citation": "Pulmonary Vein Systolic Flow Reversal and Outcomes in Patients From the Cardiova… PMID 39290680.",
         "doi": "",
         "pmid": "39290680"
+      },
+      {
+        "label": "Changes in Left Ventricular Global",
+        "citation": "Pio SM, et al. Journal of the American Heart Association 2023;12(17):e029956.",
+        "doi": "10.1161/circheartfailure.116.003123",
+        "pmid": "37646214"
+      },
+      {
+        "label": "Impact of Peripheral Artery Disease",
+        "citation": "Shahim B, et al. Journal of the American Heart Association 2023;12(4):e028444.",
+        "doi": "10.1016/s0894-7317(03)00335-3",
+        "pmid": "36752227"
+      },
+      {
+        "label": "Association of Effective Regurgitation Orifice",
+        "citation": "Lindenfeld J, et al. JAMA cardiology 2021;6(4):427-436.",
+        "doi": "10.1159/000151693",
+        "pmid": "33533873"
+      },
+      {
+        "label": "Transcatheter Mitral Valve Replacement Versus",
+        "citation": "Ludwig S, et al. Circulation. Cardiovascular interventions 2023;16(6):e013045.",
+        "doi": "10.1161/circinterventions.123.013045",
+        "pmid": "37194288"
+      },
+      {
+        "label": "Prognostic implications of mitral valve",
+        "citation": "Namazi F, et al. European heart journal. Cardiovascular Imaging 2022;23(11):1540-1551.",
+        "doi": "10.1093/ehjci/jeab224",
+        "pmid": "36265184"
+      },
+      {
+        "label": "Association between serum albumin and",
+        "citation": "Feng KY, et al. European journal of heart failure 2023;25(4):553-561.",
+        "doi": "10.1002/ejhf.2809",
+        "pmid": "36823954"
+      },
+      {
+        "label": "Phenotypic Diversity and Outcomes of",
+        "citation": "Bonnet G, et al. JACC. Cardiovascular interventions 2026;19(9):1087-1104.",
+        "doi": "10.1016/j.jcin.2026.02.030",
+        "pmid": "42120116"
+      },
+      {
+        "label": "Impact of Race and Ethnicity",
+        "citation": "Madhavan MV, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(3 Suppl):103822.",
+        "doi": "10.1016/j.jscai.2025.103822",
+        "pmid": "42051896"
       }
     ]
   },
@@ -5038,6 +5872,48 @@
         "citation": "Impact of Mitral Regurgitation Severity and Left Ventricular Remodeling on Outco… PMID 32950444.",
         "doi": "10.1016/j.jcmg.2020.07.021",
         "pmid": "32950444"
+      },
+      {
+        "label": "Delayed hospitalisation for heart failure",
+        "citation": "Leurent G, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2022;18(6):514-523.",
+        "doi": "10.4244/eij-d-21-00846",
+        "pmid": "35611516"
+      },
+      {
+        "label": "The MITRAFR study design and",
+        "citation": "Obadia JF, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2015;10(11):1354-60.",
+        "doi": "10.4244/eijv10i11a232",
+        "pmid": "25798568"
+      },
+      {
+        "label": "Phenotypic Diversity and Outcomes of",
+        "citation": "Bonnet G, et al. JACC. Cardiovascular interventions 2026;19(9):1087-1104.",
+        "doi": "10.1016/j.jcin.2026.02.030",
+        "pmid": "42120116"
+      },
+      {
+        "label": "Percutaneous repair of moderatetosevere or",
+        "citation": "Anker SD, et al. European journal of heart failure 2024;26(7):1608-1615.",
+        "doi": "10.1002/ejhf.3286",
+        "pmid": "38847420"
+      },
+      {
+        "label": "Percutaneous mitral valve repair in",
+        "citation": "Capelle A, et al. Archives of cardiovascular diseases 2021;114(12):805-813.",
+        "doi": "10.1016/j.acvd.2021.10.005",
+        "pmid": "34802961"
+      },
+      {
+        "label": "Impact of procedural success on",
+        "citation": "Messika-Zeitoun D, et al. Archives of cardiovascular diseases 2022;115(11):545-551.",
+        "doi": "10.1016/j.acvd.2022.05.013",
+        "pmid": "36244966"
+      },
+      {
+        "label": "Cost-effectiveness",
+        "citation": "Armoiry X, et al. PloS one 2020;15(11):e0241361.",
+        "doi": "10.1136/bmj.l223",
+        "pmid": "33166308"
       }
     ]
   },
@@ -5116,6 +5992,24 @@
         "citation": "Gupta A, Packer M, Makkar R, Grayburn P. J Am Coll Cardiol 2024;84(24):2376-2379.",
         "doi": "10.1016/j.jacc.2024.08.029",
         "pmid": ""
+      },
+      {
+        "label": "Randomized investigation of the MitraClip",
+        "citation": "Anker SD, et al. European journal of heart failure 2024;26(4):984-993.",
+        "doi": "10.1002/ejhf.3247",
+        "pmid": "38654139"
+      },
+      {
+        "label": "Mitral transcatheter edgetoedge repair and",
+        "citation": "Butler J, et al. European heart journal 2026;47(19):2290-2304.",
+        "doi": "10.1093/eurheartj/ehaf1035",
+        "pmid": "41416702"
+      },
+      {
+        "label": "Hospitalization of Symptomatic Patients With",
+        "citation": "Ponikowski P, et al. Journal of the American College of Cardiology 2024;84(24):2347-2363.",
+        "doi": "10.1016/j.jacc.2024.08.027",
+        "pmid": "39217574"
       }
     ]
   },
@@ -5196,7 +6090,7 @@
       "Functional MR",
       "Ongoing"
     ],
-    "status": "ongoing",
+    "status": "published",
     "signal": "pending",
     "practice_changing": false,
     "landmark": false,
@@ -5235,12 +6129,32 @@
     "timeline": [
       "Status: ongoing / unpublished"
     ],
-    "authors": "",
-    "journal": "",
-    "year": "",
-    "doi": "",
-    "pmid": "",
-    "caveat": "NCT not confirmed here; part of the CLASP II program."
+    "authors": "Narang A, et al.",
+    "journal": "JACC. Cardiovascular imaging",
+    "year": "2026",
+    "doi": "10.1016/j.jcmg.2026.04.005",
+    "pmid": "42233921",
+    "caveat": "NCT not confirmed here; part of the CLASP II program.",
+    "key_papers": [
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Marcoff L, et al. JACC. Cardiovascular imaging 2024;17(5):471-485.",
+        "doi": "10.1016/j.jcmg.2023.09.015",
+        "pmid": "38099912"
+      },
+      {
+        "label": "Transcatheter EdgetoEdge Repair in Patients",
+        "citation": "Hausleiter J, et al. Journal of the American College of Cardiology 2023;81(5):431-442.",
+        "doi": "10.1016/j.jacc.2022.11.034",
+        "pmid": "36725171"
+      },
+      {
+        "label": "Randomized Comparison of Transcatheter EdgetoEdge",
+        "citation": "Lim DS, et al. JACC. Cardiovascular interventions 2022;15(24):2523-2536.",
+        "doi": "10.1016/j.jcin.2022.09.005",
+        "pmid": "36121247"
+      }
+    ]
   },
   {
     "acronym": "TACT (NeoChord)",
@@ -5491,7 +6405,15 @@
     "year": "2018",
     "doi": "",
     "pmid": "",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "BeatingHeart Mitral Valve Repair UsingaNovel",
+        "citation": "Gammie JS, et al. Journal of the American College of Cardiology 2018;71(1):25-36.",
+        "doi": "10.1016/j.jacc.2017.10.062",
+        "pmid": "29102688"
+      }
+    ]
   },
   {
     "acronym": "HARPOON TRACER",
@@ -5682,6 +6604,18 @@
         "citation": "Sorajja P, Moat N, Badhwar V, et al. J Am Coll Cardiol 2019;73(10):1250-1260.",
         "doi": "10.1016/j.jacc.2018.12.066",
         "pmid": ""
+      },
+      {
+        "label": "2-year",
+        "citation": "Muller DWM, et al. Journal of the American College of Cardiology 2021;78(19):1847-1859.",
+        "doi": "10.1016/j.jacc.2021.08.060",
+        "pmid": "34736561"
+      },
+      {
+        "label": "Fiveyear outcomes of transcatheter mitral",
+        "citation": "Muller DWM, et al. ESC heart failure 2026;13(4).",
+        "doi": "10.1016/j.xjon.2025.06.015",
+        "pmid": "42363737"
       }
     ]
   },
@@ -5765,6 +6699,18 @@
         "citation": "Muller DW, Duncan A, Sorajja P, et al. Five-Year Outcomes of Transcatheter Mitral Valve Replacement in Patients With Severe Symptomatic Mitral Regurgitation: Results From the Tendyne Expanded Clinical Study. ESC Heart Failure. 2026.",
         "doi": "10.1093/eschf/xvag175",
         "pmid": ""
+      },
+      {
+        "label": "Fiveyear outcomes of transcatheter mitral",
+        "citation": "Muller DWM, et al. ESC heart failure 2026;13(4).",
+        "doi": "10.1016/j.xjon.2025.06.015",
+        "pmid": "42363737"
+      },
+      {
+        "label": "Transcatheter Mitral Valve Replacement for",
+        "citation": "Sorajja P, et al. Journal of the American College of Cardiology 2026;87(23):3243-3256.",
+        "doi": "10.1016/j.jacc.2025.10.025",
+        "pmid": "41194751"
       }
     ]
   },
@@ -5826,7 +6772,21 @@
     "year": "2026",
     "doi": "10.1016/j.jacc.2025.10.025",
     "pmid": "41194751",
-    "caveat": "Randomized (vs TEER) results nuanced; the MAC single-arm cohort supported FDA approval."
+    "caveat": "Randomized (vs TEER) results nuanced; the MAC single-arm cohort supported FDA approval.",
+    "key_papers": [
+      {
+        "label": "Transapical Transcatheter Mitral Valve Replacement",
+        "citation": "Samim D, et al. JACC. Cardiovascular interventions 2025;18(3):311-321.",
+        "doi": "10.1016/j.jcin.2024.10.018",
+        "pmid": "39939035"
+      },
+      {
+        "label": "Fiveyear outcomes of transcatheter mitral",
+        "citation": "Muller DWM, et al. ESC heart failure 2026;13(4).",
+        "doi": "10.1016/j.xjon.2025.06.015",
+        "pmid": "42363737"
+      }
+    ]
   },
   {
     "acronym": "Intrepid Pilot",
@@ -5896,13 +6856,31 @@
         "citation": "Five-year outcomes of the early-generation Intrepid transapical transcatheter mi… PMID 41251714.",
         "doi": "10.4244/EIJ-D-25-01133",
         "pmid": "41251714"
+      },
+      {
+        "label": "30-day",
+        "citation": "Zahr F, et al. JACC. Cardiovascular interventions 2022;15(1):80-89.",
+        "doi": "10.1016/j.jcin.2021.10.018",
+        "pmid": "34747699"
+      },
+      {
+        "label": "2-year",
+        "citation": "Bapat V, et al. JACC. Cardiovascular interventions 2024;17(12):1440-1451.",
+        "doi": "10.1016/j.jcin.2024.02.033",
+        "pmid": "38639690"
+      },
+      {
+        "label": "1-year",
+        "citation": "Zahr F, et al. JACC. Cardiovascular interventions 2023;16(23):2868-2879.",
+        "doi": "10.1016/j.jcin.2023.10.001",
+        "pmid": "37902145"
       }
     ]
   },
   {
     "acronym": "Intrepid TA (2-yr)",
     "full_name": "Two-Year Follow-Up of Intrepid Transapical TMVR (Pooled)",
-    "nct": "",
+    "nct": "NCT02322840",
     "category": "Transcatheter Mitral Replacement (TMVR)",
     "tags": [
       "Intrepid",
@@ -5955,7 +6933,21 @@
     "year": "2024",
     "doi": "10.1016/j.jcin.2024.02.033",
     "pmid": "38639690",
-    "caveat": "Pooled pilot/roll-in follow-up; no separate NCT."
+    "caveat": "Pooled pilot/roll-in follow-up; no separate NCT.",
+    "key_papers": [
+      {
+        "label": "Fiveyear outcomes of the earlygeneration",
+        "citation": "Tang GHL, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(3):e172-e182.",
+        "doi": "10.4244/eij-d-25-01133",
+        "pmid": "41251714"
+      },
+      {
+        "label": "30-day",
+        "citation": "Zahr F, et al. JACC. Cardiovascular interventions 2022;15(1):80-89.",
+        "doi": "10.1016/j.jcin.2021.10.018",
+        "pmid": "34747699"
+      }
+    ]
   },
   {
     "acronym": "Intrepid TS-EFS",
@@ -6096,7 +7088,7 @@
       "Single-arm",
       "Ongoing"
     ],
-    "status": "ongoing",
+    "status": "published",
     "signal": "pending",
     "practice_changing": false,
     "landmark": false,
@@ -6135,11 +7127,11 @@
       "Started: 2022",
       "Status: ongoing"
     ],
-    "authors": "",
-    "journal": "",
-    "year": "",
-    "doi": "",
-    "pmid": "",
+    "authors": "Tang GHL, et al.",
+    "journal": "EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology",
+    "year": "2026",
+    "doi": "10.4244/eij-d-25-01133",
+    "pmid": "41251714",
     "caveat": ""
   },
   {
@@ -6778,6 +7770,30 @@
         "citation": "Guerrero M, Pursnani A, Narang A, et al. JACC Cardiovasc Interv 2021;14(8):859-872.",
         "doi": "10.1016/j.jcin.2021.02.027",
         "pmid": ""
+      },
+      {
+        "label": "Transcatheter Mitral Valve Replacement inNativeMitral",
+        "citation": "Guerrero M, et al. JACC. Cardiovascular interventions 2016;9(13):1361-71.",
+        "doi": "10.1016/j.jcin.2016.04.022",
+        "pmid": "27388824"
+      },
+      {
+        "label": "Transatrial implantation of a transcatheter",
+        "citation": "Praz F, et al. The Journal of thoracic and cardiovascular surgery 2018;156(1):132-142.",
+        "doi": "10.1016/j.jtcvs.2018.03.016",
+        "pmid": "29627180"
+      },
+      {
+        "label": "Percutaneous transcatheter valve replacement in",
+        "citation": "Guerrero ME, et al. Lancet (London, England) 2025;406(10519):2541-2550.",
+        "doi": "10.1016/s0140-6736(25)02073-2",
+        "pmid": "41167201"
+      },
+      {
+        "label": "3-year",
+        "citation": "Eleid MF, et al. JACC. Cardiovascular interventions 2025;18(11):1454-1466.",
+        "doi": "10.1016/j.jcin.2025.03.017",
+        "pmid": "40500016"
       }
     ]
   },
@@ -7205,6 +8221,42 @@
         "citation": "10-Year Outcomes of SAPIEN 3 Transcatheter Aortic Valve Replacement or Surgery in Intermediate-Risk Patients.",
         "doi": "10.1016/j.jacc.2026.03.170",
         "pmid": "42300820"
+      },
+      {
+        "label": "Diastolic Function and Clinical Outcomes",
+        "citation": "Ong G, et al. Journal of the American College of Cardiology 2020;76(25):2940-2951.",
+        "doi": "10.1016/j.jacc.2020.10.032",
+        "pmid": "33334422"
+      },
+      {
+        "label": "Structural Deterioration of Transcatheter Versus",
+        "citation": "Pibarot P, et al. Journal of the American College of Cardiology 2020;76(16):1830-1843.",
+        "doi": "10.1016/j.jacc.2020.08.049",
+        "pmid": "33059828"
+      },
+      {
+        "label": "Atrial Fibrillation Is Associated With",
+        "citation": "Brener MI, et al. Journal of the American Heart Association 2021;10(7):e019584.",
+        "doi": "10.1056/nejmoa1915152",
+        "pmid": "33754803"
+      },
+      {
+        "label": "Endocarditis",
+        "citation": "Summers MR, et al. Circulation 2019;140(24):1984-1994.",
+        "doi": "10.1161/circulationaha.119.041399",
+        "pmid": "31690104"
+      },
+      {
+        "label": "2-year",
+        "citation": "Furer A, et al. Circulation. Heart failure 2019;12(8):e005809.",
+        "doi": "10.1161/circheartfailure.118.005809",
+        "pmid": "31525069"
+      },
+      {
+        "label": "Low and elevated Btype natriuretic",
+        "citation": "Chen S, et al. European heart journal 2020;41(8):958-969.",
+        "doi": "10.1093/eurheartj/ehz892",
+        "pmid": "31883339"
       }
     ]
   }
