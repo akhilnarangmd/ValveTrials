@@ -1,57 +1,69 @@
 name: Monthly trial-literature discovery
 
-# Runs on the 1st of each month at 13:00 UTC (~8am America/Chicago; shifts 1h with DST).
-# Also runnable on demand from the Actions tab (workflow_dispatch).
+# 1st of each month, 13:00 UTC (~8am America/Chicago). Also runnable on demand.
 on:
   schedule:
     - cron: "0 13 1 * *"
   workflow_dispatch:
     inputs:
       threshold:
-        description: "Minimum confidence to add (LOW/MEDIUM/HIGH)"
+        description: "Minimum confidence to auto-add (LOW/MEDIUM/HIGH)"
         default: "MEDIUM"
+        required: false
+      lookback_days:
+        description: "Only consider papers indexed in the last N days (0 = full scan)"
+        default: "0"
         required: false
 
 permissions:
-  contents: write        # create the update branch
-  pull-requests: write   # open the PR
+  contents: write
+  pull-requests: write
 
 jobs:
   discover:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Run discovery (updates JSON in place, writes PR body)
+      # Gate: the offline selftest must pass, so a bad scorer edit can't produce a bad PR.
+      - name: Selftest (offline, no network)
+        run: python discover_updates.py --selftest
+
+      - name: Compute run stamp and monthly branch
+        id: meta
+        run: |
+          echo "stamp=$(date -u '+%Y-%m-%d %H:%M UTC') (run ${GITHUB_RUN_ID})" >> "$GITHUB_OUTPUT"
+          echo "branch=auto/trial-update-$(date -u '+%Y-%m')" >> "$GITHUB_OUTPUT"
+
+      - name: Run discovery
         env:
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}   # optional but raises PubMed rate limit
-          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}        # optional; NCBI etiquette
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
+          RUN_STAMP: ${{ steps.meta.outputs.stamp }}
         run: |
           python discover_updates.py \
             --files trials_1.json trials_tricuspid_1.json \
             --threshold "${{ github.event.inputs.threshold || 'MEDIUM' }}" \
+            --lookback-days "${{ github.event.inputs.lookback_days || '0' }}" \
             --report discovery_report.md
 
-      - name: Create Pull Request (this is your "approve" step — merge to publish)
+      # A PR every run: the report always changes (it carries the run stamp), so there is
+      # always a diff on the dated branch -> a PR is always opened/updated for you to review.
+      - name: Open / update the review PR
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: auto/trial-literature-update
+          branch: ${{ steps.meta.outputs.branch }}
           base: main
-          title: "Monthly trial-literature update"
+          title: "Trial-literature update — ${{ steps.meta.outputs.stamp }}"
           body-path: discovery_report.md
-          commit-message: "chore: monthly PubMed discovery — new trial papers"
+          commit-message: "chore: monthly discovery — papers, status flips, NCT fixes"
           labels: trial-update, automated
-          # You get the approve-request EMAIL because you're the reviewer/assignee.
-          # Replace with your GitHub username (or a comma-separated list):
           reviewers: YOUR_GITHUB_USERNAME
           assignees: YOUR_GITHUB_USERNAME
-          delete-branch: true
           add-paths: |
             trials_1.json
             trials_tricuspid_1.json
+            discovery_report.md
