@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-valve_trials.py — Build ValveTrials.com (multi-page static site).
+valve_trials.py — Build ValveTrials.org (multi-page static site).
 
 Pages written:
   index.html      Home — the three valves as clickable tiles.
@@ -349,7 +349,7 @@ def site_header(active: str) -> str:
     )
     return f"""
 <header class="site">
-  <a class="brand" href="index.html">Valve<span>Trials</span>.com</a>
+  <a class="brand" href="index.html">Valve<span>Trials</span>.org</a>
   <nav class="site-nav">{nav}</nav>
 </header>""".strip()
 
@@ -371,7 +371,7 @@ def page_shell(title: str, active: str, body: str, script: str = "") -> str:
 {site_header(active)}
 {body}
 <footer class="pagefoot">
-  ValveTrials.com — a cardiology valve-trial reference. Paper links point to the verified DOI or PubMed
+  ValveTrials.org — a cardiology valve-trial reference. Paper links point to the verified DOI or PubMed
   record; where none was verified, a “Find on PubMed” search link is provided instead of a fabricated one.
   Negative-result trials are excluded from list views (still present in <span class="mono">trials_data.py</span>).
   ⚠ flags provisional or context items. A reference aid, not clinical advice.
@@ -418,7 +418,7 @@ def build_home() -> str:
   <div class="valve-cards">{''.join(cards)}</div>
 </main>
 """
-    return page_shell("ValveTrials.com — Valve Trial Reference", "home", body)
+    return page_shell("ValveTrials.org — Valve Trial Reference", "home", body)
 
 
 # --- aortic (full list) ------------------------------------------------------
@@ -433,7 +433,7 @@ def build_valve_list_page(valve_key: str) -> str:
 
     body = f"""
 <header class="mast">
-  <p class="kicker"><a class="crumb" href="index.html">ValveTrials.com</a> · {e(lbl)}</p>
+  <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · {e(lbl)}</p>
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
      collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
