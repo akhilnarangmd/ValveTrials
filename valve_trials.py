@@ -472,7 +472,7 @@ def build_valve_list_page(valve_key: str) -> str:
   <p id="noresults" class="noresults">No trials match those filters. Clear the search or pick “All”.</p>
 </main>
 """
-    return page_shell(f"{lbl} Valve Trials — ValveTrials.com", valve_key, body, LIST_JS)
+    return page_shell(f"{lbl} Valve Trials — ValveTrials.org", valve_key, body, LIST_JS)
 
 
 # --- coming-soon page --------------------------------------------------------
@@ -486,7 +486,8 @@ def build_coming_soon_page(valve_key: str) -> str:
     )
     body = f"""
 <header class="mast">
-  <p class="kicker"><a class="crumb" href="index.html">ValveTrials.com</a> · {e(lbl)}</p>
+  <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org
+  </a> · {e(lbl)}</p>
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">This section is being built. The structure below is reserved — trials will populate
      these categories as we add them.</p>
@@ -502,7 +503,7 @@ def build_coming_soon_page(valve_key: str) -> str:
   <div class="soon-sections">{sections}</div>
 </main>
 """
-    return page_shell(f"{lbl} Valve Trials — Coming soon — ValveTrials.com", valve_key, body)
+    return page_shell(f"{lbl} Valve Trials — Coming soon — ValveTrials.org", valve_key, body)
 
 
 # ---------------------------------------------------------------------------
@@ -607,7 +608,7 @@ def build_editor_page() -> str:
     body = f"""
 <main class="editor">
   <div class="ed-intro">
-    <p class="kicker"><a class="crumb" href="index.html">ValveTrials.com</a> · Editor</p>
+    <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · Editor</p>
     <h1>Trial editor</h1>
     <p class="lede">Add, edit, or delete trials with the form — no code. Changes stay in your browser
       until you <b>export</b>. Then commit the downloaded <span class="mono">trials.json</span> to your
@@ -821,7 +822,7 @@ $('#f_valve').addEventListener('change', ()=> catOptions($('#f_valve').value, ''
 setCount(); newTrial();
 </script>
 """
-    return page_shell("Trial editor — ValveTrials.com", "editor", body)
+    return page_shell("Trial editor — ValveTrials.org", "editor", body)
 
 
 # ---------------------------------------------------------------------------
