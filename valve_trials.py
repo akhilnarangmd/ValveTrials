@@ -177,12 +177,17 @@ def key_papers_section(t: Trial) -> str:
                          f"target='_blank' rel='noopener'>PubMed ↗</a>")
         if not links:
             links.append("<span class='pc-nolink'>No direct link on file</span>")
-        label = f"<b class='pc-label'>{e(p.get('label',''))}</b> " if p.get("label") else ""
-        # Each follow-up is collapsed; click to reveal its paper links.
+        lab = e(p.get("label", ""))
+        cite = e(p.get("citation", ""))
+        # Collapsed row shows ONLY the short label; the citation + links reveal on click.
+        # (If a paper has no label, fall back to the citation so the row isn't blank.)
+        summary_txt = f"<b class='pc-label'>{lab}</b>" if lab else f"<span class='pc-cite'>{cite}</span>"
+        body_cite = f"<span class='pc-cite'>{cite}</span>" if (lab and cite) else ""
         rows.append(
             f"<details class='pc'><summary><span class='pc-chev' aria-hidden='true'></span>"
-            f"{label}<span class='pc-cite'>{e(p.get('citation',''))}</span></summary>"
-            f"<div class='pc-body'>{''.join(links)}</div></details>"
+            f"{summary_txt}</summary>"
+            f"<div class='pc-body'>{body_cite}<div class='pc-links-row'>{''.join(links)}</div></div>"
+            f"</details>"
         )
     return (f"<section><h3>Serial follow-ups &amp; subanalyses "
             f"<span class='pc-count'>{len(papers)}</span></h3>"
@@ -840,7 +845,9 @@ details.pc > summary:hover{color:var(--accent)}
 details.pc[open] > summary .pc-chev{transform:rotate(45deg)}
 .pc-label{font-family:"Archivo",sans-serif;font-size:13px;white-space:nowrap}
 details.pc .pc-cite{color:#33474a;font-size:13px;line-height:1.4}
-.pc-body{padding:2px 0 10px 15px;display:flex;flex-wrap:wrap;gap:8px}
+.pc-body{padding:2px 0 10px 15px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.pc-body .pc-cite{font-size:13px;color:#33474a;line-height:1.4}
+.pc-links-row{display:flex;flex-wrap:wrap;gap:8px}
 .pc-nolink{font-size:12px;color:var(--muted);font-style:italic}
 h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11px;font-family:"IBM Plex Mono",monospace;color:#fff;background:var(--hue,#2C6E8F);border-radius:9px;padding:1px 6px;margin-left:6px;vertical-align:middle}
 .plinks{display:flex;flex-wrap:wrap;gap:8px}
