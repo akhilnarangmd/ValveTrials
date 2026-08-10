@@ -45,7 +45,7 @@ jobs:
           RUN_STAMP: ${{ steps.meta.outputs.stamp }}
         run: |
           python discover_updates.py \
-            --files trials_1.json trials_tricuspid_1.json \
+            --files trials.json trials_tricuspid.json \
             --threshold "${{ github.event.inputs.threshold || 'MEDIUM' }}" \
             --lookback-days "${{ github.event.inputs.lookback_days || '0' }}" \
             --report discovery_report.md
@@ -61,9 +61,9 @@ jobs:
           body-path: discovery_report.md
           commit-message: "chore: monthly discovery — papers, status flips, NCT fixes"
           labels: trial-update, automated
-          reviewers: YOUR_GITHUB_USERNAME
-          assignees: YOUR_GITHUB_USERNAME
+          reviewers: JayMan29
+          assignees: JayMan29
           add-paths: |
-            trials_1.json
-            trials_tricuspid_1.json
+            trials.json
+            trials_tricuspid.json
             discovery_report.md
