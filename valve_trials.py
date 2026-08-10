@@ -455,7 +455,7 @@ def build_valve_list_page(valve_key: str) -> str:
       </div>
       <div class="seg" data-group="pc">
         <button class="active" data-value="0">All</button>
-        <button data-value="1">⭐ Practice changing</button>
+        
       </div>
       <div class="actions">
         <button id="expandAll">Expand all</button>
