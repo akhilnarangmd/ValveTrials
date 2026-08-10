@@ -35,11 +35,11 @@ EXCLUDE_SIGNALS = {"negative"}
 # key, label, hue, leaflet count (anatomy!), descriptor
 VALVES = [
     ("aortic", "Aortic", "#146C7A", 3,
-     "Stenosis & regurgitation — TAVR/TAVI, valve-in-valve, bicuspid, timing, and next-generation devices."),
+     ),
     ("mitral", "Mitral", "#B23A5B", 2,
-     "Secondary & primary MR — transcatheter edge-to-edge repair and transcatheter mitral replacement."),
+     ),
     ("tricuspid", "Tricuspid", "#6D5AB6", 3,
-     "Functional TR — edge-to-edge repair, orthotopic and heterotopic replacement, and repair devices."),
+     ),
 ]
 VALVE_LABEL = {k: lbl for k, lbl, _, _, _ in VALVES}
 VALVE_HUE = {k: h for k, _, h, _, _ in VALVES}
