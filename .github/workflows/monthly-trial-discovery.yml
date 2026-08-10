@@ -1,0 +1,57 @@
+name: Monthly trial-literature discovery
+
+# Runs on the 1st of each month at 13:00 UTC (~8am America/Chicago; shifts 1h with DST).
+# Also runnable on demand from the Actions tab (workflow_dispatch).
+on:
+  schedule:
+    - cron: "0 13 1 * *"
+  workflow_dispatch:
+    inputs:
+      threshold:
+        description: "Minimum confidence to add (LOW/MEDIUM/HIGH)"
+        default: "MEDIUM"
+        required: false
+
+permissions:
+  contents: write        # create the update branch
+  pull-requests: write   # open the PR
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run discovery (updates JSON in place, writes PR body)
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}   # optional but raises PubMed rate limit
+          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}        # optional; NCBI etiquette
+        run: |
+          python discover_updates.py \
+            --files trials_1.json trials_tricuspid_1.json \
+            --threshold "${{ github.event.inputs.threshold || 'MEDIUM' }}" \
+            --report discovery_report.md
+
+      - name: Create Pull Request (this is your "approve" step — merge to publish)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/trial-literature-update
+          base: main
+          title: "Monthly trial-literature update"
+          body-path: discovery_report.md
+          commit-message: "chore: monthly PubMed discovery — new trial papers"
+          labels: trial-update, automated
+          # You get the approve-request EMAIL because you're the reviewer/assignee.
+          # Replace with your GitHub username (or a comma-separated list):
+          reviewers: YOUR_GITHUB_USERNAME
+          assignees: YOUR_GITHUB_USERNAME
+          delete-branch: true
+          add-paths: |
+            trials_1.json
+            trials_tricuspid_1.json
