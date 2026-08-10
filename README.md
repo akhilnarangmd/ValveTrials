@@ -1,6 +1,6 @@
 # ValveTrials.com
 
-A cardiology-facing reference of major trancatherther valve-disease trials (aortic, mitral, tricuspid),
+A cardiology-facing reference of major trans catheter valve-disease trials (aortic, mitral, tricuspid),
 generated as a static website from a single data file.
 
 ## How the pieces fit
