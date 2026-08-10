@@ -209,11 +209,26 @@ def paper_bar(t: Trial) -> str:
     return f"<div class='paperbar'><div class='plinks'>{''.join(a)}</div>{cite_line}</div>"
 
 
+def _followup_sort_key(p: dict):
+    """Order follow-ups sequentially: by publication year, then by the follow-up
+    duration named in the label (30-day < 6-month < 1-year < 2-year ...)."""
+    cite = p.get("citation", "") or ""
+    ym = re.search(r"(?:19|20)\d{2}", cite)
+    year = int(ym.group()) if ym else 9999
+    label = (p.get("label", "") or "").lower()
+    dur = 10 ** 9
+    m = re.search(r"(\d+)\s*[- ]?\s*(day|week|month|year|yr|mo|d)\b", label)
+    if m:
+        mult = {"day": 1, "d": 1, "week": 7, "month": 30, "mo": 30, "year": 365, "yr": 365}
+        dur = int(m.group(1)) * mult.get(m.group(2), 365)
+    return (year, dur)
+
 def key_papers_section(t: Trial) -> str:
     if not t.key_papers:
         return ""
+    papers = sorted(t.key_papers, key=_followup_sort_key)   # sequential order
     rows = []
-    for p in t.key_papers:
+    for p in papers:
         links = []
         if p.get("doi"):
             links.append(f"<a class='plink primary' href='https://doi.org/{p['doi']}' "
@@ -221,13 +236,19 @@ def key_papers_section(t: Trial) -> str:
         if p.get("pmid"):
             links.append(f"<a class='plink primary' href='https://pubmed.ncbi.nlm.nih.gov/{p['pmid']}/' "
                          f"target='_blank' rel='noopener'>PubMed ↗</a>")
-        label = f"<b>{e(p.get('label',''))}</b> " if p.get("label") else ""
-        rows.append(f"<li>{label}<span class='pc-cite'>{e(p.get('citation',''))}</span> "
-                    f"<span class='pc-links'>{''.join(links)}</span></li>")
+        if not links:
+            links.append("<span class='pc-nolink'>No direct link on file</span>")
+        label = f"<b class='pc-label'>{e(p.get('label',''))}</b> " if p.get("label") else ""
+        # Each follow-up is collapsed; click to reveal its paper links.
+        rows.append(
+            f"<details class='pc'><summary><span class='pc-chev' aria-hidden='true'></span>"
+            f"{label}<span class='pc-cite'>{e(p.get('citation',''))}</span></summary>"
+            f"<div class='pc-body'>{''.join(links)}</div></details>"
+        )
     return (f"<section><h3>Serial follow-ups &amp; subanalyses "
-            f"<span class='pc-count'>{len(t.key_papers)}</span></h3>"
-            f"<ul class='papers'>{''.join(rows)}</ul></section>")
-
+            f"<span class='pc-count'>{len(papers)}</span></h3>"
+            f"<p class='pc-hint'>Click a follow-up to reveal its paper links.</p>"
+            f"<div class='papers'>{''.join(rows)}</div></section>")
 
 def detail_body(t: Trial) -> str:
     caveat = f"<div class='d-caveat'>⚠ {e(t.caveat)}</div>" if t.caveat else ""
@@ -275,10 +296,14 @@ def render_row(t: Trial) -> str:
     haystack = " ".join([t.acronym, t.full_name, t.device, t.comparator, t.population,
                          t.nct, t.category, " ".join(t.tags)]).lower()
     caveat_dot = "<span class='cav-dot' title='See caveat inside'>⚠</span>" if t.caveat else ""
+    nfu = len(t.key_papers or [])
+    fu_badge = (f"<span class='badge fu' title='Has {nfu} follow-up / subanalysis paper(s)'>"
+                f"{nfu} follow-up{'s' if nfu != 1 else ''}</span>") if nfu else ""
     return f"""
 <details class="row" style="--hue:{hue}" data-cat="{e(t.category)}"
          data-status="{e(t.status)}" data-signal="{e(t.signal)}"
-         data-pc="{'1' if t.practice_changing else '0'}" data-search="{e(haystack)}">
+         data-pc="{'1' if t.practice_changing else '0'}" data-fu="{'1' if nfu else '0'}"
+         data-search="{e(haystack)}">
   <summary>
     <span class="chev" aria-hidden="true"></span>
     <span class="row-id">
@@ -286,7 +311,7 @@ def render_row(t: Trial) -> str:
       <span class="row-name">{e(t.full_name)}</span>
     </span>
     <span class="row-take">{e(t.takeaway or t.quick_summary)}</span>
-    <span class="row-meta">{status_badge(t)}{row_dates(t)}</span>
+    <span class="row-meta">{status_badge(t)}{fu_badge}{row_dates(t)}</span>
   </summary>
   {detail_body(t)}
 </details>
@@ -393,8 +418,10 @@ def build_home() -> str:
                 seg.append(f"{ong} ongoing")
             if term:
                 seg.append(f"{term} terminated")
+            analyses = sum(len(getattr(t, "key_papers", []) or []) for t in ts)
             pill = f"<span class='pill'>{' · '.join(seg)}</span>"
-            go = f"<span class='go'>{n} trials →</span>"
+            an_txt = f" · {analyses} analyses" if analyses else ""
+            go = f"<span class='go'>{n} trials{an_txt} →</span>"
             soon = ""
         else:
             pill = "<span class='pill'>In progress</span>"
@@ -423,17 +450,17 @@ def build_valve_list_page(valve_key: str) -> str:
     n = len(trials)
     n_pub = sum(1 for t in trials if t.status == "published")
     n_ongoing = sum(1 for t in trials if t.status == "ongoing")
-    n_excluded = sum(1 for t in TRIALS
+     n_excluded = sum(1 for t in TRIALS
                      if (t.valve or "aortic").lower() == lbl.lower() and t.signal in EXCLUDE_SIGNALS)
-
+    n_analyses = sum(len(t.key_papers or []) for t in trials)
     body = f"""
+
 <header class="mast">
   <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · {e(lbl)}</p>
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
      collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
-  <p class="meta">{n} trials · {n_pub} published · {n_ongoing} ongoing · {n_excluded} negative-result trials excluded · antiplatelet/anticoagulant trials excluded by design</p>
-  <div class="legend">
+  <p class="meta">{n} trials · {n_pub} published · {n_ongoing} ongoing · {n_analyses} linked analyses · {n_excluded} negative-result trials excluded · antiplatelet/anticoagulant trials excluded by design</p>
     <span>🟢 Published</span><span>🔵 Ongoing</span>
     <span>Sorted oldest → newest within each category</span><span>⚠ Caveat inside</span>
   </div>
@@ -923,6 +950,22 @@ ul.papers li:first-child{border-top:0}
 ul.papers .pc-cite{color:#33474a}
 ul.papers .pc-links{white-space:nowrap}
 ul.papers .plink{font-size:11.5px;padding:2px 8px;margin-left:4px}
+/* follow-up "has follow-ups" badge on each row */
+.badge.fu{background:#eef1f4;color:#3f5164;border-color:#d7dee7;font-family:"IBM Plex Mono",monospace;font-size:10px}
+/* collapsible follow-ups: click each to reveal its links */
+.papers{margin:6px 0 0}
+.pc-hint{font-size:12px;color:var(--muted);margin:0 0 8px}
+details.pc{border-top:1px solid #eef2f1}
+details.pc:first-of-type{border-top:0}
+details.pc > summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:8px;padding:9px 0}
+details.pc > summary::-webkit-details-marker{display:none}
+details.pc > summary:hover{color:var(--accent)}
+.pc-chev{flex:0 0 auto;width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .16s;position:relative;top:-1px}
+details.pc[open] > summary .pc-chev{transform:rotate(45deg)}
+.pc-label{font-family:"Archivo",sans-serif;font-size:13px;white-space:nowrap}
+details.pc .pc-cite{color:#33474a;font-size:13px;line-height:1.4}
+.pc-body{padding:2px 0 10px 15px;display:flex;flex-wrap:wrap;gap:8px}
+.pc-nolink{font-size:12px;color:var(--muted);font-style:italic}
 h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11px;font-family:"IBM Plex Mono",monospace;color:#fff;background:var(--hue,#2C6E8F);border-radius:9px;padding:1px 6px;margin-left:6px;vertical-align:middle}
 .plinks{display:flex;flex-wrap:wrap;gap:8px}
 .plink{font-family:"IBM Plex Mono",monospace;font-size:12px;text-decoration:none;padding:6px 11px;border-radius:8px;border:1px solid var(--line);color:var(--accent);background:#fff}
