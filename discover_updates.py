@@ -435,7 +435,7 @@ def _selftest() -> int:
 # ---------------------------------------------------------------------------------------
 def _cli() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--files", nargs="+", default=["trials_1.json", "trials_tricuspid_1.json"])
+    ap.add_argument("--files", nargs="+", default=["trials.json", "trials_tricuspid.json"])
     ap.add_argument("--threshold", choices=["LOW", "MEDIUM", "HIGH"], default="MEDIUM",
                     help="minimum confidence to auto-add (default MEDIUM)")
     ap.add_argument("--review-low", type=float, default=35.0,
