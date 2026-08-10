@@ -370,10 +370,7 @@ def page_shell(title: str, active: str, body: str, script: str = "") -> str:
 {site_header(active)}
 {body}
 <footer class="pagefoot">
-  ValveTrials.org — a cardiology valve-trial reference. Paper links point to the verified DOI or PubMed
-  record; where none was verified, a “Find on PubMed” search link is provided instead of a fabricated one.
-  Negative-result trials are excluded from list views (still present in <span class="mono">trials_data.py</span>).
-  ⚠ flags provisional or context items. A reference aid, not clinical advice.
+  ValveTrials.org — a cardiology valve-trial reference. ⚠ flags provisional or context items. A reference aid, not clinical advice.
 </footer>
 {js}
 </body>
