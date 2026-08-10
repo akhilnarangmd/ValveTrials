@@ -33,13 +33,12 @@ EXCLUDE_SIGNALS = {"negative"}
 
 # --- Valves (home tiles + pages) --------------------------------------------
 # key, label, hue, leaflet count (anatomy!), descriptor
+
 VALVES = [
-    ("aortic", "Aortic", "#146C7A", 3,
-     ),
-    ("mitral", "Mitral", "#B23A5B", 2,
-     ),
-    ("tricuspid", "Tricuspid", "#6D5AB6", 3,
-     ),
+    ("aortic", "Aortic", "#146C7A", 3, ""),
+    ("mitral", "Mitral", "#B23A5B", 2, ""),
+    ("tricuspid", "Tricuspid", "#6D5AB6", 3, ""),
+
 ]
 VALVE_LABEL = {k: lbl for k, lbl, _, _, _ in VALVES}
 VALVE_HUE = {k: h for k, _, h, _, _ in VALVES}
