@@ -629,7 +629,7 @@
       "TTVR",
       "Frontier"
     ],
-    "status": "ongoing",
+    "status": "Published",
     "signal": "descriptive",
     "practice_changing": false,
     "landmark": false,
@@ -642,7 +642,7 @@
     "population": "Severe symptomatic TR, high surgical risk",
     "risk_group": "High surgical risk",
     "sample_size": "not fully extracted",
-    "enrollment": "late 2010s–ongoing",
+    "enrollment": "2020-2021",
     "follow_up": "ongoing",
     "trial_type": "Single-arm / early studies",
     "valve": "Tricuspid",
@@ -659,8 +659,7 @@
       "LuX-Valve Plus moves to transjugular/transfemoral delivery."
     ],
     "limitations": [
-      "Limited Western data",
-      "NCT unconfirmed here"
+      "Limited Western data"      
     ],
     "guideline_acc": "Investigational.",
     "guideline_esc": "Investigational.",
@@ -673,7 +672,7 @@
     "year": "2025",
     "doi": "10.1016/j.jcin.2024.12.030",
     "pmid": "40208152",
-    "caveat": "Primarily Chinese experience; Western pivotal data limited. NCT not confirmed here.",
+    "caveat": "",
     "key_papers": [
       {
         "label": "Echocardiographic outcomes",
