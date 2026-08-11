@@ -491,120 +491,7 @@
     "pmid": "",
     "caveat": ""
   },
-  {
-    "acronym": "TRISCEND",
-    "full_name": "Edwards EVOQUE Tricuspid Valve Replacement Early Feasibility Study",
-    "nct": "NCT04221490",
-    "category": "Tricuspid Transcatheter Replacement (TTVR)",
-    "tags": [
-      "EVOQUE",
-      "TTVR",
-      "Transfemoral",
-      "Single-arm"
-    ],
-    "status": "published",
-    "signal": "descriptive",
-    "practice_changing": false,
-    "landmark": true,
-    "evidence_stars": 0,
-    "quick_summary": "The feasibility study of transfemoral EVOQUE tricuspid replacement showed near-elimination of TR with strong functional gains — establishing dedicated TTVR as viable.",
-    "takeaway": "EVOQUE showed that transcatheter tricuspid replacement can nearly abolish TR.",
-    "device": "Edwards EVOQUE",
-    "intervention": "Transcatheter tricuspid replacement",
-    "comparator": "None (single-arm)",
-    "population": "Severe symptomatic TR, high surgical risk",
-    "risk_group": "High surgical risk",
-    "sample_size": "132 (feasibility)",
-    "enrollment": "2019–2021",
-    "follow_up": "30 days, 6 months, 1 year",
-    "trial_type": "Prospective single-arm (EFS)",
-    "valve": "Tricuspid",
-    "disease": "Tricuspid regurgitation",
-    "procedure": "Transcatheter tricuspid replacement",
-    "inclusion": [],
-    "primary_endpoint": "30-day safety and TR reduction.",
-    "secondary_endpoints": [
-      "TR grade ≤mild",
-      "NYHA / 6-minute walk",
-      "KCCQ"
-    ],
-    "key_results": [
-      "~98% achieved TR ≤mild",
-      "Marked functional and quality-of-life improvement",
-      "Pacemaker implantation and bleeding are the main trade-offs"
-    ],
-    "why_matters": "Established dedicated TTVR; basis for the TRISCEND II pivotal.",
-    "pearls": [
-      "Replacement abolishes TR more completely than repair — at the cost of anticoagulation/pacemakers."
-    ],
-    "limitations": [
-      "Single-arm",
-      "New-pacemaker and bleeding risk"
-    ],
-    "guideline_acc": "Feasibility basis for TTVR.",
-    "guideline_esc": "Supported CE mark.",
-    "fda_impact": "Breakthrough-device program; precursor to TRISCEND II.",
-    "timeline": [
-      "Enrollment: 2019–2021",
-      "Published: JACC 2023"
-    ],
-    "authors": "Kodali S, Hahn RT, et al.",
-    "journal": "Journal of the American College of Cardiology",
-    "year": "2023",
-    "doi": "10.1016/j.jcin.2022.01.016",
-    "pmid": "35272771",
-    "caveat": "",
-    "key_papers": [
-      {
-        "label": "First-in-human",
-        "citation": "Fam NP, von Bardeleben RS, Hensey M, et al. JACC Cardiovasc Interv 2021;14(5):501-511.",
-        "doi": "10.1016/j.jcin.2020.11.045",
-        "pmid": ""
-      },
-      {
-        "label": "1-year",
-        "citation": "Kodali S, Hahn RT, Makkar R, et al. Eur Heart J 2023;44(46):4862-4873.",
-        "doi": "10.1093/eurheartj/ehad667",
-        "pmid": "37930776"
-      },
-      {
-        "label": "1-year",
-        "citation": "Arnold SV, et al. Journal of the American College of Cardiology 2025;85(3):206-216.",
-        "doi": "10.1016/j.jacc.2024.10.067",
-        "pmid": "39480380"
-      },
-      {
-        "label": "TRISCEND II Novel Randomized Trial",
-        "citation": "Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.",
-        "doi": "10.1016/j.amjcard.2024.06.009",
-        "pmid": "38897265"
-      },
-      {
-        "label": "Tricuspid valve replacement outcomes by",
-        "citation": "Lurz P, et al. European heart journal 2026;47(17):2059-2073.",
-        "doi": "10.1093/eurheartj/ehaf676",
-        "pmid": "40878717"
-      },
-      {
-        "label": "Echocardiographic outcomes",
-        "citation": "Sannino A, et al. JACC. Cardiovascular imaging 2026.",
-        "doi": "10.1016/j.jcmg.2026.05.019",
-        "pmid": "42470411"
-      },
-      {
-        "label": "Cost-effectiveness",
-        "citation": "Grangeon A, et al. ESC heart failure 2026.",
-        "doi": "10.1093/eschf/xvag137",
-        "pmid": "42120016"
-      },
-      {
-        "label": "Clinical Characteristics and Outcomes of",
-        "citation": "Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.",
-        "doi": "10.1016/j.jcin.2025.06.002",
-        "pmid": "42111092"
-      }
-    ]
-  },
+
   {
     "acronym": "TRISCEND II",
     "full_name": "Edwards EVOQUE Tricuspid Valve Replacement Pivotal Trial",
@@ -676,6 +563,12 @@
     "pmid": "39475399",
     "caveat": "",
     "key_papers": [
+      {
+        "label": "TRISCEND EFS",
+        "citation": "Kodali S, Hahn RT, George I. JACC Cardiovasc Interv. 2022;15(5):471-480.",
+        "doi": "10.1016/j.jcin.2022.01.016",
+        "pmid": "35272771"
+      },
       {
         "label": "Quality of life (1-year)",
         "citation": "Arnold SV, et al. J Am Coll Cardiol 2025;85(3):206-216.",
