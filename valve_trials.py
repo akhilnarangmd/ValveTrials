@@ -319,31 +319,33 @@ def site_header(active: str) -> str:
 def feedback_form() -> str:
     options_html = "".join(f"<option>{e(o)}</option>" for o in FEEDBACK_OPTIONS)
     return f"""
-<section class="feedback" id="feedback">
-  <h3>Send feedback</h3>
-  <p class="fb-sub">Spot an error, a missing trial, or have a suggestion? Tell us — it goes straight to the maintainer.</p>
-  <form class="fb-form" action="{FEEDBACK_ACTION}" method="POST">
-    <input type="hidden" name="_subject" value="ValveTrials.org feedback">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="_honey" class="fb-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="fb-row">
-      <label class="fb-field"><span>Type of feedback</span>
-        <select name="type" required>
-          <option value="" disabled selected>Choose one…</option>
-          {options_html}
-        </select>
+<details class="feedback" id="feedback">
+  <summary class="fb-toggle"><span class="fb-toggle-icon" aria-hidden="true">✉</span> Send feedback</summary>
+  <div class="fb-panel">
+    <p class="fb-sub">Spot an error, a missing trial, or have a suggestion? Tell us — it goes straight to the maintainer.</p>
+    <form class="fb-form" action="{FEEDBACK_ACTION}" method="POST">
+      <input type="hidden" name="_subject" value="ValveTrials.org feedback">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" class="fb-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="fb-row">
+        <label class="fb-field"><span>Type of feedback</span>
+          <select name="type" required>
+            <option value="" disabled selected>Choose one…</option>
+            {options_html}
+          </select>
+        </label>
+        <label class="fb-field"><span>Your email (optional)</span>
+          <input type="email" name="email" placeholder="so we can follow up">
+        </label>
+      </div>
+      <label class="fb-field"><span>Message</span>
+        <textarea name="message" rows="4" required placeholder="Trial name, what's wrong, or what you'd like to see…"></textarea>
       </label>
-      <label class="fb-field"><span>Your email (optional)</span>
-        <input type="email" name="email" placeholder="so we can follow up">
-      </label>
-    </div>
-    <label class="fb-field"><span>Message</span>
-      <textarea name="message" rows="4" required placeholder="Trial name, what's wrong, or what you'd like to see…"></textarea>
-    </label>
-    <button type="submit" class="fb-btn">Send feedback</button>
-  </form>
-</section>""".strip()
+      <button type="submit" class="fb-btn">Send feedback</button>
+    </form>
+  </div>
+</details>""".strip()
 def page_shell(title: str, active: str, body: str, script: str = "") -> str:
     js = f"<script>{script}</script>" if script else ""
     return f"""<!doctype html>
@@ -926,9 +928,15 @@ h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11p
 .soon-sec{display:flex;align-items:center;gap:10px;background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:13px 16px;font-family:"Archivo",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:#7c8b89}
 .soon-sec .dot{width:9px;height:9px;border-radius:50%;background:var(--hue);opacity:.5}
 .soon-tag{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:400;letter-spacing:0;color:var(--muted);text-transform:none}
-/* feedback form */
-.feedback{max-width:1080px;margin:0 auto;padding:30px 24px 6px;border-top:1px solid var(--line)}
-.feedback h3{font-family:"Archivo",sans-serif;font-size:18px;margin:0 0 4px}
+/* feedback form (collapsed behind a button; click to reveal fields) */
+.feedback{max-width:1080px;margin:0 auto;padding:24px 24px 6px;border-top:1px solid var(--line)}
+.fb-toggle{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:10px;padding:10px 18px;font-family:"Archivo",sans-serif;font-weight:700;font-size:14px}
+.fb-toggle::-webkit-details-marker{display:none}
+.fb-toggle:hover{filter:brightness(1.14)}
+.fb-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fb-toggle-icon{font-weight:400;font-size:15px}
+details.feedback[open] .fb-toggle{border-radius:10px 10px 0 0}
+.fb-panel{padding:16px 0 4px}
 .fb-sub{color:var(--muted);font-size:13.5px;margin:0 0 14px;max-width:60ch}
 .fb-form{display:flex;flex-direction:column;gap:12px;max-width:680px}
 .fb-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
