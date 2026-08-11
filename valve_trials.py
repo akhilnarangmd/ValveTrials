@@ -67,6 +67,20 @@ STATUS_META = {
     "ongoing":    ("🔵", "Ongoing"),
     "terminated": ("⛔", "Terminated"),
 }
+# --- Feedback form -----------------------------------------------------------
+# Static sites can't send email themselves; FormSubmit.co forwards submissions to
+# your inbox with no backend. The FIRST submission triggers a one-time activation
+# email to this address — click the link in it once and feedback flows thereafter.
+# (After activation you can swap in FormSubmit's hashed endpoint to hide the address.)
+FEEDBACK_EMAIL = "akhilnarang@gmail.com"
+FEEDBACK_ACTION = f"https://formsubmit.co/{FEEDBACK_EMAIL}"
+FEEDBACK_OPTIONS = [
+    "Correction / error in a trial",
+    "Missing trial or paper",
+    "Suggestion / feature request",
+    "Broken or wrong link",
+    "General feedback",
+]
 def e(text) -> str:
     return html.escape(str(text), quote=True)
 def link_nct(nct: str) -> str:
@@ -222,11 +236,6 @@ def detail_body(t: Trial) -> str:
           <dt>Follow-up</dt><dd>{e(t.follow_up) or '—'}</dd>
         </dl>
       </div>
-      <div class="qf"><h4>Guidelines</h4>
-        <p class="lab">ACC / AHA</p><p>{e(t.guideline_acc) or '—'}</p>
-        <p class="lab">ESC / EACTS</p><p>{e(t.guideline_esc) or '—'}</p>
-      </div>
-      <div class="qf"><h4>FDA / regulatory</h4><p>{e(t.fda_impact) or '—'}</p></div>
       <div class="qf"><h4>Timeline</h4>{bullets(t.timeline)}</div>
     </aside>
   </div>
@@ -307,6 +316,34 @@ def site_header(active: str) -> str:
   <a class="brand" href="index.html">Valve<span>Trials</span>.org</a>
   <nav class="site-nav">{nav}</nav>
 </header>""".strip()
+def feedback_form() -> str:
+    options_html = "".join(f"<option>{e(o)}</option>" for o in FEEDBACK_OPTIONS)
+    return f"""
+<section class="feedback" id="feedback">
+  <h3>Send feedback</h3>
+  <p class="fb-sub">Spot an error, a missing trial, or have a suggestion? Tell us — it goes straight to the maintainer.</p>
+  <form class="fb-form" action="{FEEDBACK_ACTION}" method="POST">
+    <input type="hidden" name="_subject" value="ValveTrials.org feedback">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" class="fb-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="fb-row">
+      <label class="fb-field"><span>Type of feedback</span>
+        <select name="type" required>
+          <option value="" disabled selected>Choose one…</option>
+          {options_html}
+        </select>
+      </label>
+      <label class="fb-field"><span>Your email (optional)</span>
+        <input type="email" name="email" placeholder="so we can follow up">
+      </label>
+    </div>
+    <label class="fb-field"><span>Message</span>
+      <textarea name="message" rows="4" required placeholder="Trial name, what's wrong, or what you'd like to see…"></textarea>
+    </label>
+    <button type="submit" class="fb-btn">Send feedback</button>
+  </form>
+</section>""".strip()
 def page_shell(title: str, active: str, body: str, script: str = "") -> str:
     js = f"<script>{script}</script>" if script else ""
     return f"""<!doctype html>
@@ -323,6 +360,7 @@ def page_shell(title: str, active: str, body: str, script: str = "") -> str:
 <body>
 {site_header(active)}
 {body}
+{feedback_form()}
 <footer class="pagefoot">
   ValveTrials.org — a cardiology valve-trial reference. ⚠ flags provisional or context items. A reference aid, not clinical advice.
 </footer>
@@ -888,6 +926,20 @@ h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11p
 .soon-sec{display:flex;align-items:center;gap:10px;background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:13px 16px;font-family:"Archivo",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:#7c8b89}
 .soon-sec .dot{width:9px;height:9px;border-radius:50%;background:var(--hue);opacity:.5}
 .soon-tag{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:400;letter-spacing:0;color:var(--muted);text-transform:none}
+/* feedback form */
+.feedback{max-width:1080px;margin:0 auto;padding:30px 24px 6px;border-top:1px solid var(--line)}
+.feedback h3{font-family:"Archivo",sans-serif;font-size:18px;margin:0 0 4px}
+.fb-sub{color:var(--muted);font-size:13.5px;margin:0 0 14px;max-width:60ch}
+.fb-form{display:flex;flex-direction:column;gap:12px;max-width:680px}
+.fb-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fb-field{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--muted)}
+.fb-field select,.fb-field input,.fb-field textarea{border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:14px;font-family:inherit;color:var(--ink);background:var(--card)}
+.fb-field textarea{resize:vertical;line-height:1.45}
+.fb-field select:focus,.fb-field input:focus,.fb-field textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.fb-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fb-btn{align-self:flex-start;background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:9px;padding:10px 18px;font-size:14px;cursor:pointer;font-family:inherit}
+.fb-btn:hover{filter:brightness(1.12)}
+@media (max-width:820px){.fb-row{grid-template-columns:1fr}}
 footer.pagefoot{max-width:1080px;margin:0 auto;padding:22px 24px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
 /* editor */
 .site-nav a.editlink{border:1px solid rgba(255,255,255,.25)}
