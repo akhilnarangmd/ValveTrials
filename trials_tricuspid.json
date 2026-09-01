@@ -285,7 +285,7 @@
   {
     "acronym": "bRIGHT",
     "full_name": "Real-World Outcomes of Tricuspid TEER With TriClip (bRIGHT Study)",
-    "nct": "",
+    "nct": "NCT03822975",
     "category": "Tricuspid TEER",
     "tags": [
       "TriClip",
@@ -361,6 +361,18 @@
         "citation": "Goebel B, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(5):e253-e261.",
         "doi": "10.4244/eij-d-23-01033",
         "pmid": "40028727"
+      },
+      {
+        "label": "Bivalirudin Versus Heparin in Low",
+        "citation": "Qiu M, et al. Journal of the American College of Cardiology 2026.",
+        "doi": "10.1016/j.jacc.2026.06.035",
+        "pmid": "42663356"
+      },
+      {
+        "label": "Cognitive Behavior vs Bright Light",
+        "citation": "Do TT, et al. JAMA network open 2026;9(8):e2630320.",
+        "doi": "10.1080/15402000701263932",
+        "pmid": "42658497"
       }
     ]
   },
@@ -491,7 +503,6 @@
     "pmid": "",
     "caveat": ""
   },
-
   {
     "acronym": "TRISCEND II",
     "full_name": "Edwards EVOQUE Tricuspid Valve Replacement Pivotal Trial",
@@ -647,7 +658,7 @@
       "LuX-Valve Plus moves to transjugular/transfemoral delivery."
     ],
     "limitations": [
-      "Limited Western data"      
+      "Limited Western data"
     ],
     "guideline_acc": "Investigational.",
     "guideline_esc": "Investigational.",
@@ -1229,6 +1240,18 @@
         "citation": "Brener MI, et al. Journal of the American College of Cardiology 2022;79(5):448-461.",
         "doi": "10.1016/j.jacc.2021.11.031",
         "pmid": "35115101"
+      },
+      {
+        "label": "Impact of Massive or Torrential",
+        "citation": "Miura M, et al. JACC. Cardiovascular interventions 2020;13(17):1999-2009.",
+        "doi": "10.1016/j.jcin.2020.05.011",
+        "pmid": "32912460"
+      },
+      {
+        "label": "TRIVALVE Score A Risk Score",
+        "citation": "Russo G, et al. JACC. Cardiovascular interventions 2024;17(18):2170-2179.",
+        "doi": "10.1016/j.jcin.2024.08.009",
+        "pmid": "39322365"
       }
     ],
     "caveat": "Multi-device registry (TEER plus other devices); propensity-matched, not randomized."
