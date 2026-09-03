@@ -1,8 +1,8 @@
 # Monthly trial-literature update
 
-_Run: 2026-08-10 21:43 UTC (run 31435153146)_
+_Run: 2026-09-01 17:04 UTC (run 33535623816)_
 
-Scanned `trials.json, trials_tricuspid.json` — **200 papers added**, **17 field change(s)** proposed, **251 to review**.
+Scanned `trials.json, trials_tricuspid.json` — **16 papers added**, **1 field change(s)** proposed, **264 to review**.
 
 Merge this PR to approve every change below; edit or close to reject.
 
@@ -12,559 +12,59 @@ Merge this PR to approve every change below; edit or close to reject.
 Status flips, NCT fixes, and citation backfills — shown as old → new in the JSON diff.
 
 
-**APOLLO-EU / APOLTA**
-- `year`: — → **2026**  (from primary paper; PMID 41251714)
-- `journal`: — → **EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology**  (from primary paper; PMID 41251714)
-- `authors`: — → **Tang GHL, et al.**  (from primary paper; PMID 41251714)
-- `status`: ongoing → **published**  (primary result published (HIGH primary match); PMID 41251714)
-
-**CLASP IIF**
-- `year`: — → **2026**  (from primary paper; PMID 42233921)
-- `journal`: — → **JACC. Cardiovascular imaging**  (from primary paper; PMID 42233921)
-- `authors`: — → **Narang A, et al.**  (from primary paper; PMID 42233921)
-- `status`: ongoing → **published**  (primary result published (HIGH primary match); PMID 42233921)
-
-**EuroTR Registry**
-- `nct`: — → **NCT06307262**  (paper names an NCT the record was missing; PMID 41235431)
-
-**Intrepid TA (2-yr)**
-- `nct`: — → **NCT02322840**  (paper names an NCT the record was missing; PMID 34747699)
-
-**LuX-Valve**
-- `nct`: — → **NCT04436653**  (paper names an NCT the record was missing; PMID 40208152)
-- `year`: — → **2025**  (from primary paper; PMID 40208152)
-- `journal`: — → **JACC. Cardiovascular interventions**  (from primary paper; PMID 40208152)
-- `authors`: — → **Pan X, et al.**  (from primary paper; PMID 40208152)
-
-**PARTNER 3 Bicuspid**
-- `nct`: — → **NCT03222128**  (paper names an NCT the record was missing; PMID 42300820)
-
-**REPRISE I**
-- `nct`: — → **NCT01627691**  (paper names an NCT the record was missing; PMID 26892084)
-
-**TriValve Registry**
-- `nct`: — → **NCT03416166**  (paper names an NCT the record was missing; PMID 38437953)
+**bRIGHT**
+- `nct`: — → **NCT03822975**  (paper names an NCT the record was missing; PMID 42663356)
 
 ## Added
 
 
-### ACURATE IDE
-- Valve Underexpansion and Clinical Outcomes — HIGH (95.0), subanalysis — PMID 40406945 · doi:10.1016/j.jacc.2025.05.011  
-  Makkar RR, et al. Journal of the American College of Cardiology 2025;86(4):225-238.
-- 1-year — MEDIUM (47.0), primary — PMID 41297993 · doi:10.1016/j.jcin.2025.09.025  
-  Rück A, et al. JACC. Cardiovascular interventions 2025;18(22):2790-2801.
-
-### APOLLO-EU / APOLTA
-- **PRIMARY** — HIGH (93.0), primary — PMID 41251714 · doi:10.4244/eij-d-25-01133  
-  Tang GHL, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(3):e172-e182.
-
-### CHOICE
-- Bioprosthetic Valve Performance AfterTranscatheter Aortic — MEDIUM (53.2), subanalysis — PMID 30503595 · doi:10.1016/j.jcin.2018.07.050  
-  Abdelghani M, et al. JACC. Cardiovascular interventions 2018;11(24):2507-2518.
-- Comparison of a Pure PlugBased — MEDIUM (45.2), subanalysis — PMID 34738828 · doi:10.1161/circulationaha.121.057856  
-  Abdel-Wahab M, et al. Circulation 2022;145(3):170-183.
-
-### CLASP IID
-- Early outcomes from the CLASP — HIGH (95.0), subanalysis — PMID 34004077 · doi:10.1002/ccd.29749  
-  Lim DS, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2021;98(4):E637-E646.
-- Sex differences — MEDIUM (55.0), subanalysis — PMID 41019910 · doi:10.1159/000524378  
-  Szerlip M, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2025;4(8):103713.
-- 2-year — MEDIUM (55.0), primary — PMID 34020928 · doi:10.1016/j.jcin.2021.04.001  
-  Szerlip M, et al. JACC. Cardiovascular interventions 2021;14(14):1538-1548.
-
-### CLASP IIF
-- **PRIMARY** — HIGH (79.0), primary — PMID 42233921 · doi:10.1016/j.jcmg.2026.04.005  
-  Narang A, et al. JACC. Cardiovascular imaging 2026;19(7):795-806.
-- Echocardiographic outcomes — HIGH (79.0), primary — PMID 38099912 · doi:10.1016/j.jcmg.2023.09.015  
-  Marcoff L, et al. JACC. Cardiovascular imaging 2024;17(5):471-485.
-- Transcatheter EdgetoEdge Repair in Patients — HIGH (79.0), primary — PMID 36725171 · doi:10.1016/j.jacc.2022.11.034  
-  Hausleiter J, et al. Journal of the American College of Cardiology 2023;81(5):431-442.
-- Randomized Comparison of Transcatheter EdgetoEdge — HIGH (79.0), primary — PMID 36121247 · doi:10.1016/j.jcin.2022.09.005  
-  Lim DS, et al. JACC. Cardiovascular interventions 2022;15(24):2523-2536.
-
-### COAPT
-- Changes in Left Ventricular Global — HIGH (100.0), subanalysis — PMID 37646214 · doi:10.1161/circheartfailure.116.003123  
-  Pio SM, et al. Journal of the American Heart Association 2023;12(17):e029956.
-- Impact of Peripheral Artery Disease — HIGH (100.0), subanalysis — PMID 36752227 · doi:10.1016/s0894-7317(03)00335-3  
-  Shahim B, et al. Journal of the American Heart Association 2023;12(4):e028444.
-- Association of Effective Regurgitation Orifice — HIGH (100.0), subanalysis — PMID 33533873 · doi:10.1159/000151693  
-  Lindenfeld J, et al. JAMA cardiology 2021;6(4):427-436.
-- Transcatheter Mitral Valve Replacement Versus — HIGH (96.0), primary — PMID 37194288 · doi:10.1161/circinterventions.123.013045  
-  Ludwig S, et al. Circulation. Cardiovascular interventions 2023;16(6):e013045.
-- Prognostic implications of mitral valve — HIGH (81.0), subanalysis — PMID 36265184 · doi:10.1093/ehjci/jeab224  
-  Namazi F, et al. European heart journal. Cardiovascular Imaging 2022;23(11):1540-1551.
-- Association between serum albumin and — MEDIUM (74.0), subanalysis — PMID 36823954 · doi:10.1002/ejhf.2809  
-  Feng KY, et al. European journal of heart failure 2023;25(4):553-561.
-- Phenotypic Diversity and Outcomes of — MEDIUM (68.0), subanalysis — PMID 42120116 · doi:10.1016/j.jcin.2026.02.030  
-  Bonnet G, et al. JACC. Cardiovascular interventions 2026;19(9):1087-1104.
-- Impact of Race and Ethnicity — MEDIUM (56.0), subanalysis — PMID 42051896 · doi:10.1016/j.jscai.2025.103822  
-  Madhavan MV, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(3 Suppl):103822.
-
-### CoreValve Extreme Risk
-- 5-year — HIGH (100.0), primary — PMID 30249462 · doi:10.1016/j.jacc.2018.08.2146  
-  Gleason TG, et al. Journal of the American College of Cardiology 2018;72(22):2687-2696.
-- 3-year — HIGH (100.0), primary — PMID 27050187 · doi:10.1016/j.jacc.2016.03.506  
-  Deeb GM, et al. Journal of the American College of Cardiology 2016;67(22):2565-74.
-- Cost-effectiveness — HIGH (100.0), primary — PMID 26764063 · doi:10.1016/j.jacc.2015.10.046  
-  Reynolds MR, et al. Journal of the American College of Cardiology 2016;67(1):29-38.
-- Health Status After Transcatheter or — HIGH (100.0), primary — PMID 26292584 · doi:10.1016/j.jcin.2015.04.018  
-  Arnold SV, et al. JACC. Cardiovascular interventions 2015;8(9):1207-1217.
-- 2-year — HIGH (100.0), primary — PMID 26055947 · doi:10.1016/j.jacc.2015.05.017  
-  Reardon MJ, et al. Journal of the American College of Cardiology 2015;66(2):113-21.
-- Durability — HIGH (98.0), primary — PMID 36515976 · doi:10.1016/j.jcin.2019.12.026  
-  O'Hair D, et al. JAMA cardiology 2023;8(2):111-119.
-- Early Recovery of Left Ventricular — HIGH (98.0), primary — PMID 27296201 · doi:10.1161/circinterventions.115.003425  
-  Dauerman HL, et al. Circulation. Cardiovascular interventions 2016;9(6).
-- Outcomes in the Randomized CoreValve — HIGH (92.0), primary — PMID 27541162 · doi:10.1001/jamacardio.2016.2257  
-  Reardon MJ, et al. JAMA cardiology 2016;1(8):945-949.
-- Echocardiographic outcomes — HIGH (92.0), primary — PMID 27313280 · doi:10.1161/circinterventions.115.003426  
-  Little SH, et al. Circulation. Cardiovascular interventions 2016;9(6).
-- Endocarditis — HIGH (78.0), primary — PMID 34581194 · doi:10.1016/j.jcmg.2017.05.016  
-  Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.
-- FiveYear Health Status After Selfexpanding — HIGH (78.0), primary — PMID 32997095 · doi:10.1016/j.ahj.2004.12.010  
-  Arnold SV, et al. JAMA cardiology 2021;6(1):97-101.
-
-### CoreValve High Risk
-- Health status after transcatheter aortic — HIGH (100.0), primary — PMID 25700755 · doi:10.1016/j.jcin.2014.08.016  
-  Osnabrugge RL, et al. JACC. Cardiovascular interventions 2015;8(2):315-323.
-- 2-year — HIGH (98.0), primary — PMID 26383718 · doi:10.1016/j.jacc.2015.07.042  
-  Yakubov SJ, et al. Journal of the American College of Cardiology 2015;66(12):1327-34.
-- Selfexpanding transcatheter aortic valve replacement — HIGH (98.0), primary — PMID 25152474 · doi:10.1016/j.jtcvs.2014.07.020  
-  Reardon MJ, et al. The Journal of thoracic and cardiovascular surgery 2014;148(6):2869-76.e1-7.
-- LongTerm Health Benefit of TranscatheterAortic — HIGH (92.0), primary — PMID 29102579 · doi:10.1016/j.jcin.2017.07.025  
-  Crestanello JA, et al. JACC. Cardiovascular interventions 2017;10(22):2283-2293.
-- Quality of life — HIGH (78.0), primary — PMID 34092091 · doi:10.1161/circinterventions.120.010258  
-  Arnold SV, et al. Circulation. Cardiovascular interventions 2021;14(6):e010258.
-- Transcatheter or Surgical Aortic Valve — MEDIUM (59.0), primary — PMID 26433523 · doi:10.1016/j.athoracsur.2015.06.067  
-  Conte JV, et al. The Annals of thoracic surgery 2016;101(1):72-9; discussion 79.
-
-### DEDICATE-DZHK6
-- Sex differences — MEDIUM (67.0), subanalysis — PMID 40900118 · doi:10.1093/eurheartj/ehaf519  
-  Bleiziffer S, et al. European heart journal 2026;47(11):1339-1353.
-- Transcatheter aortic valve implantation versus — MEDIUM (47.0), primary — PMID 37655862 · doi:10.4244/eij-d-23-00232  
-  Seiffert M, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2023;19(8):652-658.
+### AVATAR
+- Effects of the Visual Patient — MEDIUM (45.0), primary — PMID 42642085 · doi:10.1136/bmjopen-2026-121099  
+  Jiang SY, et al. BMJ open 2026;16(8):e121099.
 
 ### EARLY TAVR
-- Design and rationale of the — MEDIUM (53.0), primary — PMID 41895563 · doi:10.1016/j.ahj.2026.107433  
-  Généreux P, et al. American heart journal 2026;297:107433.
-
-### EVEREST II
-- EVEREST II randomized clinical trial — HIGH (100.0), subanalysis — PMID 22423604 · doi:10.1016/j.jtcvs.2012.01.047  
-  Glower D, et al. The Journal of thoracic and cardiovascular surgery 2012;143(4 Suppl):S60-3.
-- Effects of atrial fibrillation on — HIGH (88.0), subanalysis — PMID 22464260 · doi:10.1016/j.jacc.2011.12.023  
-  Herrmann HC, et al. Journal of the American College of Cardiology 2012;59(14):1312-9.
-- Cost-effectiveness — MEDIUM (73.0), subanalysis — PMID 24040937 · doi:10.3111/13696998.2013.834823  
-  Mealing S, et al. Journal of medical economics 2013;16(11):1317-26.
-- Surgical revision after percutaneous mitral — MEDIUM (64.0), primary — PMID 20103209 · doi:10.1016/j.athoracsur.2009.08.063  
-  Argenziano M, et al. The Annals of thoracic surgery 2010;89(1):72-80; discussion p 80.
-- Echocardiographic outcomes — MEDIUM (55.0), primary — PMID 22936628 · doi:10.1002/ccd.24645  
-  Armstrong EJ, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2013;82(4):673-9.
-- Sixyear findings of polypoidal choroidal — MEDIUM (48.0), subanalysis — PMID 40504425 · doi:10.1007/s10384-025-01228-w  
-  Yanagi Y, et al. Japanese journal of ophthalmology 2025;69(6):894-901.
-- PREDICTORS AND IMPORTANCE OF COMPLETE — MEDIUM (48.0), subanalysis — PMID 35963005 · doi:10.1097/iae.0000000000003595  
-  Tan CS, et al. Retina (Philadelphia, Pa.) 2022;42(11):2091-2098.
-- Comparison of Ranibizumab With or — MEDIUM (48.0), subanalysis — PMID 32672800 · doi:10.1007/s00417-016-3333-y  
-  Lim TH, et al. JAMA ophthalmology 2020;138(9):935-942.
-- Fiveyear outcomes of transcatheter reduction — MEDIUM (46.0), primary — PMID 30077993 · doi:10.1136/heartjnl-2017-312605  
-  Kar S, et al. Heart (British Cardiac Society) 2019;105(21):1622-1628.
-
-### EVEREST II HRS
-- 5-year — HIGH (100.0), primary — PMID 26718672 · doi:10.1016/j.jacc.2015.10.018  
-  Feldman T, et al. Journal of the American College of Cardiology 2015;66(25):2844-2854.
-- Relationship between the magnitude of — HIGH (100.0), primary — PMID 24014834 · doi:10.1161/circulationaha.112.001039  
-  Grayburn PA, et al. Circulation 2013;128(15):1667-74.
-- 4-year — HIGH (100.0), primary — PMID 23665364 · doi:10.1016/j.jacc.2013.04.030  
-  Mauri L, et al. Journal of the American College of Cardiology 2013;62(4):317-28.
-- The acute hemodynamic effects of — HIGH (100.0), primary — PMID 21492763 · doi:10.1016/j.jacc.2010.11.043  
-  Siegel RJ, et al. Journal of the American College of Cardiology 2011;57(16):1658-65.
-- Durability — HIGH (100.0), primary — PMID 19679246 · doi:10.1016/j.jacc.2009.03.077  
-  Feldman T, et al. Journal of the American College of Cardiology 2009;54(8):686-94.
-- Percutaneous mitral valve repair in — HIGH (98.0), primary — PMID 23633132 · doi:10.1161/circimaging.112.000098  
-  Foster E, et al. Circulation. Cardiovascular imaging 2013;6(4):522-30.
-- The EVEREST II Trial design — HIGH (98.0), primary — PMID 20598968 · doi:10.1016/j.ahj.2010.04.009  
-  Mauri L, et al. American heart journal 2010;160(1):23-9.
-- Pathological healing response of explanted — HIGH (95.0), primary — PMID 21422390 · doi:10.1161/circulationaha.110.978130  
-  Ladich E, et al. Circulation 2011;123(13):1418-27.
-- Impact of the MitraClip Procedure — HIGH (87.0), primary — PMID 29535132 · doi:10.1161/circimaging.117.006553  
-  Gucuk Ipek E, et al. Circulation. Cardiovascular imaging 2018;11(3):e006553.
-- Percutaneous repair or surgery for — HIGH (80.0), primary — PMID 21463154 · doi:10.1056/nejmoa1009355  
-  Feldman T, et al. The New England journal of medicine 2011;364(15):1395-406.
-- Fiveyear outcomes of transcatheter reduction — MEDIUM (62.0), primary — PMID 30077993 · doi:10.1136/heartjnl-2017-312605  
-  Kar S, et al. Heart (British Cardiac Society) 2019;105(21):1622-1628.
-
-### EuroTR Registry
-- Invasive Hemodynamics and Risk Stratification — MEDIUM (73.0), subanalysis · via self-healed NCT — PMID 41235431 · doi:10.1161/circinterventions.125.015964  
-  Masiero G, et al. Circulation. Cardiovascular interventions 2026;19(1):e015964.
-- Residual tricuspid regurgitation after tricuspid — MEDIUM (73.0), subanalysis — PMID 38812292 · doi:10.1002/ejhf.3274  
-  Stolz L, et al. European journal of heart failure 2024;26(8):1850-1860.
-- Prognostic Value of NTproBNP in — MEDIUM (61.0), subanalysis — PMID 41777168 · doi:10.1016/j.jcin.2026.02.013  
-  von Stein J, et al. JACC. Cardiovascular interventions 2026;19(10):1225-1239.
-
-### Evolut Bicuspid
-- Bicuspid — MEDIUM (53.0), primary — PMID 32473890 · doi:10.1016/j.jcin.2020.03.022  
-  Forrest JK, et al. JACC. Cardiovascular interventions 2020;13(15):1749-1759.
-- 1-year — MEDIUM (45.0), primary — PMID 35272776 · doi:10.1016/j.jcin.2021.10.027  
-  Deeb GM, et al. JACC. Cardiovascular interventions 2022;15(5):511-522.
-
-### Evolut Low Risk
-- Endocarditis — HIGH (84.0), primary — PMID 34581194 · doi:10.1016/j.jcmg.2017.05.016  
-  Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.
-- Examining the typical hemodynamic performance — MEDIUM (72.0), primary — PMID 38710669 · doi:10.1093/ejcts/ezae122  
-  Klautz RJM, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2024;65(5).
-- 3-year — MEDIUM (59.0), subanalysis — PMID 39048253 · doi:10.1016/j.jcin.2024.05.017  
-  Zahr F, et al. JACC. Cardiovascular interventions 2024;17(14):1667-1675.
-
-### HARPOON EFS
-- BeatingHeart Mitral Valve Repair UsingaNovel — MEDIUM (66.0), primary — PMID 29102688 · doi:10.1016/j.jacc.2017.10.062  
-  Gammie JS, et al. Journal of the American College of Cardiology 2018;71(1):25-36.
-
-### Hydra CE
-- FiveYear Clinical and Hemodynamic Evaluation — MEDIUM (57.0), primary — PMID 41772370 · doi:10.1002/ccd.70536  
-  Bajoras V, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2026;107(6):1782-1790.
-- ThreeYear Clinical and Hemodynamic Evaluation — MEDIUM (57.0), primary — PMID 39527003 · doi:10.1002/ccd.31285  
-  Bajoras V, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;105(2):292-300.
-
-### Intrepid Pilot
-- 30-day — HIGH (93.0), primary — PMID 34747699 · doi:10.1016/j.jcin.2021.10.018  
-  Zahr F, et al. JACC. Cardiovascular interventions 2022;15(1):80-89.
-- 2-year — MEDIUM (50.0), primary — PMID 38639690 · doi:10.1016/j.jcin.2024.02.033  
-  Bapat V, et al. JACC. Cardiovascular interventions 2024;17(12):1440-1451.
-- 1-year — MEDIUM (46.0), primary — PMID 37902145 · doi:10.1016/j.jcin.2023.10.001  
-  Zahr F, et al. JACC. Cardiovascular interventions 2023;16(23):2868-2879.
-
-### Intrepid TA (2-yr)
-- Fiveyear outcomes of the earlygeneration — MEDIUM (50.0), primary — PMID 41251714 · doi:10.4244/eij-d-25-01133  
-  Tang GHL, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(3):e172-e182.
-- 30-day — LOW (38.0), primary · via self-healed NCT — PMID 34747699 · doi:10.1016/j.jcin.2021.10.018  
-  Zahr F, et al. JACC. Cardiovascular interventions 2022;15(1):80-89.
+- Age and Procedural Timing for — HIGH (100.0), subanalysis — PMID 42233211 · doi:10.1161/circinterventions.125.016370  
+  Goel K, et al. Circulation. Cardiovascular interventions 2026;19(8):e016370.
 
 ### LANDMARK
-- Conduction/pacemaker — HIGH (77.0), subanalysis — PMID 42044716 · doi:10.1016/j.ijcard.2026.134525  
-  Tobe A, et al. International journal of cardiology 2026;456:134525.
-
-### LRT Bicuspid
-- Lifetime management of patients with — HIGH (92.0), primary — PMID 35321859 · doi:10.4244/eij-d-21-01091  
-  Medranda GA, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2022;18(5):e407-e416.
-
-### LuX-Valve
-- Echocardiographic outcomes — MEDIUM (59.0), subanalysis — PMID 39161660 · doi:10.3390/jcdd9120435  
-  Huang L, et al. Frontiers in cardiovascular medicine 2024;11:1417757.
-- 1-year — MEDIUM (56.0), subanalysis — PMID 40879890 · doi:10.1002/ejhf.3529  
-  Stolz L, et al. European journal of heart failure 2025;27(11):2644-2648.
-- **PRIMARY** — LOW (44.0), primary · via self-healed NCT — PMID 40208152 · doi:10.1016/j.jcin.2024.12.030  
-  Pan X, et al. JACC. Cardiovascular interventions 2025;18(10):1276-1285.
-
-### MITRA-FR
-- Delayed hospitalisation for heart failure — MEDIUM (63.0), subanalysis — PMID 35611516 · doi:10.4244/eij-d-21-00846  
-  Leurent G, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2022;18(6):514-523.
-- The MITRAFR study design and — MEDIUM (63.0), primary — PMID 25798568 · doi:10.4244/eijv10i11a232  
-  Obadia JF, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2015;10(11):1354-60.
-- Phenotypic Diversity and Outcomes of — MEDIUM (60.0), subanalysis — PMID 42120116 · doi:10.1016/j.jcin.2026.02.030  
-  Bonnet G, et al. JACC. Cardiovascular interventions 2026;19(9):1087-1104.
-- Percutaneous repair of moderatetosevere or — MEDIUM (60.0), primary — PMID 38847420 · doi:10.1002/ejhf.3286  
-  Anker SD, et al. European journal of heart failure 2024;26(7):1608-1615.
-- Percutaneous mitral valve repair in — MEDIUM (59.0), subanalysis — PMID 34802961 · doi:10.1016/j.acvd.2021.10.005  
-  Capelle A, et al. Archives of cardiovascular diseases 2021;114(12):805-813.
-- Impact of procedural success on — MEDIUM (51.0), subanalysis — PMID 36244966 · doi:10.1016/j.acvd.2022.05.013  
-  Messika-Zeitoun D, et al. Archives of cardiovascular diseases 2022;115(11):545-551.
-- Cost-effectiveness — MEDIUM (47.0), subanalysis — PMID 33166308 · doi:10.1136/bmj.l223  
-  Armoiry X, et al. PloS one 2020;15(11):e0241361.
-
-### MITRAL
-- Transcatheter Mitral Valve Replacement inNativeMitral — MEDIUM (63.2), subanalysis — PMID 27388824 · doi:10.1016/j.jcin.2016.04.022  
-  Guerrero M, et al. JACC. Cardiovascular interventions 2016;9(13):1361-71.
-- Transatrial implantation of a transcatheter — MEDIUM (53.2), subanalysis — PMID 29627180 · doi:10.1016/j.jtcvs.2018.03.016  
-  Praz F, et al. The Journal of thoracic and cardiovascular surgery 2018;156(1):132-142.
-- Percutaneous transcatheter valve replacement in — MEDIUM (52.0), subanalysis — PMID 41167201 · doi:10.1016/s0140-6736(25)02073-2  
-  Guerrero ME, et al. Lancet (London, England) 2025;406(10519):2541-2550.
-- 3-year — MEDIUM (45.0), subanalysis — PMID 40500016 · doi:10.1016/j.jcin.2025.03.017  
-  Eleid MF, et al. JACC. Cardiovascular interventions 2025;18(11):1454-1466.
-
-### MitraClip in TR (early)
-- Impact of baseline tricuspid regurgitation — MEDIUM (46.0), primary — PMID 27999930 · doi:10.1007/s00392-016-1062-1  
-  Schueler R, et al. Clinical research in cardiology : official journal of the German Cardiac Society 2017;106(5):350-358.
-
-### NOTION
-- Differences in left ventricular remodelling — MEDIUM (53.2), primary — PMID 28158582 · doi:10.1093/ehjci/jew321  
-  Ngo A, et al. European heart journal. Cardiovascular Imaging 2018;19(1):39-46.
-- Cost-effectiveness — MEDIUM (47.2), subanalysis — PMID 31422922 · doi:10.4244/eij-d-18-00847  
-  Geisler BP, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2019;15(11):e959-e967.
-- No clinical effect of prosthesispatient — MEDIUM (47.0), primary — PMID 27005980 · doi:10.1093/ejcts/ezw095  
-  Thyregod HG, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2016;50(4):721-728.
-
-### NOTION-2
-- Transcatheter or surgical aortic valve — HIGH (83.0), subanalysis — PMID 39952377 · doi:10.1016/j.ahj.2025.02.003  
-  Jørgensen TH, et al. American heart journal 2025;284:67-70.
-
-### PARTNER 1A
-- 5-year — HIGH (80.0), primary — PMID 25788231 · doi:10.1016/s0140-6736(15)60290-2  
-  Kapadia SR, et al. Lancet (London, England) 2015;385(9986):2485-91.
-- NeutrophiltoLymphocyte Ratios in Patients Undergoing — MEDIUM (74.0), primary — PMID 35656983 · doi:10.1093/eurheartj/ehu384  
-  Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.
-- Risk stratification in patients with — MEDIUM (72.0), primary — PMID 26264371 · doi:10.1136/heartjnl-2015-308001  
-  Lindman BR, et al. Heart (British Cardiac Society) 2015;101(20):1656-64.
-- Outcomes in Nonagenarians Undergoing Transcatheter — MEDIUM (72.0), primary — PMID 26242213 · doi:10.1016/j.athoracsur.2015.05.021  
-  Thourani VH, et al. The Annals of thoracic surgery 2015;100(3):785-92; discussion 793.
-
-### PARTNER 1B
-- Propensitymatched comparisons of clinical outcomes — HIGH (92.0), primary — PMID 25832034 · doi:10.1161/circulationaha.114.012525  
-  Blackstone EH, et al. Circulation 2015;131(22):1989-2000.
-- Appropriate patient selection or health — HIGH (80.0), primary — PMID 26238287 · doi:10.1016/j.jtcvs.2015.05.073  
-  Szeto WY, et al. The Journal of thoracic and cardiovascular surgery 2015;150(3):557-68.e11.
-- Quality of life — HIGH (80.0), primary — PMID 26058718 · doi:10.1161/circoutcomes.114.001335  
-  Gada H, et al. Circulation. Cardiovascular quality and outcomes 2015;8(4):338-46.
-- 5-year — HIGH (80.0), primary — PMID 25788234 · doi:10.1016/s0140-6736(15)60308-7  
-  Mack MJ, et al. Lancet (London, England) 2015;385(9986):2477-84.
-- Longitudinal Hemodynamics of Transcatheter and — HIGH (77.0), primary — PMID 28973520 · doi:10.1177/0962280214537255  
-  Douglas PS, et al. JAMA cardiology 2017;2(11):1197-1206.
-- NeutrophiltoLymphocyte Ratios in Patients Undergoing — MEDIUM (74.0), primary — PMID 35656983 · doi:10.1093/eurheartj/ehu384  
-  Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.
-- Endocarditis — MEDIUM (74.0), primary — PMID 31690104 · doi:10.1161/circulationaha.119.041399  
-  Summers MR, et al. Circulation 2019;140(24):1984-1994.
-- Stroke After Surgical Versus Transfemoral — MEDIUM (74.0), primary — PMID 30442284 · doi:10.1016/j.jacc.2018.08.2172  
-  Kapadia SR, et al. Journal of the American College of Cardiology 2018;72(20):2415-2426.
-- Transapical Transcatheter Aortic Valve Replacement — MEDIUM (74.0), primary — PMID 29217004 · doi:10.1016/j.jcin.2017.09.023  
-  Elmariah S, et al. JACC. Cardiovascular interventions 2017;10(23):2414-2422.
-- Insights Into Timing Risk Factors — MEDIUM (74.0), primary — PMID 27601428 · doi:10.1161/circinterventions.115.002981  
-  Kapadia S, et al. Circulation. Cardiovascular interventions 2016;9(9).
-- Evaluation of Flow After Transcatheter — MEDIUM (74.0), primary — PMID 27437665 · doi:10.1001/jamacardio.2016.0759  
-  Anjan VY, et al. JAMA cardiology 2016;1(5):584-92.
-- Sex differences — MEDIUM (74.0), primary — PMID 26903039 · doi:10.7326/m15-0121  
-  Kodali S, et al. Annals of internal medicine 2016;164(6):377-84.
-- Atrial Fibrillation Is Associated With — MEDIUM (74.0), primary — PMID 26733582 · doi:10.1161/circinterventions.115.002766  
-  Biviano AB, et al. Circulation. Cardiovascular interventions 2016;9(1):e002766.
-
-### PARTNER 2 ViV
-- NeutrophiltoLymphocyte Ratios in Patients Undergoing — MEDIUM (72.0), primary — PMID 35656983 · doi:10.1093/eurheartj/ehu384  
-  Shahim B, et al. Journal of the American Heart Association 2022;11(11):e024091.
-
-### PARTNER 2A
-- Outcomes of SAPIEN 3 Transcatheter — HIGH (96.0), primary — PMID 37407110 · doi:10.1016/j.jacc.2023.04.049  
-  Madhavan MV, et al. Journal of the American College of Cardiology 2023;82(2):109-123.
-- OneYear Clinical Outcomes With SAPIEN — HIGH (96.0), primary — PMID 27400898 · doi:10.1161/circulationaha.116.022797  
-  Herrmann HC, et al. Circulation 2016;134(2):130-40.
-- Echocardiographic outcomes — HIGH (96.0), primary — PMID 27190101 · doi:10.1002/ccd.26120  
-  Kodali S, et al. European heart journal 2016;37(28):2252-62.
-- Transcatheter Aortic Valve Implantation Within — HIGH (86.0), primary — PMID 28473128 · doi:10.1016/j.jacc.2017.02.057  
-  Webb JG, et al. Journal of the American College of Cardiology 2017;69(18):2253-2262.
-- Transcatheter Versus Surgical AorticValve Replacement — HIGH (79.0), subanalysis — PMID 30409278 · doi:10.1016/j.jcin.2018.08.006  
-  Chen S, et al. JACC. Cardiovascular interventions 2018;11(21):2207-2216.
-- Suprasternal Transcatheter Aortic Valve Replacement — MEDIUM (51.0), primary — PMID 29462049 · doi:10.1097/imi.0000000000000462  
-  Kiser AC, et al. Innovations (Philadelphia, Pa.) 2018;13(1):1-4.
+- Multicenter evaluation of anatomical landmark — MEDIUM (45.0), primary — PMID 42675089 · doi:10.1245/s10434-010-1005-4  
+  Camargo NF, et al. Scientific reports 2026;16(1).
 
 ### PARTNER 3
-- Economic Outcomes of Transcatheter Versus — HIGH (89.0), subanalysis — PMID 37154049 · doi:10.1161/circulationaha.122.062481  
-  Galper BZ, et al. Circulation 2023;147(21):1594-1605.
-- Five Year Outcomes in LowRisk — MEDIUM (61.0), subanalysis — PMID 39694217 · doi:10.1016/j.athoracsur.2024.11.025  
-  Thourani VH, et al. The Annals of thoracic surgery 2025;119(3):555-566.
 - OneYear Outcomes of Transseptal Mitral — MEDIUM (45.0), primary — PMID 39034924 · doi:10.1161/circinterventions.123.013782  
   Malaisrie SC, et al. Circulation. Cardiovascular interventions 2024;17(8):e013782.
 
 ### PARTNER 3 Bicuspid
-- 10-year — LOW (35.0), primary · via self-healed NCT — PMID 42300820 · doi:10.1016/j.jacc.2026.03.170  
-  Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
-
-### PARTNER II S3i
-- Diastolic Function and Clinical Outcomes — HIGH (98.0), primary — PMID 33334422 · doi:10.1016/j.jacc.2020.10.032  
+- Outcomes of SAPIEN 3 Transcatheter — HIGH (100.0), primary — PMID 37407110 · doi:10.1016/j.jacc.2023.04.049  
+  Madhavan MV, et al. Journal of the American College of Cardiology 2023;82(2):109-123.
+- Diastolic Function and Clinical Outcomes — HIGH (90.0), primary — PMID 33334422 · doi:10.1016/j.jacc.2020.10.032  
   Ong G, et al. Journal of the American College of Cardiology 2020;76(25):2940-2951.
-- Structural Deterioration of Transcatheter Versus — HIGH (92.0), primary — PMID 33059828 · doi:10.1016/j.jacc.2020.08.049  
+- Structural Deterioration of Transcatheter Versus — HIGH (84.0), primary — PMID 33059828 · doi:10.1016/j.jacc.2020.08.049  
   Pibarot P, et al. Journal of the American College of Cardiology 2020;76(16):1830-1843.
-- Atrial Fibrillation Is Associated With — HIGH (80.0), primary — PMID 33754803 · doi:10.1056/nejmoa1915152  
+- Atrial Fibrillation Is Associated With — HIGH (78.0), primary — PMID 33754803 · doi:10.1056/nejmoa1915152  
   Brener MI, et al. Journal of the American Heart Association 2021;10(7):e019584.
-- Endocarditis — HIGH (80.0), primary — PMID 31690104 · doi:10.1161/circulationaha.119.041399  
-  Summers MR, et al. Circulation 2019;140(24):1984-1994.
-- 2-year — HIGH (80.0), primary — PMID 31525069 · doi:10.1161/circheartfailure.118.005809  
-  Furer A, et al. Circulation. Heart failure 2019;12(8):e005809.
 - Low and elevated Btype natriuretic — MEDIUM (72.0), primary — PMID 31883339 · doi:10.1093/eurheartj/ehz892  
   Chen S, et al. European heart journal 2020;41(8):958-969.
-
-### PASCAL CLASP
-- Randomized Comparison of Transcatheter EdgetoEdge — MEDIUM (50.0), primary — PMID 36121247 · doi:10.1016/j.jcin.2022.09.005  
-  Lim DS, et al. JACC. Cardiovascular interventions 2022;15(24):2523-2536.
-- Early outcomes from the CLASP — MEDIUM (47.0), primary — PMID 34004077 · doi:10.1002/ccd.29749  
-  Lim DS, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2021;98(4):E637-E646.
-
-### Portico IDE
-- Prosthesispatient mismatch with intraannular selfexpanding — MEDIUM (64.0), primary — PMID 42405628 · doi:10.4244/eij-d-26-00158  
-  Fontana GP, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(13):e741-e747.
-- Safety Profile of an IntraAnnular — MEDIUM (55.0), primary — PMID 33153563 · doi:10.1016/j.jcin.2020.06.041  
-  Fontana GP, et al. JACC. Cardiovascular interventions 2020;13(21):2467-2478.
-
-### REDO-TAVR
-- Coronary Access Following Redo TAVR — MEDIUM (55.0), subanalysis — PMID 35926919 · doi:10.1016/j.jcin.2022.05.005  
-  Meier D, et al. JACC. Cardiovascular interventions 2022;15(15):1519-1531.
-
-### REDUCE-FMR
-- A randomized doubleblind trial of — MEDIUM (59.0), subanalysis — PMID 28577672 · doi:10.1016/j.ahj.2017.02.032  
-  Goldberg SL, et al. American heart journal 2017;188:167-174.
-- Functional outcomes with Carillon device — MEDIUM (46.0), subanalysis — PMID 33619896 · doi:10.1002/ehf2.13273  
-  Khan MS, et al. ESC heart failure 2021;8(2):872-878.
-
-### REPAIR MR
-- Percutaneous MitraClip Device or Surgical — HIGH (100.0), subanalysis — PMID 36752231 · doi:10.1056/nejmoa2101897  
-  McCarthy PM, et al. Journal of the American Heart Association 2023;12(4):e027504.
-- Mitral Valve Surgery After Transcatheter — MEDIUM (72.0), primary — PMID 34556275 · doi:10.1016/j.jcin.2021.07.029  
-  Kaneko T, et al. JACC. Cardiovascular interventions 2021;14(18):2010-2021.
+- Endocarditis — MEDIUM (72.0), primary — PMID 31690104 · doi:10.1161/circulationaha.119.041399  
+  Summers MR, et al. Circulation 2019;140(24):1984-1994.
+- 2-year — MEDIUM (72.0), primary — PMID 31525069 · doi:10.1161/circheartfailure.118.005809  
+  Furer A, et al. Circulation. Heart failure 2019;12(8):e005809.
 
 ### REPRISE I
-- 1-year — MEDIUM (53.0), primary · via self-healed NCT — PMID 26892084 · doi:10.1016/j.jcin.2015.10.024  
-  Meredith IT, et al. JACC. Cardiovascular interventions 2016;9(4):376-384.
-- Conduction/pacemaker — MEDIUM (51.0), primary — PMID 28506942 · doi:10.4244/eij-d-16-01025  
-  Dumonteil N, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;13(7):796-803.
-
-### REPRISE II
-- Predictors of Paravalvular Regurgitation After — HIGH (91.0), subanalysis — PMID 28535962 · doi:10.1016/j.amjcard.2017.04.026  
-  Blackman DJ, et al. The American journal of cardiology 2017;120(2):292-299.
-- Conduction/pacemaker — HIGH (91.0), subanalysis — PMID 28506942 · doi:10.4244/eij-d-16-01025  
-  Dumonteil N, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;13(7):796-803.
-- 30-day — MEDIUM (71.0), subanalysis — PMID 25257635 · doi:10.1016/j.jacc.2014.05.067  
+- 30-day — HIGH (84.0), primary — PMID 25257635 · doi:10.1016/j.jacc.2014.05.067  
   Meredith Am IT, et al. Journal of the American College of Cardiology 2014;64(13):1339-48.
-- Conduction/pacemaker — MEDIUM (53.0), primary — PMID 28641846 · doi:10.1016/j.jcin.2017.03.044  
-  Rampat R, et al. JACC. Cardiovascular interventions 2017;10(12):1247-1253.
-
-### REPRISE III
-- Longterm Outcomes of Transcatheter Aortic — HIGH (100.0), subanalysis — PMID 36301543 · doi:10.1093/icvts/ivy190  
-  Rizik DG, et al. JAMA network open 2022;5(10):e2238792.
-- TwoYear Outcomes After Transcatheter Aortic — HIGH (100.0), subanalysis — PMID 30810703 · doi:10.1016/j.jcin.2017.07.027  
-  Reardon MJ, et al. JAMA cardiology 2019;4(3):223-229.
-- Echocardiographic outcomes — HIGH (100.0), subanalysis — PMID 29530883 · doi:10.1161/circulationaha.118.034129  
-  Asch FM, et al. Circulation 2018;137(24):2557-2567.
-- Conduction/pacemaker — HIGH (95.0), subanalysis — PMID 31640455 · doi:10.1161/jaha.119.012594  
-  Meduri CU, et al. Journal of the American Heart Association 2019;8(21):e012594.
-- Secondary analysis of REPRISE III — MEDIUM (59.0), subanalysis — PMID 38404629 · doi:10.5339/gcsp.2014.11  
-  Kotit S, et al. Global cardiology science & practice 2023;2023(4):e202330.
-- Clinical Implications of Physical Function — MEDIUM (49.0), primary — PMID 32856530 · doi:10.1161/jaha.118.010139  
-  Goel K, et al. Journal of the American Heart Association 2020;9(17):e017075.
-- Transcatheter aortic valve replacement with — MEDIUM (49.0), primary — PMID 30141342 · doi:10.2217/fca-2018-0044  
-  Barker CM, et al. Future cardiology 2018;14(5):367-373.
-
-### RESHAPE-HF2
-- Randomized investigation of the MitraClip — HIGH (87.0), subanalysis — PMID 38654139 · doi:10.1002/ejhf.3247  
-  Anker SD, et al. European journal of heart failure 2024;26(4):984-993.
-- Mitral transcatheter edgetoedge repair and — HIGH (84.0), subanalysis — PMID 41416702 · doi:10.1093/eurheartj/ehaf1035  
-  Butler J, et al. European heart journal 2026;47(19):2290-2304.
-- Hospitalization of Symptomatic Patients With — HIGH (77.0), subanalysis — PMID 39217574 · doi:10.1016/j.jacc.2024.08.027  
-  Ponikowski P, et al. Journal of the American College of Cardiology 2024;84(24):2347-2363.
-
-### SCOPE I
-- Conduction/pacemaker — MEDIUM (73.0), subanalysis — PMID 40592695 · doi:10.1016/j.carrev.2025.06.020  
-  Nakase M, et al. Cardiovascular revascularization medicine : including molecular interventions 2026;85:12-20.
-
-### SMART
-- Transcatheter Aortic Valve Implantation by — HIGH (100.0), subanalysis — PMID 39382856 · doi:10.1016/j.shj.2022.100118  
-  Tchétché D, et al. JAMA cardiology 2024;9(12):1106-1114.
-
-### SOLVE-TAVI
-- Fractal dimension of the aortic — HIGH (100.0), primary — PMID 36434335 · doi:10.1161/circimaging.114.002411  
-  Stachel G, et al. The international journal of cardiovascular imaging 2022;38(11):2469-2478.
-- 5-year — HIGH (89.0), subanalysis — PMID 39503651 · doi:10.1016/j.jacc.2024.09.007  
-  Feistritzer HJ, et al. Journal of the American College of Cardiology 2025;85(1):74-82.
-
-### SUMMIT
-- Transapical Transcatheter Mitral Valve Replacement — MEDIUM (54.0), primary — PMID 39939035 · doi:10.1016/j.jcin.2024.10.018  
-  Samim D, et al. JACC. Cardiovascular interventions 2025;18(3):311-321.
-- Fiveyear outcomes of transcatheter mitral — MEDIUM (52.0), primary — PMID 42363737 · doi:10.1016/j.xjon.2025.06.015  
-  Muller DWM, et al. ESC heart failure 2026;13(4).
-
-### SURTAVI
-- Comparison of Outcomes After Transcatheter — HIGH (100.0), subanalysis — PMID 31215985 · doi:10.1016/j.ijcard.2016.04.033  
-  Reardon MJ, et al. JAMA cardiology 2019;4(8):810-814.
-- Endocarditis — HIGH (92.0), primary — PMID 34581194 · doi:10.1016/j.jcmg.2017.05.016  
-  Lanz J, et al. Journal of the American Heart Association 2021;10(19):e020368.
-- Durability — HIGH (89.0), primary — PMID 36515976 · doi:10.1016/j.jcin.2019.12.026  
-  O'Hair D, et al. JAMA cardiology 2023;8(2):111-119.
-- 1-year — HIGH (75.0), primary — PMID 23702009 · doi:10.1016/j.jcin.2013.01.136  
-  Piazza N, et al. JACC. Cardiovascular interventions 2013;6(5):443-51.
-- Examining the typical hemodynamic performance — MEDIUM (74.0), primary — PMID 38710669 · doi:10.1093/ejcts/ezae122  
-  Klautz RJM, et al. European journal of cardio-thoracic surgery : official journal of the European Association for Cardio-thoracic Surgery 2024;65(5).
-- Oneyear outcomes of patients with — MEDIUM (47.2), primary — PMID 29992904 · doi:10.4244/eij-d-18-00460  
-  Serruys PW, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2018;14(8):877-883.
-
-### TAVR UNLOAD
-- Rationale and design of the — MEDIUM (73.0), primary — PMID 27914503 · doi:10.1016/j.ahj.2016.08.009  
-  Spitzer E, et al. American heart journal 2016;182:80-88.
-
-### TRI-FR
-- Multicentric randomized evaluation of a — MEDIUM (45.0), primary — PMID 34871375 · doi:10.1093/ehjci/jeab255  
-  Donal E, et al. European heart journal. Cardiovascular Imaging 2022;23(12):1617-1627.
-
-### TRILUMINATE Pivotal
-- Transcatheter EdgetoEdge Repair inPatients With — MEDIUM (58.0), primary — PMID 39663056 · doi:10.1016/j.jcin.2024.08.035  
-  Adams DH, et al. JACC. Cardiovascular interventions 2024;17(23):2749-2760.
-
-### TRISCEND
-- 1-year — HIGH (90.0), subanalysis — PMID 39480380 · doi:10.1016/j.jacc.2024.10.067  
-  Arnold SV, et al. Journal of the American College of Cardiology 2025;85(3):206-216.
-- TRISCEND II Novel Randomized Trial — HIGH (88.0), subanalysis — PMID 38897265 · doi:10.1016/j.amjcard.2024.06.009  
-  Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.
-- Tricuspid valve replacement outcomes by — HIGH (82.0), subanalysis — PMID 40878717 · doi:10.1093/eurheartj/ehaf676  
-  Lurz P, et al. European heart journal 2026;47(17):2059-2073.
-- Echocardiographic outcomes — MEDIUM (70.0), subanalysis — PMID 42470411 · doi:10.1016/j.jcmg.2026.05.019  
-  Sannino A, et al. JACC. Cardiovascular imaging 2026.
-- Cost-effectiveness — MEDIUM (68.0), subanalysis — PMID 42120016 · doi:10.1093/eschf/xvag137  
-  Grangeon A, et al. ESC heart failure 2026.
-- Clinical Characteristics and Outcomes of — MEDIUM (47.0), subanalysis — PMID 42111092 · doi:10.1016/j.jcin.2025.06.002  
-  Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.
-
-### TRISCEND II
-- 30-day — HIGH (100.0), primary — PMID 35272771 · doi:10.1016/j.jcin.2022.01.016  
-  Kodali S, et al. JACC. Cardiovascular interventions 2022;15(5):471-480.
-- TRISCEND II Novel Randomized Trial — HIGH (98.0), subanalysis — PMID 38897265 · doi:10.1016/j.amjcard.2024.06.009  
-  Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.
-- Echocardiographic outcomes — HIGH (86.0), subanalysis — PMID 42470411 · doi:10.1016/j.jcmg.2026.05.019  
-  Sannino A, et al. JACC. Cardiovascular imaging 2026.
-- Cost-effectiveness — MEDIUM (74.0), subanalysis — PMID 42120016 · doi:10.1093/eschf/xvag137  
-  Grangeon A, et al. ESC heart failure 2026.
-- Clinical Characteristics and Outcomes of — MEDIUM (53.0), subanalysis — PMID 42111092 · doi:10.1016/j.jcin.2025.06.002  
-  Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.
-
-### Tendyne Expanded
-- Fiveyear outcomes of transcatheter mitral — HIGH (88.0), subanalysis — PMID 42363737 · doi:10.1016/j.xjon.2025.06.015  
-  Muller DWM, et al. ESC heart failure 2026;13(4).
-- Transcatheter Mitral Valve Replacement for — MEDIUM (58.0), primary — PMID 41194751 · doi:10.1016/j.jacc.2025.10.025  
-  Sorajja P, et al. Journal of the American College of Cardiology 2026;87(23):3243-3256.
-
-### Tendyne Feasibility
-- 2-year — HIGH (100.0), primary — PMID 34736561 · doi:10.1016/j.jacc.2021.08.060  
-  Muller DWM, et al. Journal of the American College of Cardiology 2021;78(19):1847-1859.
-- Fiveyear outcomes of transcatheter mitral — MEDIUM (50.0), primary — PMID 42363737 · doi:10.1016/j.xjon.2025.06.015  
-  Muller DWM, et al. ESC heart failure 2026;13(4).
 
 ### TriValve Registry
-- Conduction/pacemaker — MEDIUM (71.0), subanalysis — PMID 31954676 · doi:10.1016/j.jcin.2019.10.058  
-  Taramasso M, et al. JACC. Cardiovascular interventions 2020;13(5):554-564.
-- Mitral regurgitation evolution after transcatheter — MEDIUM (67.0), subanalysis — PMID 39189600 · doi:10.1093/ehjci/jeae227  
-  Cannata F, et al. European heart journal. Cardiovascular Imaging 2024;26(1):135-147.
-- Effects of tricuspid transcatheter edgetoedge — MEDIUM (67.0), subanalysis · via self-healed NCT — PMID 38437953 · doi:10.1016/j.ijcard.2024.131934  
-  Russo G, et al. International journal of cardiology 2024;405:131934.
-- Transcatheter Tricuspid Valve Intervention in — MEDIUM (55.0), subanalysis — PMID 33541097 · doi:10.1161/circinterventions.120.009685  
-  Muntané-Carol G, et al. Circulation. Cardiovascular interventions 2021;14(2):e009685.
-- Incidence Predictors and Outcomes of — MEDIUM (49.0), subanalysis — PMID 41881647 · doi:10.1016/j.jcin.2026.01.288  
-  Dykun I, et al. JACC. Cardiovascular interventions 2026;19(6):711-722.
-- Right VentricularPulmonary Arterial Coupling and — MEDIUM (45.0), primary — PMID 35115101 · doi:10.1016/j.jacc.2021.11.031  
-  Brener MI, et al. Journal of the American College of Cardiology 2022;79(5):448-461.
-
-### UK TAVI
-- Preprocedural pacing bias among transcatheter — MEDIUM (65.0), primary — PMID 32951086 · doi:10.1093/eurheartj/ehs255  
-  Hilling-Smith R, et al. Heart and vessels 2021;36(3):408-413.
-- Durability — MEDIUM (53.0), subanalysis — PMID 36924015 · doi:10.1002/ccd.30627  
-  Ali N, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2023;101(5):932-942.
-- The UK TAVI trial an — MEDIUM (53.0), primary — PMID 35751527 · doi:10.1093/eurheartj/ehac345  
-  Vergallo R, et al. European heart journal 2022;43(31):2919-2920.
-
-### VIVID
-- Mortality prediction after transcatheter treatment — HIGH (80.0), primary — PMID 30079597 · doi:10.1002/ccd.27714  
-  Aziz M, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2018;92(6):1163-1170.
-- Incidence predictors and clinical outcomes — MEDIUM (67.0), subanalysis — PMID 29020413 · doi:10.1093/eurheartj/ehx455  
-  Ribeiro HB, et al. European heart journal 2018;39(8):687-695.
-- Matched Comparison of SelfExpanding Transcatheter — MEDIUM (67.0), subanalysis — PMID 28400461 · doi:10.1161/circinterventions.116.004392  
-  Alnasser S, et al. Circulation. Cardiovascular interventions 2017;10(4).
+- Impact of Massive or Torrential — HIGH (98.0), primary — PMID 32912460 · doi:10.1016/j.jcin.2020.05.011  
+  Miura M, et al. JACC. Cardiovascular interventions 2020;13(17):1999-2009.
+- TRIVALVE Score A Risk Score — HIGH (80.0), primary — PMID 39322365 · doi:10.1016/j.jcin.2024.08.009  
+  Russo G, et al. JACC. Cardiovascular interventions 2024;17(18):2170-2179.
 
 ### bRIGHT
-- Characterization of Tricuspid Valve Anatomy — HIGH (94.0), subanalysis — PMID 38072288 · doi:10.1016/j.echo.2023.12.002  
-  Donal E, et al. Journal of the American Society of Echocardiography : official publication of the American Society of Echocardiography 2024;37(4):397-404.
-- Outcomes of tricuspid transcatheter edgetoedge — MEDIUM (58.0), primary — PMID 40028727 · doi:10.4244/eij-d-23-01033  
-  Goebel B, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(5):e253-e261.
+- Bivalirudin Versus Heparin in Low — MEDIUM (50.0), mention · via self-healed NCT — PMID 42663356 · doi:10.1016/j.jacc.2026.06.035  
+  Qiu M, et al. Journal of the American College of Cardiology 2026.
+- Cognitive Behavior vs Bright Light — MEDIUM (45.0), subanalysis — PMID 42658497 · doi:10.1080/15402000701263932  
+  Do TT, et al. JAMA network open 2026;9(8):e2630320.
 
 ## Needs review (near-misses & NCT-declared)
 
@@ -574,8 +74,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Søndergaard L, et al. Circulation 2019;140(16):1296-1305.
 - **EARLY TAVR** — HIGH (100.0), mention · names NCT03042104 — PMID 42485012  
   Généreux P, et al. JAMA cardiology 2026.
-- **EARLY TAVR** — HIGH (100.0), mention · names NCT03042104 — PMID 42233211  
-  Goel K, et al. Circulation. Cardiovascular interventions 2026.
 - **COAPT** — HIGH (100.0), mention · names NCT01626079 — PMID 37115135  
   Cox ZL, et al. JACC. Heart failure 2023;11(7):791-805.
 - **PARTNER 3** — HIGH (92.0), mention · names NCT02675114 — PMID 36813373  
@@ -590,6 +88,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Kleiman NS, et al. Circulation. Cardiovascular interventions 2016;9(9).
 - **PARTNER 3** — HIGH (86.0), mention · names NCT02675114 — PMID 42524810  
   Brener MI, et al. Journal of the American College of Cardiology 2026.
+- **SCOPE I** — HIGH (86.0), mention · names NCT03011346 — PMID 42663370  
+  Tomii D, et al. JACC. Advances 2026.
 - **PARTNER 2A** — HIGH (84.0), mention · names NCT01314313 — PMID 28973091  
   Pibarot P, et al. JAMA cardiology 2017;2(11):1208-1216.
 - **CoreValve Extreme Risk** — HIGH (80.0), mention · names NCT01240902, NCT01531374 — PMID 30341970  
@@ -614,6 +114,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Daubert MA, et al. JACC. Cardiovascular imaging 2016.
 - **CoreValve High Risk** — MEDIUM (72.0), mention · names NCT01240902, NCT01531374 — PMID 30341970  
   Pineda AM, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2019;93(4):740-748.
+- **PARTNER 3 Bicuspid** — MEDIUM (72.0), mention · names NCT01314313, NCT03222128 — PMID 31505615  
+  Nazif TM, et al. European heart journal 2019;40(27):2218-2227.
 - **Mitralign** — MEDIUM (72.0), mention — PMID 26384194  
   Nickenig G, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2015;11 Suppl W:W62-3.
 - **Evolut Low Risk** — MEDIUM (71.0), mention · names NCT02701283 — PMID 41377641  
@@ -622,6 +124,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Sticchi A, et al. JACC. Cardiovascular interventions 2021;14(8):873-878.
 - **TRI-FR** — MEDIUM (71.0), mention — PMID 41698775  
   Donal E, et al. Archives of cardiovascular diseases 2026;119(1):82-90.
+- **Intrepid TA (2-yr)** — MEDIUM (69.0), mention · names NCT02322840 — PMID 29102689  
+  Bapat V, et al. Journal of the American College of Cardiology 2018;71(1):12-21.
 - **CoreValve Extreme Risk** — MEDIUM (68.0), mention · names NCT01586910, NCT01240902 — PMID 31665959  
   Lindman BR, et al. Journal of the American Heart Association 2019;8(21):e014020.
 - **CoreValve High Risk** — MEDIUM (68.0), mention · names NCT01586910, NCT01240902 — PMID 31665959  
@@ -634,8 +138,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Tang GHL, et al. Circulation. Cardiovascular interventions 2023;16(11):e013238.
 - **PARTNER II S3i** — MEDIUM (68.0), mention · names NCT03222128, NCT02675114 — PMID 34130476  
   Herrmann HC, et al. Circulation. Cardiovascular interventions 2021;14(7):e010310.
-- **LuX-Valve** — MEDIUM (68.0), mention — PMID 40159401  
-  Sun Y, et al. Zhejiang da xue xue bao. Yi xue ban = Journal of Zhejiang University. Medical sciences 2025;54(2):213-218.
+- **TriValve Registry** — MEDIUM (68.0), mention · names NCT03416166 — PMID 36445158  
+  Scotti A, et al. European heart journal 2023;44(10):822-832.
 - **PARTNER 3** — MEDIUM (67.0), mention — PMID 35272777  
   Williams MR, et al. JACC. Cardiovascular interventions 2022;15(5):523-532.
 - **PARTNER 2A** — MEDIUM (66.0), mention · names NCT02675114, NCT01314313, NCT02184442 — PMID 35595203  
@@ -644,6 +148,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Haussig S, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2015;11 Suppl W:W86-91.
 - **EVOLVED** — MEDIUM (66.0), mention · names NCT03094143, NCT03029026 — PMID 38771906  
   Patel KP, et al. Circulation. Cardiovascular imaging 2024;17(5):e015996.
+- **PARTNER 3 Bicuspid** — MEDIUM (66.0), mention · names NCT03222141, NCT00530894, NCT01314313, NCT03222128 — PMID 35041482  
+  Vincent F, et al. Circulation. Cardiovascular quality and outcomes 2022;15(1):e007948.
+- **PARTNER 3 Bicuspid** — MEDIUM (66.0), mention · names NCT03222128, NCT02675114 — PMID 34130476  
+  Herrmann HC, et al. Circulation. Cardiovascular interventions 2021;14(7):e010310.
 - **NOTION-2** — MEDIUM (65.0), mention · names NCT02825134 — PMID 40744194  
   Jørgensen TH, et al. American heart journal 2026;291:10-13.
 - **SURTAVI** — MEDIUM (63.0), mention · names NCT01314313, NCT01586910 — PMID 26384204  
@@ -688,10 +196,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   ElGuindy A, et al. Global cardiology science & practice 2016;2016(4):e201633.
 - **COAPT** — MEDIUM (56.0), mention — PMID 38267110  
   Chhatriwalla AK, et al. Journal of the American College of Cardiology 2024;83(4):488-499.
-- **LuX-Valve** — MEDIUM (56.0), mention — PMID 41313046  
-  Cao J, et al. European heart journal 2026;47(27):3647.
-- **LuX-Valve** — MEDIUM (56.0), mention — PMID 40352127  
-  Horita R, et al. Circulation reports 2025;7(5):393-394.
 - **TriValve Registry** — MEDIUM (55.0), mention — PMID 36948892  
   Coisne A, et al. JACC. Cardiovascular interventions 2023.
 - **PARTNER 1A** — MEDIUM (54.0), mention · names NCT00530894 — PMID 28467527  
@@ -754,10 +258,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Zahr F, et al. JACC. Cardiovascular interventions 2023;16(23):2868-2879.
 - **HighLife TSMVR** — LOW (44.0), primary — PMID 40518735  
   Zhang Y, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;106(2):1315-1323.
-- **LuX-Valve** — LOW (44.0), primary — PMID 39197992  
-  Stolz L, et al. JACC. Cardiovascular interventions 2024;17(16):1936-1945.
-- **LuX-Valve** — LOW (44.0), primary · names NCT02917980 — PMID 39103966  
-  Wang Y, et al. European journal of medical research 2024;29(1):407.
 - **CoreValve Extreme Risk** — LOW (43.0), primary — PMID 29223434  
   Baron SJ, et al. American heart journal 2017;194:39-48.
 - **PARTNER 2A** — LOW (43.0), mention — PMID 29860075  
@@ -776,6 +276,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Blackman DJ, et al. The American journal of cardiology 2017;120(2):292-299.
 - **REPRISE I** — LOW (43.0), mention — PMID 22995115  
   Meredith IT, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2012;8 Suppl Q:Q70-4.
+- **EARLY TAVR** — LOW (43.0), primary · names NCT02675114 — PMID 42340728  
+  Ternacle J, et al. JAMA cardiology 2026;11(8):747-757.
 - **TAVR UNLOAD** — LOW (43.0), subanalysis — PMID 41660065  
   von Stein P, et al. Structural heart : the journal of the Heart Team 2026;10(4):100787.
 - **TAVR UNLOAD** — LOW (43.0), primary · names NCT03222128 — PMID 42300820  
@@ -786,16 +288,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Vemulapalli S, et al. American heart journal 2017;189:146-157.
 - **TRI-FR** — LOW (43.0), primary — PMID 42462168  
   Rasmeehirun P, et al. ESC heart failure 2026;13(4).
-- **LuX-Valve** — LOW (43.0), mention — PMID 39619032  
-  Wong LN, et al. JACC. Case reports 2024;29(21):102699.
-- **LuX-Valve** — LOW (43.0), mention — PMID 39529702  
-  Delamarre E, et al. European heart journal. Case reports 2024;8(11):ytae582.
 - **MitraClip in TR (early)** — LOW (43.0), primary — PMID 28982563  
   Taramasso M, et al. JACC. Cardiovascular interventions 2017;10(19):1982-1990.
 - **TriValve Registry** — LOW (43.0), mention · names 03416166 — PMID 37905381  
   Russo G, et al. European journal of heart failure 2023;25(12):2243-2251.
-- **TriValve Registry** — LOW (43.0), primary · names NCT03416166 — PMID 32912460  
-  Miura M, et al. JACC. Cardiovascular interventions 2020;13(17):1999-2009.
 - **TriValve Registry** — LOW (43.0), primary — PMID 31954679  
   Mehr M, et al. JACC. Cardiovascular interventions 2020;13(5):543-550.
 - **EuroTR Registry** — LOW (43.0), primary — PMID 42030119  
@@ -814,14 +310,12 @@ Not written automatically — confirm (merge after editing) or ignore.
   Zajarias A, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2022;100(5):890-900.
 - **MITRAL** — LOW (42.2), mention — PMID 33320712  
   Fuchs A, et al. Circulation. Cardiovascular interventions 2020;13(12):e009579.
-- **LANDMARK** — LOW (42.0), mention — PMID 42573511  
-  Harrison JE, et al. Nutrition in clinical practice : official publication of the American Society for Parenteral and Enteral Nutrition 2026.
+- **SMART** — LOW (42.0), mention — PMID 42675888  
+  Teng M, et al. ACS applied materials & interfaces 2026;18(33):45563-45576.
 - **AVATAR** — LOW (42.0), mention — PMID 35939543  
   Banovic M, et al. Circulation 2022;146(6):e48-e49.
-- **AVATAR** — LOW (42.0), mention — PMID 42492889  
-  Guerraz M, et al. Neuroscience 2026;612:105-112.
-- **AVATAR** — LOW (42.0), mention — PMID 42475895  
-  Egervári L, et al. Acta psychologica 2026;269:107489.
+- **AVATAR** — LOW (42.0), mention — PMID 42647699  
+  Regateiro J, et al. IEEE computer graphics and applications 2026;PP.
 - **HARPOON EFS** — LOW (42.0), primary · names NCT02432196 — PMID 27436878  
   Gammie JS, et al. Circulation 2016;134(3):189-97.
 - **HARPOON TRACER** — LOW (42.0), primary · names NCT02432196 — PMID 27436878  
@@ -848,6 +342,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Broyd CJ, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;106(7):3609-3616.
 - **EARLY TAVR** — LOW (41.0), mention — PMID 41759945  
   Généreux P, et al. Value in health : the journal of the International Society for Pharmacoeconomics and Outcomes Research 2026;29(7):1171-1179.
+- **EARLY TAVR** — LOW (41.0), primary — PMID 42348716  
+  Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
 - **EARLY TAVR** — LOW (41.0), primary · names NCT03222128 — PMID 42300820  
   Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
 - **AVATAR** — LOW (41.0), mention · names NCT03042104, NCT03094143, NCT02436655 — PMID 32774184  
@@ -874,14 +370,12 @@ Not written automatically — confirm (merge after editing) or ignore.
   McKellar SH, et al. JTCVS open 2026;30:101613.
 - **CLASP TR EFS** — LOW (40.0), primary · names NCT05328284 — PMID 39466215  
   Wild MG, et al. Journal of the American College of Cardiology 2025;85(3):220-231.
-- **TRISCEND** — LOW (40.0), mention — PMID 42325408  
-  Reynolds MR, et al. Structural heart : the journal of the Heart Team 2026;10(7):101049.
+- **PARTNER 3** — LOW (39.0), primary — PMID 42348716  
+  Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
 - **AVATAR** — LOW (39.0), mention — PMID 28290210  
   Banovic MD, et al. Biomarkers in medicine 2017;11(4):369-376.
 - **VANTAGE** — LOW (39.0), mention — PMID 42535176  
   Chan SK, et al. Asian journal of neurosurgery 2026;21(3):493-498.
-- **VANTAGE** — LOW (39.0), mention — PMID 42372489  
-  Snyder MH, et al. Journal of clinical neuroscience : official journal of the Neurosurgical Society of Australasia 2026;152:112162.
 - **MITRAL** — LOW (39.0), mention — PMID 40630237  
   Morse A, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2025;4(6):102636.
 - **MITRAL** — LOW (39.0), mention — PMID 35347466  
@@ -936,8 +430,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Cumitini L, et al. The American journal of cardiology 2026;272:54-59.
 - **TVT Registry — TTVR** — LOW (38.0), primary — PMID 42134615  
   Cumitini L, et al. The American journal of cardiology 2026;272:54-59.
-- **PARTNER 1B** — LOW (37.0), primary · names NCT03222128 — PMID 42300820  
-  Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
 - **CoreValve Extreme Risk** — LOW (37.0), primary — PMID 30448116  
   Chetcuti SJ, et al. JACC. Cardiovascular imaging 2019;12(1):67-80.
 - **CoreValve Extreme Risk** — LOW (37.0), primary — PMID 29174390  
@@ -966,6 +458,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Pibarot P, et al. JACC. Cardiovascular interventions 2018;11(2):133-141.
 - **VIVID** — LOW (37.0), primary — PMID 27301396  
   Simonato M, et al. Circulation. Cardiovascular interventions 2016;9(6).
+- **PARTNER 3 Bicuspid** — LOW (37.0), primary · names NCT02675114 — PMID 42340728  
+  Ternacle J, et al. JAMA cardiology 2026;11(8):747-757.
+- **Evolut Bicuspid** — LOW (37.0), primary — PMID 42637291  
+  Rogers T, et al. JACC. Cardiovascular interventions 2026;19(16):2204-2216.
 - **LRT Bicuspid** — LOW (37.0), primary · names NCT0262889 — PMID 39109463  
   Merdler I, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2024;104(3):583-590.
 - **LRT Bicuspid** — LOW (37.0), primary — PMID 28625366  
@@ -1038,8 +534,12 @@ Not written automatically — confirm (merge after editing) or ignore.
   Fontana GP, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2026;22(13):e741-e747.
 - **EVOLVED** — LOW (35.0), mention · names NCT03042104, NCT03094143, NCT02436655 — PMID 32774184  
   Zelis JM, et al. Journal of interventional cardiology 2020;2020:4603169.
+- **TAVR UNLOAD** — LOW (35.0), primary — PMID 42348716  
+  Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
 - **REDO-TAVR** — LOW (35.0), mention — PMID 35926921  
   Landes U, et al. JACC. Cardiovascular interventions 2022;15(15):1543-1554.
+- **PARTNER 3 Bicuspid** — LOW (35.0), primary — PMID 42348716  
+  Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
 - **ALIGN-AR** — LOW (35.0), primary — PMID 40522304  
   Wienemann H, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(12):e681-e691.
 - **ALIGN-AR** — LOW (35.0), primary — PMID 39814494  
@@ -1060,10 +560,14 @@ Not written automatically — confirm (merge after editing) or ignore.
   Lurz P, et al. JACC. Cardiovascular interventions 2021;14(11):1241-1242.
 - **MitraClip in TR (early)** — LOW (35.0), primary · names NCT04688190, NCT01626079 — PMID 37194288  
   Ludwig S, et al. Circulation. Cardiovascular interventions 2023;16(6):e013045.
+- **SAPIEN M3 FIH** — LOW (34.0), primary · names NCT04153292 — PMID 41167201  
+  Guerrero ME, et al. Lancet (London, England) 2025;406(10519):2541-2550.
 - **Intrepid TS-EFS** — LOW (23.0), primary · names NCT01626079 — PMID 34391744  
   Kosmidou I, et al. JACC. Heart failure 2021;9(9):674-683.
 - **Intrepid TS-EFS** — LOW (17.0), primary · names NCT01626079 — PMID 40357542  
   Goel SS, et al. Circulation. Cardiovascular interventions 2025;18(7):e015192.
+- **ARTIST** — LOW (15.0), primary · names NCT07165704 — PMID 42585664  
+  Henriques S, et al. JMIR research protocols 2026;15:e84994.
 - **Navitor Global** — LOW (12.0), primary · names NCT05262270 — PMID 40360074  
   Trivedi MH, et al. Contemporary clinical trials 2025;154:107954.
 - **Navitor Global** — LOW (12.0), primary · names NCT04907357 — PMID 40336040  
@@ -1072,6 +576,28 @@ Not written automatically — confirm (merge after editing) or ignore.
   Rethorst CD, et al. BMC psychology 2024;12(1):643.
 - **Navitor Global** — LOW (12.0), primary · names NCT04738123 — PMID 38691387  
   Kaul I, et al. JAMA psychiatry 2024;81(8):749-756.
+- **REDO-TAVR** — LOW (7.0), mention · names NCT06449469 — PMID 42669071  
+  Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
+- **REDO-TAVR** — LOW (7.0), mention · names NCT03863132 — PMID 42663358  
+  Mehilli J, et al. Journal of the American College of Cardiology 2026.
+- **VIVID** — LOW (7.0), mention · names NCT05035277 — PMID 42669043  
+  Dodgson CS, et al. JAMA 2026.
+- **Navitor Global** — LOW (5.0), mention · names NCT06449469 — PMID 42669071  
+  Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
+- **REDO-TAVR** — LOW (0), mention · names NCT04310046 — PMID 42670987  
+  Stähli BE, et al. The New England journal of medicine 2026.
+- **REDO-TAVR** — LOW (0), mention · names NCT05035277 — PMID 42669043  
+  Dodgson CS, et al. JAMA 2026.
+- **REDO-TAVR** — LOW (0), mention · names NCT03011346 — PMID 42663370  
+  Tomii D, et al. JACC. Advances 2026.
+- **VIVID** — LOW (0), mention · names NCT04310046 — PMID 42670987  
+  Stähli BE, et al. The New England journal of medicine 2026.
+- **VIVID** — LOW (0), mention · names NCT06449469 — PMID 42669071  
+  Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
+- **VIVID** — LOW (0), mention · names NCT03011346 — PMID 42663370  
+  Tomii D, et al. JACC. Advances 2026.
+- **VIVID** — LOW (0), mention · names NCT03863132 — PMID 42663358  
+  Mehilli J, et al. Journal of the American College of Cardiology 2026.
 
 ## Records still missing an NCT (fix these first)
 
@@ -1086,6 +612,5 @@ These are invisible to the registry `[si]` query — the strongest discovery sig
 - AltaValve EFS (Mitral, published)
 - SAPIEN 3 MViV Registry (Mitral, published)
 - DRAFT - review: set acronym (Aortic, published)
-- bRIGHT (Tricuspid, published)
 - MitraClip in TR (early) (Tricuspid, published)
 - TVT Registry — TTVR (Tricuspid, published)
