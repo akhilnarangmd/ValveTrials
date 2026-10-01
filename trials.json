@@ -2716,6 +2716,12 @@
         "citation": "Camargo NF, et al. Scientific reports 2026;16(1).",
         "doi": "10.1245/s10434-010-1005-4",
         "pmid": "42675089"
+      },
+      {
+        "label": "1-year",
+        "citation": "Tobe A, et al. Structural heart : the journal of the Heart Team 2026;10(9):101101.",
+        "doi": "10.1093/ehjqcco/qcaf041",
+        "pmid": "42701683"
       }
     ]
   },
@@ -3089,6 +3095,12 @@
         "citation": "Goel K, et al. Circulation. Cardiovascular interventions 2026;19(8):e016370.",
         "doi": "10.1161/circinterventions.125.016370",
         "pmid": "42233211"
+      },
+      {
+        "label": "Treadmill Stress Test in Patients",
+        "citation": "Généreux P, et al. JAMA cardiology 2026;11(9):802-809.",
+        "doi": "10.1093/eurheartj/ehae585",
+        "pmid": "42485012"
       }
     ]
   },
@@ -3259,6 +3271,12 @@
         "citation": "Jiang SY, et al. BMJ open 2026;16(8):e121099.",
         "doi": "10.1136/bmjopen-2026-121099",
         "pmid": "42642085"
+      },
+      {
+        "label": "Does stereotactic ablative body radiotherapy",
+        "citation": "Connolly E, et al. BMJ open 2026;16(9):e119811.",
+        "doi": "10.1200/jco.1997.15.3.974",
+        "pmid": "42692526"
       }
     ]
   },
@@ -6143,7 +6161,15 @@
     "year": "2024",
     "doi": "10.1056/NEJMoa2408739",
     "pmid": "39216093",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": [
+      {
+        "label": "Perioperative durvalumab plus fluorouracil leucovorin",
+        "citation": "Janjigian YY, et al. Lancet (London, England) 2026;408(10560):1114-1128.",
+        "doi": "10.1016/s0140-6736(26)01254-7",
+        "pmid": "42716074"
+      }
+    ]
   },
   {
     "acronym": "CLASP IIF",
