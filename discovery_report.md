@@ -1,8 +1,8 @@
 # Monthly trial-literature update
 
-_Run: 2026-09-01 17:04 UTC (run 33535623816)_
+_Run: 2026-10-01 18:38 UTC (run 36908332503)_
 
-Scanned `trials.json, trials_tricuspid.json` — **16 papers added**, **1 field change(s)** proposed, **264 to review**.
+Scanned `trials.json, trials_tricuspid.json` — **9 papers added**, **1 field change(s)** proposed, **251 to review**.
 
 Merge this PR to approve every change below; edit or close to reject.
 
@@ -12,59 +12,41 @@ Merge this PR to approve every change below; edit or close to reject.
 Status flips, NCT fixes, and citation backfills — shown as old → new in the JSON diff.
 
 
-**bRIGHT**
-- `nct`: — → **NCT03822975**  (paper names an NCT the record was missing; PMID 42663356)
+**TVT Registry — TTVR**
+- `nct`: — → **NCT04482062**  (paper names an NCT the record was missing; PMID 42470411)
 
 ## Added
 
 
 ### AVATAR
-- Effects of the Visual Patient — MEDIUM (45.0), primary — PMID 42642085 · doi:10.1136/bmjopen-2026-121099  
-  Jiang SY, et al. BMJ open 2026;16(8):e121099.
+- Does stereotactic ablative body radiotherapy — MEDIUM (54.0), subanalysis — PMID 42692526 · doi:10.1200/jco.1997.15.3.974  
+  Connolly E, et al. BMJ open 2026;16(9):e119811.
 
 ### EARLY TAVR
-- Age and Procedural Timing for — HIGH (100.0), subanalysis — PMID 42233211 · doi:10.1161/circinterventions.125.016370  
-  Goel K, et al. Circulation. Cardiovascular interventions 2026;19(8):e016370.
+- Treadmill Stress Test in Patients — HIGH (100.0), subanalysis — PMID 42485012 · doi:10.1093/eurheartj/ehae585  
+  Généreux P, et al. JAMA cardiology 2026;11(9):802-809.
 
 ### LANDMARK
-- Multicenter evaluation of anatomical landmark — MEDIUM (45.0), primary — PMID 42675089 · doi:10.1245/s10434-010-1005-4  
-  Camargo NF, et al. Scientific reports 2026;16(1).
+- 1-year — HIGH (100.0), subanalysis — PMID 42701683 · doi:10.1093/ehjqcco/qcaf041  
+  Tobe A, et al. Structural heart : the journal of the Heart Team 2026;10(9):101101.
 
-### PARTNER 3
-- OneYear Outcomes of Transseptal Mitral — MEDIUM (45.0), primary — PMID 39034924 · doi:10.1161/circinterventions.123.013782  
-  Malaisrie SC, et al. Circulation. Cardiovascular interventions 2024;17(8):e013782.
+### MATTERHORN
+- Perioperative durvalumab plus fluorouracil leucovorin — MEDIUM (45.0), subanalysis — PMID 42716074 · doi:10.1016/s0140-6736(26)01254-7  
+  Janjigian YY, et al. Lancet (London, England) 2026;408(10560):1114-1128.
 
-### PARTNER 3 Bicuspid
-- Outcomes of SAPIEN 3 Transcatheter — HIGH (100.0), primary — PMID 37407110 · doi:10.1016/j.jacc.2023.04.049  
-  Madhavan MV, et al. Journal of the American College of Cardiology 2023;82(2):109-123.
-- Diastolic Function and Clinical Outcomes — HIGH (90.0), primary — PMID 33334422 · doi:10.1016/j.jacc.2020.10.032  
-  Ong G, et al. Journal of the American College of Cardiology 2020;76(25):2940-2951.
-- Structural Deterioration of Transcatheter Versus — HIGH (84.0), primary — PMID 33059828 · doi:10.1016/j.jacc.2020.08.049  
-  Pibarot P, et al. Journal of the American College of Cardiology 2020;76(16):1830-1843.
-- Atrial Fibrillation Is Associated With — HIGH (78.0), primary — PMID 33754803 · doi:10.1056/nejmoa1915152  
-  Brener MI, et al. Journal of the American Heart Association 2021;10(7):e019584.
-- Low and elevated Btype natriuretic — MEDIUM (72.0), primary — PMID 31883339 · doi:10.1093/eurheartj/ehz892  
-  Chen S, et al. European heart journal 2020;41(8):958-969.
-- Endocarditis — MEDIUM (72.0), primary — PMID 31690104 · doi:10.1161/circulationaha.119.041399  
-  Summers MR, et al. Circulation 2019;140(24):1984-1994.
-- 2-year — MEDIUM (72.0), primary — PMID 31525069 · doi:10.1161/circheartfailure.118.005809  
-  Furer A, et al. Circulation. Heart failure 2019;12(8):e005809.
-
-### REPRISE I
-- 30-day — HIGH (84.0), primary — PMID 25257635 · doi:10.1016/j.jacc.2014.05.067  
-  Meredith Am IT, et al. Journal of the American College of Cardiology 2014;64(13):1339-48.
-
-### TriValve Registry
-- Impact of Massive or Torrential — HIGH (98.0), primary — PMID 32912460 · doi:10.1016/j.jcin.2020.05.011  
-  Miura M, et al. JACC. Cardiovascular interventions 2020;13(17):1999-2009.
-- TRIVALVE Score A Risk Score — HIGH (80.0), primary — PMID 39322365 · doi:10.1016/j.jcin.2024.08.009  
-  Russo G, et al. JACC. Cardiovascular interventions 2024;17(18):2170-2179.
+### TVT Registry — TTVR
+- Echocardiographic outcomes — LOW (38.0), primary · via self-healed NCT — PMID 42470411 · doi:10.1016/j.jcmg.2026.05.019  
+  Sannino A, et al. JACC. Cardiovascular imaging 2026;19(9):1027-1039.
 
 ### bRIGHT
-- Bivalirudin Versus Heparin in Low — MEDIUM (50.0), mention · via self-healed NCT — PMID 42663356 · doi:10.1016/j.jacc.2026.06.035  
-  Qiu M, et al. Journal of the American College of Cardiology 2026.
-- Cognitive Behavior vs Bright Light — MEDIUM (45.0), subanalysis — PMID 42658497 · doi:10.1080/15402000701263932  
-  Do TT, et al. JAMA network open 2026;9(8):e2630320.
+- BMI differences on anticoagulation with — HIGH (100.0), subanalysis — PMID 41029353 · doi:10.1136/openhrt-2024-003109  
+  Zhang D, et al. BMC medicine 2025;23(1):525.
+- Analysis of interhospital transfer on — HIGH (100.0), subanalysis — PMID 40700454 · doi:10.1001/jama.2011.862  
+  Su X, et al. PLoS medicine 2025;22(7):e1004679.
+- Bivalirudin versus heparin in patients — HIGH (100.0), primary — PMID 39334129 · doi:10.1038/s41569-023-00953-4  
+  Liao J, et al. BMC medicine 2024;22(1):410.
+- Bivalirudin plus a highdose infusion — MEDIUM (70.0), primary — PMID 36351459 · doi:10.1016/s0140-6736(22)01999-7  
+  Li Y, et al. Lancet (London, England) 2022;400(10366):1847-1857.
 
 ## Needs review (near-misses & NCT-declared)
 
@@ -72,8 +54,6 @@ Not written automatically — confirm (merge after editing) or ignore.
 
 - **SURTAVI** — HIGH (100.0), mention · names NCT01586910 — PMID 31476897  
   Søndergaard L, et al. Circulation 2019;140(16):1296-1305.
-- **EARLY TAVR** — HIGH (100.0), mention · names NCT03042104 — PMID 42485012  
-  Généreux P, et al. JAMA cardiology 2026.
 - **COAPT** — HIGH (100.0), mention · names NCT01626079 — PMID 37115135  
   Cox ZL, et al. JACC. Heart failure 2023;11(7):791-805.
 - **PARTNER 3** — HIGH (92.0), mention · names NCT02675114 — PMID 36813373  
@@ -204,12 +184,12 @@ Not written automatically — confirm (merge after editing) or ignore.
   Herrmann HC, et al. Circulation. Cardiovascular interventions 2025;18(8):e015202.
 - **RESHAPE-HF2** — MEDIUM (54.0), mention — PMID 40248280  
   Capranzano P, et al. European heart journal supplements : journal of the European Society of Cardiology 2025;27(Suppl 3):iii60-iii63.
-- **RESHAPE-HF2** — MEDIUM (53.0), mention — PMID 39474117  
-  Lancellotti P, et al. European heart journal open 2024;4(5):oeae084.
 - **TRI-FR** — MEDIUM (53.0), mention · names NCT04646811 — PMID 33478647  
   Donal E, et al. Journal of the American College of Cardiology 2021;77(3):240-242.
 - **PARTNER 3** — MEDIUM (52.0), mention — PMID 40562469  
   Eltchaninoff H, et al. JACC. Cardiovascular interventions 2025;18(12):1540-1553.
+- **Portico IDE** — MEDIUM (51.0), mention — PMID 42734596  
+  Makkar RR, et al. JACC. Cardiovascular interventions 2026.
 - **REPRISE I** — MEDIUM (49.0), mention — PMID 28555592  
   Meredith IT, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;13(7):788-795.
 - **REDO-TAVR** — MEDIUM (49.0), mention — PMID 33413929  
@@ -280,8 +260,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Ternacle J, et al. JAMA cardiology 2026;11(8):747-757.
 - **TAVR UNLOAD** — LOW (43.0), subanalysis — PMID 41660065  
   von Stein P, et al. Structural heart : the journal of the Heart Team 2026;10(4):100787.
-- **TAVR UNLOAD** — LOW (43.0), primary · names NCT03222128 — PMID 42300820  
-  Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
 - **Evolut Bicuspid** — LOW (43.0), primary — PMID 41997523  
   Ramlawi B, et al. The Annals of thoracic surgery 2026;122(1):57-66.
 - **EVEREST II** — LOW (43.0), primary — PMID 28625371  
@@ -310,12 +288,24 @@ Not written automatically — confirm (merge after editing) or ignore.
   Zajarias A, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2022;100(5):890-900.
 - **MITRAL** — LOW (42.2), mention — PMID 33320712  
   Fuchs A, et al. Circulation. Cardiovascular interventions 2020;13(12):e009579.
-- **SMART** — LOW (42.0), mention — PMID 42675888  
-  Teng M, et al. ACS applied materials & interfaces 2026;18(33):45563-45576.
+- **SMART** — LOW (42.0), mention — PMID 42817475  
+  Alshdadi AA, et al. Sensors (Basel, Switzerland) 2026;26(18).
+- **LANDMARK** — LOW (42.0), mention — PMID 42816804  
+  Shao L, et al. Journal of intensive care medicine 2026.
 - **AVATAR** — LOW (42.0), mention — PMID 35939543  
   Banovic M, et al. Circulation 2022;146(6):e48-e49.
-- **AVATAR** — LOW (42.0), mention — PMID 42647699  
-  Regateiro J, et al. IEEE computer graphics and applications 2026;PP.
+- **AVATAR** — LOW (42.0), mention — PMID 42813048  
+  Minetto MA, et al. Frontiers in nutrition 2026;13:1906710.
+- **AVATAR** — LOW (42.0), mention — PMID 42809886  
+  Pasklinsky N, et al. Nurse educator 2026.
+- **AVATAR** — LOW (42.0), mention — PMID 42799582  
+  Yang P, et al. Biometrics 2026;82(3).
+- **AVATAR** — LOW (42.0), mention — PMID 42723964  
+  Willaert I, et al. Virtual reality 2026;30(4):162.
+- **EMPOWER** — LOW (42.0), mention — PMID 42807378  
+  Bianco F, et al. ERJ open research 2026;12(5).
+- **EMPOWER** — LOW (42.0), subanalysis — PMID 42807228  
+  Intiso D, et al. Frontiers in neurology 2026;17:1858025.
 - **HARPOON EFS** — LOW (42.0), primary · names NCT02432196 — PMID 27436878  
   Gammie JS, et al. Circulation 2016;134(3):189-97.
 - **HARPOON TRACER** — LOW (42.0), primary · names NCT02432196 — PMID 27436878  
@@ -344,12 +334,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Généreux P, et al. Value in health : the journal of the International Society for Pharmacoeconomics and Outcomes Research 2026;29(7):1171-1179.
 - **EARLY TAVR** — LOW (41.0), primary — PMID 42348716  
   Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
-- **EARLY TAVR** — LOW (41.0), primary · names NCT03222128 — PMID 42300820  
-  Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
 - **AVATAR** — LOW (41.0), mention · names NCT03042104, NCT03094143, NCT02436655 — PMID 32774184  
   Zelis JM, et al. Journal of interventional cardiology 2020;2020:4603169.
 - **REDO-TAVR** — LOW (41.0), mention — PMID 42554557  
-  McKechnie CJ, et al. JACC. Case reports 2026.
+  McKechnie CJ, et al. JACC. Case reports 2026;31(36):109569.
 - **REDO-TAVR** — LOW (41.0), mention — PMID 42264639  
   Onishi T, et al. JACC. Cardiovascular interventions 2026;19(11):1469-1486.
 - **MITRA-FR** — LOW (41.0), mention — PMID 31023640  
@@ -360,6 +348,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Lupu L, et al. American heart journal 2024;275:21-34.
 - **TRI-FR** — LOW (41.0), mention — PMID 42064866  
   Donal E, et al. European heart journal supplements : journal of the European Society of Cardiology 2026;28(Suppl 4):iv16-iv20.
+- **REDO-TAVR** — LOW (40.0), mention — PMID 42340175  
+  Bapat VN, et al. JACC. Cardiovascular interventions 2026;19(16):2165-2191.
 - **PASCAL CLASP** — LOW (40.0), primary · names NCT03706833 — PMID 38099912  
   Marcoff L, et al. JACC. Cardiovascular imaging 2024;17(5):471-485.
 - **PASCAL CLASP** — LOW (40.0), primary · names NCT03706833 — PMID 36725171  
@@ -368,14 +358,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Samim D, et al. JACC. Cardiovascular interventions 2025;18(3):311-321.
 - **TRILUMINATE Pivotal** — LOW (40.0), mention — PMID 42079940  
   McKellar SH, et al. JTCVS open 2026;30:101613.
-- **CLASP TR EFS** — LOW (40.0), primary · names NCT05328284 — PMID 39466215  
-  Wild MG, et al. Journal of the American College of Cardiology 2025;85(3):220-231.
 - **PARTNER 3** — LOW (39.0), primary — PMID 42348716  
   Sheth T, et al. Circulation. Cardiovascular interventions 2026;19(8):e016918.
 - **AVATAR** — LOW (39.0), mention — PMID 28290210  
   Banovic MD, et al. Biomarkers in medicine 2017;11(4):369-376.
-- **VANTAGE** — LOW (39.0), mention — PMID 42535176  
-  Chan SK, et al. Asian journal of neurosurgery 2026;21(3):493-498.
 - **MITRAL** — LOW (39.0), mention — PMID 40630237  
   Morse A, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2025;4(6):102636.
 - **MITRAL** — LOW (39.0), mention — PMID 35347466  
@@ -420,16 +406,10 @@ Not written automatically — confirm (merge after editing) or ignore.
   Saxon JT, et al. Circulation. Cardiovascular interventions 2025;18(4):e014985.
 - **MITRAL** — LOW (38.0), subanalysis — PMID 42363737  
   Muller DWM, et al. ESC heart failure 2026;13(4).
-- **MITRAL** — LOW (38.0), subanalysis — PMID 40500014  
-  Goel K, et al. JACC. Cardiovascular interventions 2025;18(11):1438-1449.
 - **PARTNER 3 MVIV** — LOW (38.0), primary — PMID 40500016  
   Eleid MF, et al. JACC. Cardiovascular interventions 2025;18(11):1454-1466.
 - **LAMPOON IDE** — LOW (38.0), primary — PMID 33663781  
   Lisko JC, et al. JACC. Cardiovascular interventions 2021;14(5):541-550.
-- **TRISCEND II** — LOW (38.0), primary — PMID 42134615  
-  Cumitini L, et al. The American journal of cardiology 2026;272:54-59.
-- **TVT Registry — TTVR** — LOW (38.0), primary — PMID 42134615  
-  Cumitini L, et al. The American journal of cardiology 2026;272:54-59.
 - **CoreValve Extreme Risk** — LOW (37.0), primary — PMID 30448116  
   Chetcuti SJ, et al. JACC. Cardiovascular imaging 2019;12(1):67-80.
 - **CoreValve Extreme Risk** — LOW (37.0), primary — PMID 29174390  
@@ -442,8 +422,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Greason KL, et al. The Journal of thoracic and cardiovascular surgery 2020;159(4):1233-1244.e4.
 - **PARTNER 3** — LOW (37.0), mention — PMID 38283566  
   El-Zein RS, et al. Structural heart : the journal of the Heart Team 2024;8(1):100225.
-- **PARTNER 3** — LOW (37.0), primary · names NCT03222128 — PMID 42300820  
-  Nazif TM, et al. Journal of the American College of Cardiology 2026;87(23):3296-3308.
 - **REPRISE I** — LOW (37.0), primary · names NCT02202434 — PMID 31640455  
   Meduri CU, et al. Journal of the American Heart Association 2019;8(21):e012594.
 - **REPRISE I** — LOW (37.0), primary · names NCT02202434 — PMID 30810703  
@@ -466,6 +444,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Merdler I, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2024;104(3):583-590.
 - **LRT Bicuspid** — LOW (37.0), primary — PMID 28625366  
   Rogers T, et al. American heart journal 2017;189:103-109.
+- **ALIGN-AR** — LOW (37.0), primary — PMID 42642914  
+  Hinkov H, et al. Artificial organs 2026;50(10):1427-1433.
 - **MitraClip in TR (early)** — LOW (37.0), mention — PMID 28089952  
   Kalbacher D, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2017;12(15):e1809-e1816.
 - **TriValve Registry** — LOW (37.0), primary — PMID 33617978  
@@ -476,6 +456,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Kim WK, et al. JACC. Cardiovascular imaging 2022;15(2):367-369.
 - **LANDMARK** — LOW (36.0), mention — PMID 40315945  
   Tobe A, et al. American heart journal 2025;289:1-5.
+- **VANTAGE** — LOW (36.0), mention — PMID 42734472  
+  Carpenter A, et al. Neurology India 2026;74(5):769-770.
 - **EVEREST II** — LOW (36.0), mention · names NCT01846273 — PMID 38308746  
   Teo KYC, et al. Ophthalmology and therapy 2024;13(4):935-954.
 - **EVEREST II** — LOW (36.0), subanalysis — PMID 33475271  
@@ -484,6 +466,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Anker SD, et al. JAMA 2025;333(22):1965-1976.
 - **RESHAPE-HF2** — LOW (36.0), mention — PMID 39898735  
   Pezzola E, et al. Giornale italiano di cardiologia (2006) 2025;26(2):77-79.
+- **TACT (NeoChord)** — LOW (36.0), mention — PMID 42787077  
+  Inoue H, et al. Journal of neuroendovascular therapy 2026;20(1).
 - **Tendyne Feasibility** — LOW (36.0), primary — PMID 39939035  
   Samim D, et al. JACC. Cardiovascular interventions 2025;18(3):311-321.
 - **MITRAL** — LOW (36.0), mention — PMID 34432834  
@@ -520,8 +504,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Moscarella E, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;106(5):2949-2957.
 - **ACURATE IDE** — LOW (35.0), primary — PMID 40702771  
   Jain A, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2025;106(3):2005-2017.
-- **ACURATE IDE** — LOW (35.0), primary — PMID 40562472  
-  Tarantini G, et al. JACC. Cardiovascular interventions 2025;18(12):1571-1583.
 - **REPRISE I** — LOW (35.0), primary · names NCT02202434 — PMID 36301543  
   Rizik DG, et al. JAMA network open 2022;5(10):e2238792.
 - **EARLY TAVR** — LOW (35.0), mention · names NCT03042104, NCT03094143, NCT02436655 — PMID 32774184  
@@ -548,10 +530,6 @@ Not written automatically — confirm (merge after editing) or ignore.
   Adam M, et al. JACC. Cardiovascular interventions 2023;16(16):1965-1973.
 - **Navitor Global** — LOW (35.0), primary — PMID 40892604  
   Worthley SG, et al. JACC. Cardiovascular interventions 2025;18(20):2517-2527.
-- **VANTAGE** — LOW (35.0), primary — PMID 41663342  
-  Saxon JT, et al. Catheterization and cardiovascular interventions : official journal of the Society for Cardiac Angiography & Interventions 2026;107(5):1476-1483.
-- **VANTAGE** — LOW (35.0), primary — PMID 41518360  
-  Garcia S, et al. JACC. Cardiovascular interventions 2026;19(7):801-809.
 - **Mitralign** — LOW (35.0), mention — PMID 24399585  
   Siminiak T, et al. Kardiologia polska 2013;71(12):1287-92.
 - **PASCAL CLASP** — LOW (35.0), primary — PMID 33303115  
@@ -574,30 +552,8 @@ Not written automatically — confirm (merge after editing) or ignore.
   Atoui Z, et al. Addiction science & clinical practice 2025;20(1):40.
 - **Navitor Global** — LOW (12.0), primary · names NCT04990401 — PMID 39522018  
   Rethorst CD, et al. BMC psychology 2024;12(1):643.
-- **Navitor Global** — LOW (12.0), primary · names NCT04738123 — PMID 38691387  
-  Kaul I, et al. JAMA psychiatry 2024;81(8):749-756.
-- **REDO-TAVR** — LOW (7.0), mention · names NCT06449469 — PMID 42669071  
-  Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
-- **REDO-TAVR** — LOW (7.0), mention · names NCT03863132 — PMID 42663358  
-  Mehilli J, et al. Journal of the American College of Cardiology 2026.
-- **VIVID** — LOW (7.0), mention · names NCT05035277 — PMID 42669043  
-  Dodgson CS, et al. JAMA 2026.
 - **Navitor Global** — LOW (5.0), mention · names NCT06449469 — PMID 42669071  
   Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
-- **REDO-TAVR** — LOW (0), mention · names NCT04310046 — PMID 42670987  
-  Stähli BE, et al. The New England journal of medicine 2026.
-- **REDO-TAVR** — LOW (0), mention · names NCT05035277 — PMID 42669043  
-  Dodgson CS, et al. JAMA 2026.
-- **REDO-TAVR** — LOW (0), mention · names NCT03011346 — PMID 42663370  
-  Tomii D, et al. JACC. Advances 2026.
-- **VIVID** — LOW (0), mention · names NCT04310046 — PMID 42670987  
-  Stähli BE, et al. The New England journal of medicine 2026.
-- **VIVID** — LOW (0), mention · names NCT06449469 — PMID 42669071  
-  Jørgensen TH, et al. Journal of the American College of Cardiology 2026.
-- **VIVID** — LOW (0), mention · names NCT03011346 — PMID 42663370  
-  Tomii D, et al. JACC. Advances 2026.
-- **VIVID** — LOW (0), mention · names NCT03863132 — PMID 42663358  
-  Mehilli J, et al. Journal of the American College of Cardiology 2026.
 
 ## Records still missing an NCT (fix these first)
 
@@ -613,4 +569,3 @@ These are invisible to the registry `[si]` query — the strongest discovery sig
 - SAPIEN 3 MViV Registry (Mitral, published)
 - DRAFT - review: set acronym (Aortic, published)
 - MitraClip in TR (early) (Tricuspid, published)
-- TVT Registry — TTVR (Tricuspid, published)

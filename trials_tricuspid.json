@@ -373,6 +373,30 @@
         "citation": "Do TT, et al. JAMA network open 2026;9(8):e2630320.",
         "doi": "10.1080/15402000701263932",
         "pmid": "42658497"
+      },
+      {
+        "label": "BMI differences on anticoagulation with",
+        "citation": "Zhang D, et al. BMC medicine 2025;23(1):525.",
+        "doi": "10.1136/openhrt-2024-003109",
+        "pmid": "41029353"
+      },
+      {
+        "label": "Analysis of interhospital transfer on",
+        "citation": "Su X, et al. PLoS medicine 2025;22(7):e1004679.",
+        "doi": "10.1001/jama.2011.862",
+        "pmid": "40700454"
+      },
+      {
+        "label": "Bivalirudin versus heparin in patients",
+        "citation": "Liao J, et al. BMC medicine 2024;22(1):410.",
+        "doi": "10.1038/s41569-023-00953-4",
+        "pmid": "39334129"
+      },
+      {
+        "label": "Bivalirudin plus a highdose infusion",
+        "citation": "Li Y, et al. Lancet (London, England) 2022;400(10366):1847-1857.",
+        "doi": "10.1016/s0140-6736(22)01999-7",
+        "pmid": "36351459"
       }
     ]
   },
@@ -1345,7 +1369,7 @@
   {
     "acronym": "TVT Registry — TTVR",
     "full_name": "Real-World Outcomes of Transcatheter Tricuspid Valve Replacement: Analysis From the STS/ACC TVT Registry",
-    "nct": "",
+    "nct": "NCT04482062",
     "category": "Tricuspid Transcatheter Replacement (TTVR)",
     "tags": [
       "EVOQUE",
@@ -1409,7 +1433,14 @@
     "year": "2026",
     "doi": "10.1001/jama.2026.3446",
     "pmid": "41973411",
-    "key_papers": [],
+    "key_papers": [
+      {
+        "label": "Echocardiographic outcomes",
+        "citation": "Sannino A, et al. JACC. Cardiovascular imaging 2026;19(9):1027-1039.",
+        "doi": "10.1016/j.jcmg.2026.05.019",
+        "pmid": "42470411"
+      }
+    ],
     "caveat": "Post-approval real-world registry (30-day outcomes); retrospective, no comparator."
   }
 ]
