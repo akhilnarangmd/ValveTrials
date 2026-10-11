@@ -16,7 +16,7 @@ from typing import List
 # Kept as plain strings (not Enums) so the data file reads naturally and a
 # clinician editing it doesn't need to import anything.
 
-STATUS = {"published", "ongoing", "terminated"}
+STATUS = {"published", "results_posted", "ongoing", "terminated", "withdrawn"}
 
 # Result "signal" drives the tone badge (positive / neutral / negative / etc.)
 SIGNAL = {"positive", "neutral", "negative", "descriptive", "pending"}
@@ -60,7 +60,7 @@ class Trial:
     tags: List[str] = field(default_factory=list)  # extra chips shown on card
 
     # --- Status flags (drive badges) ---
-    status: str = "published"      # published | ongoing | terminated
+    status: str = "published"      # published | results_posted | ongoing | terminated | withdrawn
     signal: str = "descriptive"    # positive | neutral | negative | descriptive | pending
     practice_changing: bool = False
     landmark: bool = False

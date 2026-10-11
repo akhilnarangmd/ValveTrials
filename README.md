@@ -1,54 +1,24 @@
-# ValveTrials.com
+# ValveTrials.org
 
-A cardiology-facing reference of major transcatheter valve-disease trials (aortic, mitral, tricuspid),
-generated as a static website from a single data file.
+A static, cardiology-facing reference of selected aortic, mitral, and tricuspid valve trials. Trial cards are editorial summaries linked to the original papers and registries; they are not treatment guidance.
 
-## How the pieces fit
+## Data and build
 
 | File | Role |
-|------|------|
-| **`trials.json`** | **The single source of truth — all trials live here.** This is the only file you edit to change content. |
-| `model.py` | The `Trial` data schema + the master list of categories and (in `valve_trials.py`) their colors. |
-| `data.py` | Loads `trials.json` into trial objects. |
-| `valve_trials.py` | The generator. Run it to (re)build the HTML pages. |
-| `trials_data.py` | Legacy Python data (no longer read; kept only as a backup). |
-| `.github/workflows/deploy.yml` | Rebuilds and publishes the site to GitHub Pages on every push. |
+| --- | --- |
+| `trials.json` | Aortic and mitral trial records |
+| `trials_tricuspid.json` | Tricuspid trial records |
+| `model.py` | Data schema and controlled vocabularies |
+| `data.py` | Loads both data files |
+| `validate_data.py` | Offline checks for duplicate cards and malformed or missing identifiers |
+| `valve_trials.py` | Generates the static pages, including the editor |
 
-## Editing trials — three ways
+Run `python validate_data.py` and `python valve_trials.py site` to validate the catalog and build the website into `site/`. The GitHub Actions workflow runs validation before publishing changes pushed to `main`.
 
-### 1. The Editor page (no code)
-Open **`editor.html`** (the **✎ Editor** link in the site header). You can:
-- pick any existing trial to **edit**,
-- create a **new** trial,
-- **delete** a trial.
+The public editor is generated at `editor.html`. Save an edited trial to the list, then export **both** JSON files and replace the corresponding repository files. The editor preserves fields that are not exposed in its form, including linked papers. Review the JSON diff and run validation before publishing.
 
-When you're done, click **⬇ Export trials.json**. Your browser downloads an updated
-`trials.json`. Replace the `trials.json` in the repository with that file and commit it
-(drag-and-drop works in GitHub's web UI). The Action rebuilds the live site automatically.
+## Editorial review
 
-### 2. Edit `trials.json` directly on GitHub
-Open `trials.json` in GitHub, click the pencil ✏️, edit, and commit. Same auto-rebuild.
+See [DATA_AUDIT.md](DATA_AUDIT.md) for the latest source audit, corrected records, and remaining review limits. New papers and registry IDs proposed by the discovery scripts require human review when the study identity or cohort is ambiguous. Negative and terminated studies remain visible in the catalog.
 
-### 3. Locally
-```bash
-python valve_trials.py            # builds index/aortic/mitral/tricuspid/editor into ./
-python valve_trials.py site       # builds into ./site (what CI does)
-```
-No dependencies — standard-library Python 3 only.
-
-## One-time GitHub setup
-
-1. Create a repo and add these files (keep the folder layout, including `.github/workflows/`).
-2. In **Settings → Pages**, set **Source = GitHub Actions**.
-3. Push to `main`. The workflow builds and publishes; the live URL appears in the
-   **Actions** run and under **Settings → Pages**.
-
-That's it — after setup, editing `trials.json` (via the Editor or directly) and committing
-is all it takes for the site to update.
-
-## Notes
-- Negative-result trials are excluded from the list views but remain in `trials.json`
-  (toggle via `EXCLUDE_SIGNALS` in `valve_trials.py`).
-- Paper links use the verified DOI/PubMed record when present; otherwise a
-  "Find on PubMed" search link is generated (never a fabricated identifier).
-- This is a reference aid, not clinical advice.
+The site intentionally includes selected major trials, not every registered valve study. Source records and results can change; verify clinical decisions against the original publication, registry, and current guidelines.

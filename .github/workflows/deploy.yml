@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate trial data
+        run: python validate_data.py
       - name: Build the site into ./site
         run: python valve_trials.py site
       - name: Disable Jekyll processing

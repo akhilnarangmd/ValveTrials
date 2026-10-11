@@ -237,6 +237,7 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
     ambiguous = acr in AMBIGUOUS_ACRONYMS or len(acr.replace(" ", "")) <= 4
     # --- 1. Registry link: the single most reliable signal ---------------------------
     nct_match = bool(trial.nct) and trial.nct.upper() in {a.upper() for a in cand.nct_accessions}
+    nct_conflict = bool(trial.nct and cand.nct_accessions and not nct_match)
     if nct_match:
         score += 55
         reasons.append("+55 registry link: paper declares this trial's NCT ([si] match)")
@@ -322,6 +323,20 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
         score += fpts
         reasons.append(fnote)
     score = max(0.0, min(100.0, score))
+    # A declared registration for a different trial overrides acronym or author
+    # similarity. This catches collisions such as bRIGHT/BRIGHT-4 and EVEREST II.
+    if nct_conflict:
+        score = 0.0
+        reasons.append("HARD STOP: paper declares a different NCT")
+    # An acronym alone is not enough for a trial paper. Require cardiovascular
+    # context in the title or abstract before it can be proposed automatically.
+    cardiac_context = re.search(
+        r"\b(aortic|mitral|tricuspid|valve|valvular|transcatheter|tavr|tavi|teer|tmvr|ttvr|cardiac|heart)\b",
+        title + " " + abstract,
+    )
+    if not cardiac_context and not nct_match:
+        score = min(score, 25.0)
+        reasons.append("capped at 25: no cardiac/valve context")
     # Ambiguous bare-word acronyms (TRAVEL, SCOUT, HOVER...) need corroboration. STRONG
     # CONTENT evidence — device name in the title, an exact sample-size fingerprint, or a
     # full device+valve+procedure topic match — now counts too, not only NCT/author. This
@@ -339,6 +354,7 @@ def score_candidate(trial: Trial, cand: Candidate) -> dict:
         "score": round(score, 1), "confidence": label,
         "kind": classify_kind(cand, trial.acronym),
         "nct_declared": list(cand.nct_accessions),   # discover_updates uses this to self-heal/review
+        "nct_conflict": nct_conflict,
         "reasons": reasons,
     }
 # --------------------------------------------------------------------------------------
@@ -547,8 +563,17 @@ def _selftest() -> int:
         for why in r["reasons"]:
             print(f"           {why}")
         print()
-    print(f"{ok}/{len(cases)} cases passed")
-    return 0 if ok == len(cases) else 1
+    conflict = score_candidate(
+        Trial(acronym="bRIGHT", nct="NCT04483089", valve="Tricuspid"),
+        Candidate(pmid="99999994", title="bRIGHT trial valve outcomes",
+                  abstract="A trial report of a valve intervention.",
+                  nct_accessions=["NCT04999999"]),
+    )
+    conflict_ok = conflict["score"] == 0 and conflict["nct_conflict"]
+    ok += conflict_ok
+    print(f"[{'PASS' if conflict_ok else 'FAIL'}] declared NCT conflict blocks a match")
+    print(f"{ok}/{len(cases) + 1} cases passed")
+    return 0 if ok == len(cases) + 1 else 1
 def _cli():
     import argparse
     ap = argparse.ArgumentParser(description="Link trials to PubMed papers with confidence.")

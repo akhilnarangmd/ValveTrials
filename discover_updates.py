@@ -203,6 +203,15 @@ def merge_new_papers(
             kind = sc.get("kind", "mention")
             declared = list(dict.fromkeys(sc.get("nct_declared") or []))  # unique, ordered
             names_new_nct = (not stored_nct) and len(declared) == 1
+            nct_matches = bool(stored_nct and stored_nct in {n.upper() for n in declared})
+            if sc.get("nct_conflict") or (stored_nct and declared and not nct_matches):
+                review.append({
+                    "trial": row.get("acronym", ""), "kind": kind, "confidence": conf,
+                    "score": score, "pmid": np_, "doi": nd_, "declares_nct": declared,
+                    "title": cand.title, "citation": format_citation(cand),
+                    "reason": "paper declares a different NCT",
+                })
+                continue
 
             def propose(field, new, reason):
                 field_updates.append({
@@ -215,11 +224,15 @@ def merge_new_papers(
             # --- NCT self-heal: paper names an NCT this record lacks, with real content match ---
             healed = False
             if names_new_nct and score >= review_low:
-                propose("nct", declared[0], "paper names an NCT the record was missing")
-                stored_nct = declared[0].upper()
-                healed = True  # a paper that self-identifies with our (now-known) NCT is add-worthy
+                review.append({
+                    "trial": row.get("acronym", ""), "kind": kind, "confidence": conf,
+                    "score": score, "pmid": np_, "doi": nd_, "declares_nct": declared,
+                    "title": cand.title, "citation": format_citation(cand),
+                    "reason": "new NCT requires registry-title review before linking",
+                })
+                continue
 
-            should_add = (rank >= min_rank and kind in kinds) or healed
+            should_add = rank >= min_rank and kind in kinds and nct_matches
 
             if should_add:
                 entry = {
@@ -393,10 +406,9 @@ def _selftest() -> int:
         dataB, lambda t: [(c, score_candidate(t, c)) for c in (travel,)])
     surfaced = any(a["pmid"] == "40208152" for a in addedB) or any(r["pmid"] == "40208152" for r in revB)
     check(surfaced, "TRAVEL: paper is surfaced, not silently dropped")
-    check(any(u["field"] == "nct" and u["new"] == "NCT04436653" for u in fuB),
-          "TRAVEL: NCT04436653 proposed as a field change")
-    check(dataB[0]["nct"] == "NCT04436653", "TRAVEL: record self-healed with the NCT")
-    check(any(a["pmid"] == "40208152" for a in addedB), "TRAVEL: paper added once the NCT is known")
+    check(not fuB and dataB[0]["nct"] == "", "TRAVEL: NCT is not changed without registry review")
+    check(not addedB and any(r["pmid"] == "40208152" for r in revB),
+          "TRAVEL: paper and proposed NCT are held for review")
 
     # ---- Case C: ongoing -> published status transition on a HIGH primary ----
     dataC = [{"acronym": "CLASP II TR", "nct": "NCT04097145", "status": "ongoing",
