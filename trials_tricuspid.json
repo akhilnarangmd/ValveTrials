@@ -285,7 +285,7 @@
   {
     "acronym": "bRIGHT",
     "full_name": "Real-World Outcomes of Tricuspid TEER With TriClip (bRIGHT Study)",
-    "nct": "NCT03822975",
+    "nct": "NCT04483089",
     "category": "Tricuspid TEER",
     "tags": [
       "TriClip",
@@ -305,7 +305,7 @@
     "comparator": "Registry",
     "population": "Severe symptomatic TR in routine practice",
     "risk_group": "Mixed / high risk",
-    "sample_size": "registry cohort",
+    "sample_size": "511",
     "enrollment": "2020–2023",
     "follow_up": "30 days, 1 year, 2 years",
     "trial_type": "Prospective post-market registry",
@@ -320,8 +320,8 @@
       "Procedural success"
     ],
     "key_results": [
-      "Significant, durable TR reduction across broad anatomies",
-      "Safety consistent with the randomized trials"
+      "At 1 year, TR was moderate or less in 81% of 511 enrolled patients.",
+      "NYHA class I/II rose from 21% at baseline to 75%; mean KCCQ score improved 19 points."
     ],
     "why_matters": "Provides generalizability for the RCT findings.",
     "pearls": [
@@ -342,7 +342,7 @@
     "year": "2024",
     "doi": "10.1016/j.jacc.2024.05.006",
     "pmid": "38759905",
-    "caveat": "Post-market registry (not a dedicated NCT here).",
+    "caveat": "Prospective post-market registry; no randomized comparator.",
     "key_papers": [
       {
         "label": "30-day",
@@ -361,18 +361,6 @@
         "citation": "Goebel B, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(5):e253-e261.",
         "doi": "10.4244/eij-d-23-01033",
         "pmid": "40028727"
-      },
-      {
-        "label": "Bivalirudin Versus Heparin in Low",
-        "citation": "Qiu M, et al. Journal of the American College of Cardiology 2026.",
-        "doi": "10.1016/j.jacc.2026.06.035",
-        "pmid": "42663356"
-      },
-      {
-        "label": "Cognitive Behavior vs Bright Light",
-        "citation": "Do TT, et al. JAMA network open 2026;9(8):e2630320.",
-        "doi": "10.1080/15402000701263932",
-        "pmid": "42658497"
       }
     ]
   },
@@ -501,7 +489,8 @@
     "year": "",
     "doi": "",
     "pmid": "",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": []
   },
   {
     "acronym": "TRISCEND II",
@@ -613,14 +602,14 @@
       {
         "label": "Clinical Characteristics and Outcomes of",
         "citation": "Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.",
-        "doi": "10.1016/j.jcin.2025.06.002",
+        "doi": "10.1016/j.jscai.2026.104385",
         "pmid": "42111092"
       }
     ]
   },
   {
     "acronym": "LuX-Valve",
-    "full_name": "LuX-Valve / LuX-Valve Plus Transcatheter Tricuspid Replacement Program",
+    "full_name": "TRAVEL: LuX-Valve Transcatheter Tricuspid Replacement",
     "nct": "NCT04436653",
     "category": "Tricuspid Transcatheter Replacement (TTVR)",
     "tags": [
@@ -628,30 +617,32 @@
       "TTVR",
       "Frontier"
     ],
-    "status": "Published",
+    "status": "published",
     "signal": "descriptive",
     "practice_changing": false,
     "landmark": false,
     "evidence_stars": 0,
-    "quick_summary": "A non-radial-force tricuspid replacement anchored to the interventricular septum; early (mainly Chinese) experience shows high TR elimination, with transfemoral (LuX-Valve Plus) iterations advancing.",
-    "takeaway": "A distinct TTVR design worth tracking as it moves toward transfemoral delivery and wider study.",
+    "quick_summary": "In 126 high-risk patients with severe TR, transatrial LuX-Valve replacement reduced TR to mild or less in 95.2% at 1 year; this was a single-arm study.",
+    "takeaway": "Promising 1-year TR reduction in a nonrandomized, transatrial cohort.",
     "device": "Jenscare LuX-Valve / LuX-Valve Plus",
     "intervention": "Transcatheter tricuspid replacement",
     "comparator": "None (single-arm)",
     "population": "Severe symptomatic TR, high surgical risk",
     "risk_group": "High surgical risk",
-    "sample_size": "not fully extracted",
+    "sample_size": "126 treated (150 planned)",
     "enrollment": "2020-2021",
-    "follow_up": "ongoing",
+    "follow_up": "1 year",
     "trial_type": "Single-arm / early studies",
     "valve": "Tricuspid",
     "disease": "Tricuspid regurgitation",
     "procedure": "Transcatheter tricuspid replacement",
     "inclusion": [],
-    "primary_endpoint": "Safety and TR reduction.",
+    "primary_endpoint": "All-cause death and heart-failure hospitalization at 1 year.",
     "secondary_endpoints": [],
     "key_results": [
-      "High TR elimination in early series; broader/Western data still limited"
+      "Procedural success was 98.4%.",
+      "At 1 year, all-cause mortality was 10.3% and heart-failure hospitalization was 4.0%.",
+      "TR was mild or less in 95.2% of patients at 1 year."
     ],
     "why_matters": "Septal-anchoring design avoids radial force on the annulus.",
     "pearls": [
@@ -671,18 +662,18 @@
     "year": "2025",
     "doi": "10.1016/j.jcin.2024.12.030",
     "pmid": "40208152",
-    "caveat": "",
+    "caveat": "The linked TRAVEL paper reports the transatrial LuX-Valve. LuX-Valve Plus is a separate, later delivery program.",
     "key_papers": [
       {
         "label": "Echocardiographic outcomes",
         "citation": "Huang L, et al. Frontiers in cardiovascular medicine 2024;11:1417757.",
-        "doi": "10.3390/jcdd9120435",
+        "doi": "10.3389/fcvm.2024.1417757",
         "pmid": "39161660"
       },
       {
         "label": "1-year",
         "citation": "Stolz L, et al. European journal of heart failure 2025;27(11):2644-2648.",
-        "doi": "10.1002/ejhf.3529",
+        "doi": "10.1002/ejhf.70010",
         "pmid": "40879890"
       }
     ]
@@ -842,7 +833,8 @@
     "year": "2017",
     "doi": "10.1016/j.jacc.2017.01.054",
     "pmid": "28385308",
-    "caveat": "Early device; limited ongoing clinical development."
+    "caveat": "Early device; limited ongoing clinical development.",
+    "key_papers": []
   },
   {
     "acronym": "TRICUS EURO",
@@ -912,14 +904,7 @@
     "doi": "10.1016/j.jcin.2022.05.022",
     "pmid": "35583363",
     "caveat": "",
-    "key_papers": [
-      {
-        "label": "1-year outcomes",
-        "citation": "Bicaval TricValve implantation in patients with severe symptomatic tricuspid regurgitation: 1-year outcomes.",
-        "doi": "10.1016/j.jcin.2023.10.043",
-        "pmid": "38069986"
-      }
-    ]
+    "key_papers": []
   },
   {
     "acronym": "HOVER",
@@ -933,60 +918,62 @@
       "Off-label",
       "Single-arm"
     ],
-    "status": "published",
+    "status": "results_posted",
     "signal": "descriptive",
     "practice_changing": false,
     "landmark": false,
     "evidence_stars": 0,
-    "quick_summary": "A feasibility study implanting a balloon-expandable SAPIEN valve in the inferior vena cava to palliate right-heart congestion from severe TR in inoperable patients.",
-    "takeaway": "Proof-of-concept that an off-the-shelf valve in the IVC can palliate TR-related congestion.",
+    "quick_summary": "The HOVER registry posted results for only 7 of 15 enrolled patients; procedural success was 3/7, and individual patient success was 2/7 at 30 days.",
+    "takeaway": "Small, incomplete registry results do not establish a reliable symptom benefit.",
     "device": "Edwards SAPIEN (in IVC)",
     "intervention": "Single-site caval valve implantation",
     "comparator": "None (single-arm)",
     "population": "Severe TR, inoperable / very high risk",
     "risk_group": "Prohibitive surgical risk",
-    "sample_size": "15 (planned)",
+    "sample_size": "15 enrolled; 7 in posted outcome analysis",
     "enrollment": "2015–2019",
-    "follow_up": "30 days, 6 months",
+    "follow_up": "30 days; registry also lists longer follow-up",
     "trial_type": "Prospective single-arm feasibility",
     "valve": "Tricuspid",
     "disease": "Severe tricuspid regurgitation",
     "procedure": "Single-site caval valve implantation (IVC)",
     "inclusion": [],
-    "primary_endpoint": "30-day safety; 6-month symptom palliation.",
+    "primary_endpoint": "Procedural and individual patient success at 30 days (registry-posted outcomes).",
     "secondary_endpoints": [
       "NYHA class",
       "Congestion symptoms"
     ],
     "key_results": [
-      "Feasible IVC implantation with symptom palliation in selected patients"
+      "15 participants started; 7 completed the registry's overall-study flow.",
+      "30-day procedural success: 42.86% (3 of 7 analyzed).",
+      "30-day individual patient success: 2 of 7 analyzed."
     ],
-    "why_matters": "Early demonstration of single-site caval valve implantation.",
+    "why_matters": "An early feasibility attempt at single-site caval valve implantation; posted registry outcomes show important uncertainty.",
     "pearls": [
       "Palliative — addresses congestion, not the tricuspid valve."
     ],
     "limitations": [
-      "Very small",
-      "Off-label device use",
-      "Palliative intent"
+      "Only 7 participants contributed to the posted outcome analysis",
+      "Single-arm, off-label intervention",
+      "No peer-reviewed results paper linked"
     ],
     "guideline_acc": "Historical proof-of-concept.",
     "guideline_esc": "Early data.",
     "fda_impact": "Off-label.",
     "timeline": [
-      "Enrollment: 2015–2019"
+      "ClinicalTrials.gov results posted; last update 2025-06-18"
     ],
     "authors": "",
     "journal": "",
     "year": "",
     "doi": "",
     "pmid": "",
-    "caveat": "Off-label use of a commercially available valve; very small feasibility study.",
+    "caveat": "Results are from ClinicalTrials.gov, not a peer-reviewed outcomes paper; interpret the small denominator carefully.",
     "key_papers": [
       {
         "label": "Trial design and rationale",
         "citation": "Study design and rationale of heterotopic implantation of the Edwards-Sapien XT valve in the inferior vena cava for severe tricuspid regurgitation.",
-        "doi": "",
+        "doi": "10.1002/ccd.26530",
         "pmid": "27122473"
       }
     ]
@@ -1047,7 +1034,8 @@
     "year": "",
     "doi": "",
     "pmid": "",
-    "caveat": ""
+    "caveat": "",
+    "key_papers": []
   },
   {
     "acronym": "MitraClip in TR (early)",
@@ -1258,7 +1246,7 @@
   },
   {
     "acronym": "EuroTR Registry",
-    "full_name": "European Real-World Registry of Transcatheter Leaflet Repair for Tricuspid Regurgitation (EuroTR)",
+    "full_name": "European Registry of Transcatheter Repair for Tricuspid Regurgitation (EuroTR)",
     "nct": "NCT06307262",
     "category": "Tricuspid TEER",
     "tags": [
@@ -1273,34 +1261,35 @@
     "practice_changing": false,
     "landmark": false,
     "evidence_stars": 3,
-    "quick_summary": "A large European real-world registry of tricuspid leaflet-repair (TEER) with both MitraClip and PASCAL, confirming durable TR reduction and symptom benefit across routine practice, and identifying residual TR as a key prognostic marker.",
-    "takeaway": "The biggest real-world European T-TEER dataset — generalizes the trial findings across both devices.",
-    "device": "MitraClip and PASCAL",
+    "quick_summary": "A European registry analysis of 1,286 patients found that tricuspid TEER reduced TR in most patients; residual TR of at least 3+ was linked to worse 2-year survival.",
+    "takeaway": "Residual severe TR after TEER identifies a higher-risk group; this observational registry cannot establish a survival benefit from treatment.",
+    "device": "MitraClip / TriClip / PASCAL",
     "intervention": "TEER (leaflet repair)",
     "comparator": "Registry",
     "population": "Severe symptomatic TR in routine practice",
     "risk_group": "Mixed / high risk",
-    "sample_size": "large multicenter cohort",
+    "sample_size": "1,286 in the linked residual-TR analysis",
     "enrollment": "2016–2023",
-    "follow_up": "30 days, 1 year",
+    "follow_up": "Up to 2 years",
     "trial_type": "Prospective multicenter registry",
     "valve": "Tricuspid",
     "disease": "Severe tricuspid regurgitation",
     "procedure": "TEER (leaflet repair)",
     "inclusion": [],
-    "primary_endpoint": "Real-world procedural success, TR reduction, and 1-year outcomes.",
+    "primary_endpoint": "Association of residual TR with 2-year all-cause mortality and NYHA class after T-TEER.",
     "secondary_endpoints": [],
     "key_results": [
-      "Durable TR reduction and symptom improvement across both devices",
-      "Residual TR severity independently associated with 1-year outcome"
+      "At discharge, TR was ≤1+ in 42.4%, 2+ in 40.0%, 3+ in 14.9%, and ≥4+ in 2.8%.",
+      "Residual TR ≥3+ was associated with higher 2-year all-cause mortality (adjusted HR 2.06; 95% CI 1.30–3.26).",
+      "This association is observational and does not prove a causal survival benefit of TEER."
     ],
-    "why_matters": "Cross-device generalizability for T-TEER outside the pivotal trials.",
+    "why_matters": "Helps interpret procedural success and residual TR after tricuspid TEER in routine care.",
     "pearls": [
       "Includes both leaflet-repair platforms, unlike the device-specific pivotal trials."
     ],
     "limitations": [
-      "Non-randomized registry",
-      "Device-heterogeneous"
+      "Observational registry",
+      "Residual-TR analysis rather than randomized treatment comparison"
     ],
     "guideline_acc": "Supportive real-world evidence.",
     "guideline_esc": "Generalizability data.",
@@ -1309,11 +1298,11 @@
       "30-day: JACC Cardiovasc Interv 2022",
       "1-year: JACC 2025"
     ],
-    "authors": "Wild MG, Stolz L, Rosch S, et al.",
-    "journal": "Journal of the American College of Cardiology",
-    "year": "2025",
-    "doi": "10.1016/j.jacc.2024.10.068",
-    "pmid": "39466215",
+    "authors": "Stolz L, et al.",
+    "journal": "European Journal of Heart Failure",
+    "year": "2024",
+    "doi": "10.1002/ejhf.3274",
+    "pmid": "38812292",
     "key_papers": [
       {
         "label": "30-day / early experience",
@@ -1328,19 +1317,13 @@
         "pmid": "41235431"
       },
       {
-        "label": "Residual tricuspid regurgitation after tricuspid",
-        "citation": "Stolz L, et al. European journal of heart failure 2024;26(8):1850-1860.",
-        "doi": "10.1002/ejhf.3274",
-        "pmid": "38812292"
-      },
-      {
         "label": "Prognostic Value of NTproBNP in",
         "citation": "von Stein J, et al. JACC. Cardiovascular interventions 2026;19(10):1225-1239.",
         "doi": "10.1016/j.jcin.2026.02.013",
         "pmid": "41777168"
       }
     ],
-    "caveat": ""
+    "caveat": "Observational EuroTR registry; the previous linked JACC paper reported the separate PASTE registry."
   },
   {
     "acronym": "TVT Registry — TTVR",
@@ -1411,5 +1394,71 @@
     "pmid": "41973411",
     "key_papers": [],
     "caveat": "Post-approval real-world registry (30-day outcomes); retrospective, no comparator."
+  },
+  {
+    "acronym": "PASTE",
+    "full_name": "PASCAL for Tricuspid Regurgitation — a European Registry",
+    "nct": "NCT05328284",
+    "category": "Tricuspid TEER",
+    "tags": [
+      "PASCAL",
+      "Registry",
+      "Real-world"
+    ],
+    "status": "published",
+    "signal": "descriptive",
+    "practice_changing": false,
+    "landmark": false,
+    "evidence_stars": 0,
+    "quick_summary": "In a 1,059-patient European PASCAL registry, TR was reduced to moderate or less in 83% at 1 year, with symptom improvement.",
+    "takeaway": "Large real-world PASCAL experience supports durable TR reduction, while the single-arm design limits causal conclusions.",
+    "device": "PASCAL / PASCAL Precision",
+    "intervention": "Tricuspid transcatheter edge-to-edge repair",
+    "comparator": "None (observational registry)",
+    "population": "High-risk patients with severe or greater TR treated across 16 European centers",
+    "risk_group": "High risk",
+    "sample_size": "1,059 in published analysis",
+    "enrollment": "2019–2023",
+    "follow_up": "1 year",
+    "trial_type": "Multicenter observational registry",
+    "valve": "Tricuspid",
+    "disease": "Tricuspid regurgitation",
+    "procedure": "TEER",
+    "inclusion": [
+      "Severe symptomatic TR treated with PASCAL"
+    ],
+    "primary_endpoint": "Safety, TR reduction and clinical outcomes after PASCAL T-TEER.",
+    "secondary_endpoints": [
+      "NYHA functional class",
+      "Clinical success",
+      "Device-generation comparison"
+    ],
+    "key_results": [
+      "Intraprocedural success was 85%; TR was ≤moderate in 87% after the procedure.",
+      "At 1 year, 83% had TR ≤moderate and 66% were NYHA class I/II versus 17% at baseline.",
+      "Observational comparison suggested greater trace/mild TR reduction with PASCAL Precision, but was not randomized."
+    ],
+    "why_matters": "Adds large real-world PASCAL data distinct from the EuroTR mixed-device registry.",
+    "pearls": [
+      "Coaptation gap and leaflet tenting were associated with residual TR."
+    ],
+    "limitations": [
+      "Single-arm observational design",
+      "Device-generation comparison was nonrandomized"
+    ],
+    "guideline_acc": "Supportive observational evidence.",
+    "guideline_esc": "Supportive observational evidence.",
+    "fda_impact": "Not a randomized pivotal trial.",
+    "timeline": [
+      "Enrollment: 2019–2023",
+      "Published: JACC 2025"
+    ],
+    "authors": "Wild MG, et al.",
+    "journal": "Journal of the American College of Cardiology",
+    "year": "2025",
+    "doi": "10.1016/j.jacc.2024.10.068",
+    "pmid": "39466215",
+    "key_papers": [],
+    "caveat": "PASTE and EuroTR are separate registries with different NCT identifiers."
   }
 ]

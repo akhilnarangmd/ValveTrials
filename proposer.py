@@ -241,11 +241,22 @@ def route(cand: Candidate, trials: list) -> dict:
     Returns {action, parent_acronym, reason}. action in:
       FILL_PRIMARY | SUBANALYSIS | NEW_TRIAL | DUPLICATE | REVIEW
     """
-    by_nct = {t["nct"].upper(): t for t in trials if t.get("nct")}
+    by_nct = {}
+    for t in trials:
+        if t.get("nct"):
+            by_nct.setdefault(t["nct"].upper(), []).append(t)
+    if cand.pmid and any(cand.pmid == t.get("pmid") or
+                         cand.pmid in {p.get("pmid") for p in t.get("key_papers", [])}
+                         for t in trials):
+        return {"action": "DUPLICATE", "parent": None, "reason": "PMID already stored"}
     for nct in cand.nct_accessions:
-        parent = by_nct.get(nct.upper())
-        if not parent:
+        parents = by_nct.get(nct.upper(), [])
+        if not parents:
             continue
+        if len(parents) > 1:
+            return {"action": "REVIEW", "parent": None,
+                    "reason": "NCT belongs to multiple cohorts; select the correct trial manually"}
+        parent = parents[0]
         acr = parent.get("acronym", "")
         if cand.pmid and cand.pmid == parent.get("pmid"):
             return {"action": "DUPLICATE", "parent": acr, "reason": "already the trial's primary"}
@@ -260,10 +271,8 @@ def route(cand: Candidate, trials: list) -> dict:
     # No NCT match in the database.
     kind = classify_kind(cand, "")
     if kind == "primary" and cand.nct_accessions:
-        return {"action": "NEW_TRIAL", "parent": None,
-                "reason": "primary report; its NCT is not yet in the database"}
-    if kind == "primary":
-        return {"action": "NEW_TRIAL", "parent": None, "reason": "reads as a primary report"}
+        return {"action": "REVIEW", "parent": None,
+                "reason": "new registered trial candidate; verify registry and cohort before adding"}
     return {"action": "REVIEW", "parent": None,
             "reason": "no NCT match and not a clear primary - needs a human decision"}
 
@@ -420,14 +429,14 @@ def _selftest() -> int:
                   pubtypes=["randomized controlled trial"], nct_accessions=["NCT04097145"]),
         "FILL_PRIMARY", "CLASP II TR",
     ))
-    # C) NCT not in DB, reads as a primary -> NEW_TRIAL
+    # C) NCT not in DB needs a registry/cohort review before adding a card.
     tests.append((
         "a brand-new device trial",
         Candidate(pmid="55555552", doi="10.1000/newdevice",
                   title="First-in-Human Transcatheter Tricuspid Replacement With the NovaValve System",
                   authors=["Smith A", "Doe B"], journal="JACC Cardiovasc Interv", year="2026",
                   pubtypes=["clinical trial"], nct_accessions=["NCT09999999"]),
-        "NEW_TRIAL", None,
+        "REVIEW", None,
     ))
     # D) already attached -> DUPLICATE
     trials[0]["key_papers"].append({"pmid": "40159089"})
@@ -436,10 +445,18 @@ def _selftest() -> int:
         Candidate(pmid="40159089", title="Two-Year Outcomes: TRILUMINATE Pivotal",
                   authors=["Kar S"], journal="Circulation", year="2025",
                   pubtypes=["multicenter study"], nct_accessions=["NCT03904147"]),
-        "DUPLICATE", "TRILUMINATE Pivotal",
+        "DUPLICATE", None,
     ))
+    # E) One registration can hold multiple named cohorts; never choose the last one.
+    shared = trials + [{"acronym": "TRILUMINATE Registry", "nct": "NCT03904147",
+                        "pmid": "", "doi": "", "key_papers": []}]
+    ambiguous = Candidate(pmid="55555553", title="Tricuspid Valve Outcomes",
+                          nct_accessions=["NCT03904147"])
+    shared_route = route(ambiguous, shared)
+    shared_passed = shared_route["action"] == "REVIEW"
+    print(f"[{'PASS' if shared_passed else 'FAIL'}] shared NCT held for review")
 
-    ok = 0
+    ok = int(shared_passed)
     for name, cand, exp_action, exp_parent in tests:
         d = route(cand, trials)
         passed = d["action"] == exp_action and (d.get("parent") or None) == (exp_parent or None)
@@ -476,8 +493,8 @@ def _selftest() -> int:
         _os.environ["ANTHROPIC_API_KEY"] = had
 
     total = ok + extra_ok
-    print(f"{total}/{len(tests) + 2} cases passed")
-    return 0 if total == len(tests) + 2 else 1
+    print(f"{total}/{len(tests) + 3} cases passed")
+    return 0 if total == len(tests) + 3 else 1
 
 
 if __name__ == "__main__":

@@ -12,12 +12,13 @@ from urllib.parse import quote
 from typing import List, Tuple
 from model import Trial, CATEGORIES
 from data import TRIALS
-EXCLUDE_SIGNALS = {"negative"}
+# A negative result is clinically important evidence and must remain discoverable.
+EXCLUDE_SIGNALS = set()
 # --- Valves (home tiles + pages) --------------------------------------------
 VALVES = [
-    ("aortic", "Aortic", "#146C7A", 3, ""),
-    ("mitral", "Mitral", "#B23A5B", 2, ""),
-    ("tricuspid", "Tricuspid", "#6D5AB6", 3, ""),
+    ("aortic", "Aortic", "#146C7A", 3, "Stenosis, regurgitation and platform comparisons"),
+    ("mitral", "Mitral", "#B23A5B", 2, "Repair, replacement and pivotal MR evidence"),
+    ("tricuspid", "Tricuspid", "#6D5AB6", 3, "TEER, replacement and emerging approaches"),
 ]
 VALVE_LABEL = {k: lbl for k, lbl, _, _, _ in VALVES}
 VALVE_HUE = {k: h for k, _, h, _, _ in VALVES}
@@ -64,8 +65,10 @@ VALVE_CATEGORIES = {
 }
 STATUS_META = {
     "published":  ("🟢", "Published"),
+    "results_posted": ("📊", "Registry results"),
     "ongoing":    ("🔵", "Ongoing"),
     "terminated": ("⛔", "Terminated"),
+    "withdrawn": ("⛔", "Withdrawn"),
 }
 # --- Feedback form -----------------------------------------------------------
 # Static sites can't send email themselves; FormSubmit.co forwards submissions to
@@ -117,6 +120,8 @@ def paper_links(t: Trial) -> List[Tuple[str, str, str]]:
     if t.status == "published" and not t.doi and not t.pmid:
         out.append(("Find on PubMed",
                     f"https://pubmed.ncbi.nlm.nih.gov/?term={quote(_pubmed_query(t))}", "search"))
+    if t.status == "results_posted" and t.nct:
+        out.append(("View posted results", link_nct(t.nct) + "?tab=results", "primary"))
     if t.nct:
         label = "ISRCTN" if t.nct.upper().startswith("ISRCTN") else "ClinicalTrials.gov"
         out.append((label, link_nct(t.nct), "registry"))
@@ -128,7 +133,7 @@ def bullets(items: List[str]) -> str:
     return "<ul class='bul'>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
 def result_bullets(items: List[str]) -> str:
     if not items:
-        return "<p class='empty'>No results yet — trial ongoing.</p>"
+        return "<p class='empty'>No results recorded yet.</p>"
     return "<ul class='results'>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
 def status_badge(t: Trial) -> str:
     icon, label = STATUS_META.get(t.status, ("•", t.status.title()))
@@ -138,7 +143,8 @@ def row_dates(t: Trial) -> str:
     if t.enrollment:
         bits.append(f"<span class='d-enr'>Enrolled {e(t.enrollment)}</span>")
     if t.year:
-        bits.append(f"<span class='d-pub'>Published {e(t.year)}</span>")
+        prefix = "Results posted" if t.status == "results_posted" else "Published"
+        bits.append(f"<span class='d-pub'>{prefix} {e(t.year)}</span>")
     elif t.status == "ongoing":
         bits.append("<span class='d-pub'>Not yet published</span>")
     return "<span class='dates'>" + "".join(bits) + "</span>"
@@ -249,8 +255,10 @@ def render_row(t: Trial) -> str:
     nfu = len(t.key_papers or [])
     fu_badge = (f"<span class='badge fu' title='Has {nfu} follow-up / subanalysis paper(s)'>"
                 f"{nfu} follow-up{'s' if nfu != 1 else ''}</span>") if nfu else ""
+    signal_badge = (f"<span class='badge signal-{e(t.signal)}'>{e(t.signal.title())} result</span>"
+                    if t.signal in {"positive", "neutral", "negative"} else "")
     return f"""
-<details class="row" style="--hue:{hue}" data-cat="{e(t.category)}"
+<details class="row" id="{e(t.slug)}" style="--hue:{hue}" data-cat="{e(t.category)}"
          data-status="{e(t.status)}" data-signal="{e(t.signal)}"
          data-pc="{'1' if t.practice_changing else '0'}" data-fu="{'1' if nfu else '0'}"
          data-search="{e(haystack)}">
@@ -261,18 +269,18 @@ def render_row(t: Trial) -> str:
       <span class="row-name">{e(t.full_name)}</span>
     </span>
     <span class="row-take">{e(t.takeaway or t.quick_summary)}</span>
-    <span class="row-meta">{status_badge(t)}{fu_badge}{row_dates(t)}</span>
+    <span class="row-meta">{status_badge(t)}{signal_badge}{fu_badge}{row_dates(t)}</span>
   </summary>
   {detail_body(t)}
 </details>
 """.strip()
 def category_chips(trials: List[Trial]) -> str:
     present = [c for c in CATEGORIES if any(t.category == c for t in trials)]
-    out = ["<button class='fchip active' data-filter='all'>All</button>"]
+    out = ["<button class='fchip active' data-filter='all' aria-pressed='true'>All</button>"]
     for c in present:
         hue = CATEGORY_HUE.get(c, "#4A5D75")
         n = sum(1 for t in trials if t.category == c)
-        out.append(f"<button class='fchip' data-filter='cat' data-value=\"{e(c)}\" "
+        out.append(f"<button class='fchip' data-filter='cat' data-value=\"{e(c)}\" aria-pressed='false' "
                    f"style='--hue:{hue}'>{e(c)} <span class='fn'>{n}</span></button>")
     return "".join(out)
 def render_list(trials: List[Trial]) -> str:
@@ -314,7 +322,7 @@ def site_header(active: str) -> str:
     return f"""
 <header class="site">
   <a class="brand" href="index.html">Valve<span>Trials</span>.org</a>
-  <nav class="site-nav">{nav}</nav>
+  <nav class="site-nav" aria-label="Main navigation">{nav}<a href='editor.html' class='{'active' if active == 'editor' else ''}'>Editor</a></nav>
 </header>""".strip()
 def feedback_form() -> str:
     options_html = "".join(f"<option>{e(o)}</option>" for o in FEEDBACK_OPTIONS)
@@ -378,13 +386,16 @@ def build_home() -> str:
         n = len(ts)
         if n:
             pub = sum(1 for t in ts if t.status == "published")
+            posted = sum(1 for t in ts if t.status == "results_posted")
             ong = sum(1 for t in ts if t.status == "ongoing")
-            term = sum(1 for t in ts if t.status == "terminated")
+            term = sum(1 for t in ts if t.status in {"terminated", "withdrawn"})
             seg = [f"{pub} published"]
+            if posted:
+                seg.append(f"{posted} registry results")
             if ong:
                 seg.append(f"{ong} ongoing")
             if term:
-                seg.append(f"{term} terminated")
+                seg.append(f"{term} stopped/withdrawn")
             analyses = sum(len(getattr(t, "key_papers", []) or []) for t in ts)
             pill = f"<span class='pill'>{' · '.join(seg)}</span>"
             an_txt = f" · {analyses} analyses" if analyses else ""
@@ -402,8 +413,8 @@ def build_home() -> str:
     body = f"""
 <main class="home">
   <p class="kicker">Cardiology · Valvular Heart Disease · Trial Reference</p>
-  <h1 class="home-h1">Every landmark valve trial, in one place.</h1>
-  <p class="home-lede">Choose a valve to browse its trials — grouped by category, ordered oldest to newest.</p>
+  <h1 class="home-h1">Valve trial evidence, clearly organized.</h1>
+  <p class="home-lede">Browse selected major trials by valve, category and result status. Open each card for its source papers and registry.</p>
   <div class="valve-cards">{''.join(cards)}</div>
 </main>
 """
@@ -414,9 +425,9 @@ def build_valve_list_page(valve_key: str) -> str:
     trials = sorted(trials_for(valve_key), key=sort_year)
     n = len(trials)
     n_pub = sum(1 for t in trials if t.status == "published")
+    n_posted = sum(1 for t in trials if t.status == "results_posted")
     n_ongoing = sum(1 for t in trials if t.status == "ongoing")
-    n_excluded = sum(1 for t in TRIALS
-                     if (t.valve or "aortic").lower() == lbl.lower() and t.signal in EXCLUDE_SIGNALS)
+    n_terminated = sum(1 for t in trials if t.status in {"terminated", "withdrawn"})
     n_analyses = sum(len(t.key_papers or []) for t in trials)
     body = f"""
 <header class="mast">
@@ -424,10 +435,10 @@ def build_valve_list_page(valve_key: str) -> str:
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
      collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
-  <p class="meta">{n} trials · {n_pub} published · {n_ongoing} ongoing · {n_analyses} linked analyses · {n_excluded} negative-result trials excluded · antiplatelet/anticoagulant trials excluded by design</p>
+  <p class="meta">{n} trials · {n_pub} published · {n_posted} registry results · {n_ongoing} ongoing · {n_terminated} stopped/withdrawn · {n_analyses} linked analyses</p>
   <div class="legend">
-    <span>🟢 Published</span><span>🔵 Ongoing</span>
-    <span>Sorted oldest → newest within each category</span><span>⚠ Caveat inside</span>
+    <span>All outcomes included, including negative trials</span>
+    <span>Oldest → newest within each category</span><span>⚠ Caveat inside</span>
   </div>
 </header>
 <div class="controls">
@@ -435,13 +446,12 @@ def build_valve_list_page(valve_key: str) -> str:
     <div class="searchbar">
       <input id="search" type="search" placeholder="Search trial, device, NCT, population…" aria-label="Search trials">
       <div class="seg" data-group="status">
-        <button class="active" data-value="all">All</button>
-        <button data-value="published">Published</button>
-        <button data-value="ongoing">Ongoing</button>
-      </div>
-      <div class="seg" data-group="pc">
-        <button class="active" data-value="0">All</button>
-
+        <button class="active" data-value="all" aria-pressed="true">All</button>
+        <button data-value="published" aria-pressed="false">Published</button>
+        <button data-value="results_posted" aria-pressed="false">Results posted</button>
+        <button data-value="ongoing" aria-pressed="false">Ongoing</button>
+        <button data-value="terminated" aria-pressed="false">Terminated</button>
+        <button data-value="withdrawn" aria-pressed="false">Withdrawn</button>
       </div>
       <div class="actions">
         <button id="expandAll">Expand all</button>
@@ -449,7 +459,7 @@ def build_valve_list_page(valve_key: str) -> str:
       </div>
     </div>
     <div class="fchips">{category_chips(trials)}</div>
-    <div class="countline"><span id="count">{n} / {n} trials shown</span></div>
+    <div class="countline"><span id="count" role="status" aria-live="polite">{n} / {n} trials shown</span><button id="clearFilters" type="button">Clear filters</button></div>
   </div>
 </div>
 <main class="list">
@@ -542,7 +552,7 @@ EDITOR_FIELDS = [
 ]
 SELECT_OPTIONS = {
     "valve": ["Aortic", "Mitral", "Tricuspid"],
-    "status": ["published", "ongoing", "terminated"],
+    "status": ["published", "results_posted", "ongoing", "terminated", "withdrawn"],
     "signal": ["positive", "neutral", "negative", "descriptive", "pending"],
     "category": [],  # populated dynamically from valve
 }
@@ -571,7 +581,7 @@ def _editor_field_html(key: str, label: str, kind: str) -> str:
 def build_editor_page() -> str:
     import json as _json
     fields_html = "".join(_editor_field_html(k, lbl, kind) for k, lbl, kind in EDITOR_FIELDS)
-    trials_json = _json.dumps([t.to_dict() for t in TRIALS], ensure_ascii=False)
+    trials_json = _json.dumps([t.to_dict() for t in TRIALS], ensure_ascii=False).replace("</", "<\\/")
     cats_by_valve = _json.dumps(VALVE_CATEGORIES, ensure_ascii=False)
     text_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "text"]
     ta_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "textarea"]
@@ -588,10 +598,10 @@ def build_editor_page() -> str:
       repository and the site rebuilds automatically (see the README).</p>
     <div class="ed-actions">
       <button id="btnNew" class="ed-btn primary">＋ New trial</button>
-      <button id="btnExport" class="ed-btn">⬇ Export trials.json</button>
+      <button id="btnExport" class="ed-btn">⬇ Export data files</button>
       <button id="btnCopyPy" class="ed-btn">⧉ Copy this trial as Python</button>
       <span id="edCount" class="ed-count"></span>
-      <span id="edDirty" class="ed-dirty" hidden>● unsaved changes (not yet exported)</span>
+      <span id="edDirty" class="ed-dirty" hidden>● unsaved form changes</span>
     </div>
   </div>
   <div class="ed-cols">
@@ -613,8 +623,12 @@ def build_editor_page() -> str:
   <dialog id="exportDlg" class="ed-dialog">
     <form method="dialog"><button class="ed-x" aria-label="Close">✕</button></form>
     <h3>Export</h3>
-    <p>Your trials were downloaded as <span class="mono">trials.json</span>. Commit that file to the
-       repo root; the GitHub Action rebuilds and republishes the site. You can also copy the JSON below.</p>
+    <p>Download both files and replace both files in the repository. Aortic and mitral trials live in
+       <span class="mono">trials.json</span>; tricuspid trials live in
+       <span class="mono">trials_tricuspid.json</span>. Keeping the files separate prevents duplicate cards.</p>
+    <div class="ed-dialog-actions"><button id="btnExportMain" class="ed-btn primary" type="button">⬇ trials.json</button>
+      <button id="btnExportTri" class="ed-btn primary" type="button">⬇ trials_tricuspid.json</button></div>
+    <p id="exportLabel" class="mono"></p>
     <textarea id="exportText" rows="12" readonly></textarea>
     <div class="ed-dialog-actions"><button id="btnCopyJson" class="ed-btn">⧉ Copy JSON</button></div>
   </dialog>
@@ -649,13 +663,14 @@ function renderList(){{
     const v = t.valve || 'Aortic';
     (groups[v] = groups[v] || []).push([t,i]);
   }});
+  const esc = s => String(s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}})[c]);
   let html='';
   ['Aortic','Mitral','Tricuspid'].forEach(v=>{{
     if(!groups[v]) return;
     html += `<div class="ed-group">${{v}} <span>${{groups[v].length}}</span></div>`;
     groups[v].forEach(([t,i])=>{{
       html += `<button class="ed-item ${{i===editIndex?'active':''}}" data-i="${{i}}">
-        <b>${{t.acronym||'(no acronym)'}}</b><span>${{t.category||''}}</span></button>`;
+        <b>${{esc(t.acronym||'(no acronym)')}}</b><span>${{esc(t.category||'')}}</span></button>`;
     }});
   }});
   listEl.innerHTML = html || '<p class="ed-empty">No matches.</p>';
@@ -685,7 +700,6 @@ function readForm(){{
   o.status = $('#f_status').value;
   o.signal = $('#f_signal').value;
   o.category = $('#f_category').value;
-  o.evidence_stars = 0;
   return o;
 }}
 function loadTrial(i){{
@@ -709,8 +723,12 @@ function newTrial(){{
 function apply(){{
   const o = readForm();
   if(!o.acronym){{ alert('Acronym is required.'); return; }}
+  if(!o.full_name || !o.category){{ alert('Full name and category are required.'); return; }}
+  if(TRIALS.some((t,i)=>i!==editIndex && t.acronym.toLowerCase()===o.acronym.toLowerCase())){{
+    alert('Another trial already uses that acronym.'); return;
+  }}
   if(editIndex === -1){{ TRIALS.push(o); editIndex = TRIALS.length-1; }}
-  else {{ TRIALS[editIndex] = o; }}
+  else {{ TRIALS[editIndex] = {{...TRIALS[editIndex], ...o}}; }}
   $('#edFormTitle').textContent = 'Editing: ' + o.acronym;
   $('#btnDelete').hidden = false;
   markDirty(false); setCount(); renderList();
@@ -728,11 +746,17 @@ function download(name, text){{
   URL.revokeObjectURL(url);
 }}
 function exportJson(){{
-  const text = JSON.stringify(TRIALS, null, 2);
-  download('trials.json', text);
-  $('#exportText').value = text;
+  if(dirty){{ alert('Save the current trial to the list before exporting.'); return; }}
+  $('#exportText').value = '';
+  $('#exportLabel').textContent = 'Choose a file to download.';
   $('#exportDlg').showModal();
-  markDirty(false);
+}}
+function exportFile(name){{
+  const selected = TRIALS.filter(t => name==='trials_tricuspid.json' ? t.valve==='Tricuspid' : t.valve!=='Tricuspid');
+  const text = JSON.stringify(selected, null, 2) + '\\n';
+  download(name, text);
+  $('#exportLabel').textContent = name + ' · ' + selected.length + ' trials';
+  $('#exportText').value = text;
 }}
 function pyStr(s){{ return '"' + String(s).replace(/\\\\/g,'\\\\\\\\').replace(/"/g,'\\\\"') + '"'; }}
 function toPython(o){{
@@ -758,6 +782,8 @@ $('#btnNew').addEventListener('click', newTrial);
 $('#btnApply').addEventListener('click', apply);
 $('#btnDelete').addEventListener('click', del);
 $('#btnExport').addEventListener('click', exportJson);
+$('#btnExportMain').addEventListener('click',()=>exportFile('trials.json'));
+$('#btnExportTri').addEventListener('click',()=>exportFile('trials_tricuspid.json'));
 $('#btnCopyPy').addEventListener('click', ()=>{{
   navigator.clipboard.writeText(toPython(readForm())).then(()=>alert('Python Trial(...) block copied.'));
 }});
@@ -858,8 +884,10 @@ details.row[open] > summary .chev{transform:rotate(45deg)}
 .row-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;text-align:right}
 .badge{font-size:10.5px;padding:3px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap;font-weight:500}
 .status-published{background:#e6f4ec;color:#1c6b45;border-color:#c7e6d5}
+.status-results_posted{background:#F3EDEC;color:#7A4339;border-color:#E7D8D3}
 .status-ongoing{background:#e7f0fa;color:#1f5c92;border-color:#cbe0f3}
 .status-terminated{background:#f4e7e6;color:#9c3a2f;border-color:#eccdc9}
+.status-withdrawn{background:#f4e7e6;color:#9c3a2f;border-color:#eccdc9}
 .dates{display:flex;flex-direction:column;align-items:flex-end;gap:1px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);line-height:1.35}
 .dates .d-pub{color:#33474a}
 .body-inner{padding:2px 18px 20px;border-top:1px solid var(--line)}
@@ -907,8 +935,8 @@ h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11p
 .overview td{padding:6px 0;border-bottom:1px solid #edf2f1;vertical-align:top}
 .bul{margin:0;padding-left:18px}.bul li{margin:3px 0}
 .results{list-style:none;margin:0;padding:0}
-.results li{position:relative;padding-left:22px;margin:6px 0}
-.results li::before{content:"✔";position:absolute;left:0;color:var(--hue);font-size:12px;top:2px}
+.results li{position:relative;padding-left:19px;margin:6px 0}
+.results li::before{content:"•";position:absolute;left:1px;color:var(--hue);font-size:18px;top:-3px}
 .empty{color:var(--muted);font-style:italic;margin:0}
 .d-side{border-left:1px solid var(--line);padding-left:22px}
 .qf{margin-bottom:18px}
@@ -1006,6 +1034,95 @@ footer.pagefoot{max-width:1080px;margin:0 auto;padding:22px 24px;border-top:1px 
   .paper-cite{margin-left:0;width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* 2026 refresh: stronger hierarchy, larger targets and compact mobile controls. */
+:root{--ink:#11282F;--page:#F3F5F2;--line:#D7E1DE;--muted:#526762;--accent:#B83D2F;--r:15px}
+body{background:radial-gradient(circle at 85% 0%,#e5efeb 0,transparent 32rem),var(--page)}
+.site{padding:15px max(24px,calc((100vw - 1180px)/2));box-shadow:0 2px 16px rgba(10,32,37,.09)}
+.brand{font-size:21px}
+.home{max-width:1180px;padding-top:66px}
+.home-h1{font-size:clamp(38px,5.5vw,68px);max-width:19ch;letter-spacing:-.045em}
+.home-lede{font-size:18px;line-height:1.65}
+.vcard{min-height:275px;border-radius:20px;box-shadow:0 4px 20px rgba(14,38,43,.045);gap:13px}
+.vcard .go{margin-top:8px;font-size:14px}
+.mast{max-width:1180px;padding-top:50px;padding-bottom:28px}
+.mast h1{max-width:none;letter-spacing:-.035em}
+.mast .lede{line-height:1.65}
+.controls-inner,.list,.feedback,footer.pagefoot{max-width:1180px}
+.controls{background:rgba(243,245,242,.97)}
+.searchbar input{min-height:44px}
+.seg button,.actions button,.fchip,.plink{min-height:40px}
+.fchip{white-space:nowrap}
+.countline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.countline button{border:0;background:none;color:var(--accent);font:inherit;cursor:pointer;padding:7px 0}
+.countline button:hover{text-decoration:underline}
+.row-name,.row-take,.pc-label,.pc-cite,.overview td,.overview th{overflow-wrap:anywhere}
+.badge.signal-positive{background:#E7F4EC;color:#175C3A;border-color:#C9E6D6}
+.badge.signal-neutral{background:#EDF1F5;color:#44586E;border-color:#D7E0E9}
+.badge.signal-negative{background:#FBECE9;color:#95352A;border-color:#EFCEC9}
+.row-meta{min-width:120px}
+.row-take{max-width:45ch}
+details.row{scroll-margin-top:210px;box-shadow:0 2px 8px rgba(14,38,43,.035)}
+details.row[open]{border-color:#b9ccc6}
+.d-main section{margin-bottom:23px}
+.paperbar{background:#F3F7F5}
+.plink:focus-visible,.fchip:focus-visible,.seg button:focus-visible,.actions button:focus-visible,.countline button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (max-width:820px){
+  .site{padding:13px 18px;gap:11px}
+  .brand{font-size:19px}
+  .site-nav{width:100%;display:flex;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin;padding-bottom:2px}
+  .site-nav a{white-space:nowrap;min-height:40px;display:inline-flex;align-items:center}
+  .home{padding:38px 18px 56px}
+  .home-h1{font-size:clamp(35px,10vw,50px)}
+  .home-lede{font-size:16px;margin-bottom:26px}
+  .valve-cards{gap:12px}
+  .vcard{min-height:0;padding:19px 20px;gap:8px}
+  .vglyph{width:48px;height:48px}
+  .vcard h2{font-size:23px}
+  .vcard p{font-size:13px}
+  .mast{padding:31px 18px 20px}
+  .mast .lede{font-size:14px}
+  .mast .meta{font-size:11px;line-height:1.6}
+  .legend{font-size:11px}
+  .controls{position:static;padding:13px 0 11px;backdrop-filter:none}
+  .controls-inner{gap:9px}
+  .searchbar{padding:0 18px;gap:9px}
+  .searchbar input{flex-basis:100%;min-width:0;width:100%;font-size:16px}
+  .seg{width:100%;display:flex;overflow-x:auto;scrollbar-width:thin}
+  .seg button{flex:1 0 auto;padding:9px 10px;font-size:11px;white-space:nowrap}
+  .actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .actions button{min-width:0}
+  .fchips{padding:2px 18px 7px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scroll-snap-type:x proximity}
+  .fchip{flex:none;scroll-snap-align:start;min-height:39px}
+  .countline{padding:0 18px}
+  .list{padding:0 12px;margin-top:14px}
+  details.group{margin-bottom:17px}
+  summary.grouphead{font-size:12px;line-height:1.3;padding:9px 6px;gap:8px}
+  .grouphead .dot{flex:none}
+  summary.row-summary,details.row > summary{padding:13px 12px;gap:8px;grid-template-columns:13px minmax(0,1fr)}
+  details.row > summary .chev{grid-column:1;grid-row:1 / span 3;align-self:start;margin-top:7px}
+  details.row > summary .row-id,details.row > summary .row-take,details.row > summary .row-meta{grid-column:2}
+  .pc-label{white-space:normal}
+  .row-acr{font-size:16px}
+  .row-name{font-size:11.5px;margin-top:3px}
+  .row-take{font-size:12.5px;line-height:1.45}
+  .row-meta{flex-direction:row;flex-wrap:wrap;align-items:center;min-width:0;gap:5px 6px;text-align:left}
+  .dates{width:100%;flex-direction:row;align-items:center;gap:6px;font-size:10px}
+  .body-inner{padding:2px 13px 17px}
+  .paperbar{padding:10px;gap:8px}
+  .plinks{gap:6px}
+  .plink{display:inline-flex;align-items:center;font-size:11px;padding:7px 9px}
+  .d-grid{gap:11px}
+  .d-main h3{font-size:11.5px}
+  .overview{font-size:12.5px}
+  .overview th{width:36%}
+  .qf dl{grid-template-columns:minmax(90px,auto) 1fr}
+  .feedback,footer.pagefoot{padding-left:18px;padding-right:18px}
+  .ed-actions{align-items:stretch}
+  .ed-actions .ed-btn{min-height:42px}
+  .ed-form{padding:14px}
+  .ed-formhead{align-items:flex-start;flex-direction:column}
+}
+@media (max-width:380px){.seg button{font-size:10px}.badge{font-size:10px;padding:3px 7px}}
 """
 LIST_JS = r"""
 const $ = s => document.querySelector(s);
@@ -1013,18 +1130,18 @@ const rows = Array.from(document.querySelectorAll('details.row'));
 const groups = Array.from(document.querySelectorAll('details.group'));
 const search = $('#search');
 const count = $('#count');
-let state = {text:'',cat:'all',status:'all',pc:false};
+let state = {text:'',cat:'all',status:'all'};
+const norm = value => (value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 function apply(){
   let shown=0;
   rows.forEach(r=>{
-    const okText=!state.text||r.dataset.search.includes(state.text);
+    const okText=!state.text||norm(r.dataset.search).includes(state.text);
     const okCat=state.cat==='all'||r.dataset.cat===state.cat;
     const okStatus=state.status==='all'||r.dataset.status===state.status;
-    const okPc=!state.pc||r.dataset.pc==='1';
-    const vis=okText&&okCat&&okStatus&&okPc;
+    const vis=okText&&okCat&&okStatus;
     r.style.display=vis?'':'none';r.dataset.vis=vis?'1':'0';if(vis)shown++;
   });
-  const filterActive=!!(state.text||state.cat!=='all'||state.status!=='all'||state.pc);
+  const filterActive=!!(state.text||state.cat!=='all'||state.status!=='all');
   groups.forEach(g=>{
     const visRows=g.querySelectorAll('details.row[data-vis="1"]').length;
     const catOk=state.cat==='all'||g.dataset.cat===state.cat;
@@ -1034,22 +1151,36 @@ function apply(){
   count.textContent=shown+' / '+rows.length+' trials shown';
   $('#noresults').style.display=shown?'none':'block';
 }
-search.addEventListener('input',e=>{state.text=e.target.value.trim().toLowerCase();apply();});
+search.addEventListener('input',e=>{state.text=norm(e.target.value.trim());apply();});
 document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',()=>{
-  document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('active'));
-  c.classList.add('active');state.cat=c.dataset.filter==='all'?'all':c.dataset.value;apply();
+  document.querySelectorAll('.fchip').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false');});
+  c.classList.add('active');c.setAttribute('aria-pressed','true');state.cat=c.dataset.filter==='all'?'all':c.dataset.value;apply();
 }));
 document.querySelectorAll('.seg[data-group]').forEach(seg=>{
   const group=seg.dataset.group;
   seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
-    seg.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    if(group==='pc')state.pc=b.dataset.value==='1';else state[group]=b.dataset.value;apply();
+    seg.querySelectorAll('button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false');});
+    b.classList.add('active');b.setAttribute('aria-pressed','true');state[group]=b.dataset.value;apply();
   }));
+});
+$('#clearFilters').addEventListener('click',()=>{
+  search.value='';state={text:'',cat:'all',status:'all'};
+  document.querySelectorAll('.fchip').forEach(x=>{const active=x.dataset.filter==='all';x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
+  document.querySelectorAll('.seg[data-group] button').forEach(x=>{const active=x.dataset.value==='all';x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});
+  apply();search.focus();
 });
 $('#expandAll').addEventListener('click',()=>{groups.forEach(g=>g.open=true);rows.forEach(r=>{if(r.style.display!=='none')r.open=true;});});
 $('#collapseAll').addEventListener('click',()=>{rows.forEach(r=>r.open=false);groups.forEach(g=>g.open=false);});
 apply();
+function revealHash(){
+  const id=decodeURIComponent(location.hash.slice(1));
+  if(!id)return;
+  const row=document.getElementById(id);
+  if(!row||!row.classList.contains('row'))return;
+  row.closest('details.group').open=true;row.open=true;row.scrollIntoView({block:'start'});
+}
+window.addEventListener('hashchange',revealHash);
+revealHash();
 """
 def main():
     outdir = sys.argv[1] if len(sys.argv) > 1 else "."
@@ -1058,6 +1189,7 @@ def main():
     for k, *_ in VALVES:
         pages[f"{k}.html"] = (build_valve_list_page(k) if trials_for(k)
                               else build_coming_soon_page(k))
+    pages["editor.html"] = build_editor_page()
     for name, content in pages.items():
         with open(os.path.join(outdir, name), "w", encoding="utf-8") as f:
             f.write(content)
