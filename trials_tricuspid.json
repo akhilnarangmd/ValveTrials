@@ -68,23 +68,24 @@
     "key_papers": [
       {
         "label": "1-year",
-        "citation": "Lurz P, et al. J Am Coll Cardiol 2021;77(3):229-239.",
+        "citation": "Lurz P, et al. J Am Coll Cardiol. 2021.",
         "doi": "10.1016/j.jacc.2020.11.038",
         "pmid": "33478646"
       },
       {
         "label": "2-year",
-        "citation": "von Bardeleben RS, et al. Circ Cardiovasc Interv 2023;16(8):e012888.",
+        "citation": "von Bardeleben RS, et al. Circ Cardiovasc Interv. 2023.",
         "doi": "10.1161/CIRCINTERVENTIONS.122.012888",
         "pmid": "37582170"
       },
       {
         "label": "3-year",
-        "citation": "Nickenig G, et al. JACC Cardiovasc Interv 2024;17(18):2113-2122.",
+        "citation": "Nickenig G, et al. JACC Cardiovasc Interv. 2024.",
         "doi": "10.1016/j.jcin.2024.05.036",
         "pmid": "39243264"
       }
-    ]
+    ],
+    "registry_results_posted": true
   },
   {
     "acronym": "TRILUMINATE Pivotal",
@@ -159,47 +160,48 @@
     "key_papers": [
       {
         "label": "1-year (randomized cohort)",
-        "citation": "Tang GHL, et al. J Am Coll Cardiol 2025;85(3):235-246.",
+        "citation": "Tang GHL, et al. J Am Coll Cardiol. 2025.",
         "doi": "10.1016/j.jacc.2024.10.086",
         "pmid": "39471883"
       },
       {
         "label": "2-year",
-        "citation": "Kar S, et al. Circulation 2025;151(23):1630-1638.",
+        "citation": "Kar S, et al. Circulation. 2025.",
         "doi": "10.1161/CIRCULATIONAHA.125.074536",
         "pmid": "40159089"
       },
       {
         "label": "Quality of life (KCCQ)",
-        "citation": "Arnold SV, et al. J Am Coll Cardiol 2024;83(1):1-13.",
+        "citation": "Arnold SV, et al. J Am Coll Cardiol. 2024.",
         "doi": "10.1016/j.jacc.2023.10.008",
         "pmid": "37898329"
       },
       {
         "label": "Imaging / cardiac remodeling substudy",
-        "citation": "Cavalcante JL, et al. J Am Coll Cardiol 2025;85(3):250-261.",
+        "citation": "Cavalcante JL, et al. J Am Coll Cardiol. 2025.",
         "doi": "10.1016/j.jacc.2024.09.009",
         "pmid": "39570246"
       },
       {
         "label": "Renal & liver function",
-        "citation": "Jorde UP, et al. J Am Coll Cardiol 2024;84(25):2446-2456.",
+        "citation": "Jorde UP, et al. J Am Coll Cardiol. 2024.",
         "doi": "10.1016/j.jacc.2024.08.044",
         "pmid": "39222896"
       },
       {
         "label": "Transvalvular CIED leads",
-        "citation": "Naik H, et al. JACC Clin Electrophysiol 2025;11(5):1012-1020.",
+        "citation": "Naik H, et al. JACC Clin Electrophysiol. 2025.",
         "doi": "10.1016/j.jacep.2025.01.001",
         "pmid": "39903153"
       },
       {
         "label": "Transcatheter EdgetoEdge Repair inPatients With",
-        "citation": "Adams DH, et al. JACC. Cardiovascular interventions 2024;17(23):2749-2760.",
+        "citation": "Adams DH, et al. JACC Cardiovasc Interv. 2024.",
         "doi": "10.1016/j.jcin.2024.08.035",
         "pmid": "39663056"
       }
-    ]
+    ],
+    "registry_results_posted": true
   },
   {
     "acronym": "TRI-FR",
@@ -241,7 +243,7 @@
       "KCCQ"
     ],
     "key_results": [
-      "Composite improvement 74.6% (TEER) vs 39.5% (GDMT); effect estimate 0.68 (P<0.0001)",
+      "At 1 year, the primary composite improved in 74.1% with T-TEER plus medical therapy vs 40.6% with medical therapy alone; secondary hierarchical win ratio 2.06 (95% CI 1.38–3.08).",
       "Technical success 97.3%; in-hospital mortality 0.6%",
       "Most patients required 2 devices"
     ],
@@ -270,17 +272,18 @@
     "key_papers": [
       {
         "label": "Echocardiographic outcomes",
-        "citation": "Donal E, et al. JACC Cardiovasc Imaging 2025.",
+        "citation": "Coisne A, et al. JACC Cardiovasc Imaging. 2026.",
         "doi": "10.1016/j.jcmg.2025.09.010",
         "pmid": "41258847"
       },
       {
         "label": "Multicentric randomized evaluation of a",
-        "citation": "Donal E, et al. European heart journal. Cardiovascular Imaging 2022;23(12):1617-1627.",
+        "citation": "Donal E, et al. Eur Heart J Cardiovasc Imaging. 2022.",
         "doi": "10.1093/ehjci/jeab255",
         "pmid": "34871375"
       }
-    ]
+    ],
+    "registry_results_posted": false
   },
   {
     "acronym": "bRIGHT",
@@ -346,23 +349,24 @@
     "key_papers": [
       {
         "label": "30-day",
-        "citation": "Lurz P, et al. J Am Coll Cardiol 2023;82(4):281-291.",
+        "citation": "Lurz P, et al. J Am Coll Cardiol. 2023.",
         "doi": "10.1016/j.jacc.2023.05.008",
         "pmid": "37207923"
       },
       {
         "label": "Characterization of Tricuspid Valve Anatomy",
-        "citation": "Donal E, et al. Journal of the American Society of Echocardiography : official publication of the American Society of Echocardiography 2024;37(4):397-404.",
+        "citation": "Donal E, et al. J Am Soc Echocardiogr. 2024.",
         "doi": "10.1016/j.echo.2023.12.002",
         "pmid": "38072288"
       },
       {
         "label": "Outcomes of tricuspid transcatheter edgetoedge",
-        "citation": "Goebel B, et al. EuroIntervention : journal of EuroPCR in collaboration with the Working Group on Interventional Cardiology of the European Society of Cardiology 2025;21(5):e253-e261.",
+        "citation": "Goebel B, et al. EuroIntervention. 2025.",
         "doi": "10.4244/eij-d-23-01033",
         "pmid": "40028727"
       }
-    ]
+    ],
+    "registry_results_posted": false
   },
   {
     "acronym": "CLASP TR EFS",
@@ -387,7 +391,7 @@
     "comparator": "None (single-arm)",
     "population": "Severe symptomatic TR, high surgical risk",
     "risk_group": "High surgical risk",
-    "sample_size": "early feasibility cohort",
+    "sample_size": "65",
     "enrollment": "2019–2021",
     "follow_up": "30 days, 1 year, 2 years",
     "trial_type": "Prospective single-arm (EFS)",
@@ -428,11 +432,12 @@
     "key_papers": [
       {
         "label": "30-day",
-        "citation": "Kodali S, et al. J Am Coll Cardiol 2021;77(4):345-356.",
+        "citation": "Kodali S, et al. J Am Coll Cardiol. 2021.",
         "doi": "10.1016/j.jacc.2020.11.047",
         "pmid": "33509390"
       }
-    ]
+    ],
+    "registry_results_posted": true
   },
   {
     "acronym": "CLASP II TR",
@@ -457,7 +462,7 @@
     "comparator": "GDMT alone",
     "population": "Severe symptomatic TR",
     "risk_group": "High surgical risk",
-    "sample_size": "pivotal target",
+    "sample_size": "1,270 estimated",
     "enrollment": "ongoing",
     "follow_up": "1 year+",
     "trial_type": "Randomized",
@@ -475,8 +480,7 @@
       "Watch how PASCAL vs TriClip outcomes compare in tricuspid anatomy."
     ],
     "limitations": [
-      "Not yet reporting",
-      "NCT unconfirmed here"
+      "Not yet reporting"
     ],
     "guideline_acc": "Pending.",
     "guideline_esc": "Pending.",
@@ -490,7 +494,8 @@
     "doi": "",
     "pmid": "",
     "caveat": "",
-    "key_papers": []
+    "key_papers": [],
+    "registry_results_posted": false
   },
   {
     "acronym": "TRISCEND II",
@@ -565,47 +570,48 @@
     "key_papers": [
       {
         "label": "TRISCEND EFS",
-        "citation": "Kodali S, Hahn RT, George I. JACC Cardiovasc Interv. 2022;15(5):471-480.",
+        "citation": "Kodali S, et al. JACC Cardiovasc Interv. 2022.",
         "doi": "10.1016/j.jcin.2022.01.016",
         "pmid": "35272771"
       },
       {
         "label": "Quality of life (1-year)",
-        "citation": "Arnold SV, et al. J Am Coll Cardiol 2025;85(3):206-216.",
+        "citation": "Arnold SV, et al. J Am Coll Cardiol. 2025.",
         "doi": "10.1016/j.jacc.2024.10.067",
         "pmid": "39480380"
       },
       {
         "label": "Outcomes by baseline TR severity",
-        "citation": "Lurz P, Hahn RT, Kodali S, et al. Eur Heart J 2025.",
+        "citation": "Lurz P, et al. Eur Heart J. 2026.",
         "doi": "10.1093/eurheartj/ehaf676",
-        "pmid": ""
+        "pmid": "40878717"
       },
       {
         "label": "TRISCEND II Novel Randomized Trial",
-        "citation": "Grayburn PA, et al. The American journal of cardiology 2024;225:171-177.",
+        "citation": "Grayburn PA, et al. Am J Cardiol. 2024.",
         "doi": "10.1016/j.amjcard.2024.06.009",
         "pmid": "38897265"
       },
       {
         "label": "Echocardiographic outcomes",
-        "citation": "Sannino A, et al. JACC. Cardiovascular imaging 2026.",
+        "citation": "Sannino A, et al. JACC Cardiovasc Imaging. 2026.",
         "doi": "10.1016/j.jcmg.2026.05.019",
         "pmid": "42470411"
       },
       {
         "label": "Cost-effectiveness",
-        "citation": "Grangeon A, et al. ESC heart failure 2026.",
+        "citation": "Grangeon A, et al. ESC Heart Fail. 2026.",
         "doi": "10.1093/eschf/xvag137",
         "pmid": "42120016"
       },
       {
         "label": "Clinical Characteristics and Outcomes of",
-        "citation": "Razmjou S, et al. Journal of the Society for Cardiovascular Angiography & Interventions 2026;5(4):104385.",
+        "citation": "Razmjou S, et al. J Soc Cardiovasc Angiogr Interv. 2026.",
         "doi": "10.1016/j.jscai.2026.104385",
         "pmid": "42111092"
       }
-    ]
+    ],
+    "registry_results_posted": false
   },
   {
     "acronym": "LuX-Valve",
@@ -666,17 +672,18 @@
     "key_papers": [
       {
         "label": "Echocardiographic outcomes",
-        "citation": "Huang L, et al. Frontiers in cardiovascular medicine 2024;11:1417757.",
+        "citation": "Huang L, et al. Front Cardiovasc Med. 2024.",
         "doi": "10.3389/fcvm.2024.1417757",
         "pmid": "39161660"
       },
       {
         "label": "1-year",
-        "citation": "Stolz L, et al. European journal of heart failure 2025;27(11):2644-2648.",
+        "citation": "Stolz L, et al. Eur J Heart Fail. 2025.",
         "doi": "10.1002/ejhf.70010",
         "pmid": "40879890"
       }
-    ]
+    ],
+    "registry_results_posted": false
   },
   {
     "acronym": "TRI-REPAIR",
@@ -746,29 +753,30 @@
     "key_papers": [
       {
         "label": "2-year",
-        "citation": "Nickenig G, et al. EuroIntervention 2021;16(15):e1264-e1271.",
+        "citation": "Nickenig G, et al. EuroIntervention. 2021.",
         "doi": "10.4244/EIJ-D-20-01107",
         "pmid": "33046437"
       },
       {
         "label": "Cardioband TR EFS (US) — 30-day",
-        "citation": "Davidson CJ, et al. JACC Cardiovasc Interv 2021;14(1):41-50.",
+        "citation": "Davidson CJ, et al. JACC Cardiovasc Interv. 2021.",
         "doi": "10.1016/j.jcin.2020.10.017",
-        "pmid": ""
+        "pmid": "33413863"
       },
       {
         "label": "Cardioband TR EFS (US) — 1-year",
-        "citation": "JACC Cardiovasc Interv 2022;15(14).",
+        "citation": "Gray WA, et al. JACC Cardiovasc Interv. 2022.",
         "doi": "10.1016/j.jcin.2022.07.006",
-        "pmid": ""
+        "pmid": "36202561"
       },
       {
         "label": "TriBAND (post-market) — 30-day",
-        "citation": "Nickenig G, et al. EuroIntervention 2021;17(10):809-817.",
+        "citation": "Nickenig G, et al. EuroIntervention. 2021.",
         "doi": "10.4244/EIJ-D-21-00300",
         "pmid": "34031021"
       }
-    ]
+    ],
+    "registry_results_posted": true
   },
   {
     "acronym": "SCOUT",
@@ -834,7 +842,8 @@
     "doi": "10.1016/j.jacc.2017.01.054",
     "pmid": "28385308",
     "caveat": "Early device; limited ongoing clinical development.",
-    "key_papers": []
+    "key_papers": [],
+    "registry_results_posted": false
   },
   {
     "acronym": "TRICUS EURO",
@@ -904,7 +913,8 @@
     "doi": "10.1016/j.jcin.2022.05.022",
     "pmid": "35583363",
     "caveat": "",
-    "key_papers": []
+    "key_papers": [],
+    "registry_results_posted": false
   },
   {
     "acronym": "HOVER",
@@ -965,18 +975,19 @@
     ],
     "authors": "",
     "journal": "",
-    "year": "",
+    "year": "2025",
     "doi": "",
     "pmid": "",
     "caveat": "Results are from ClinicalTrials.gov, not a peer-reviewed outcomes paper; interpret the small denominator carefully.",
     "key_papers": [
       {
         "label": "Trial design and rationale",
-        "citation": "Study design and rationale of heterotopic implantation of the Edwards-Sapien XT valve in the inferior vena cava for severe tricuspid regurgitation.",
+        "citation": "O'Neill BP, et al. Catheter Cardiovasc Interv. 2016.",
         "doi": "10.1002/ccd.26530",
         "pmid": "27122473"
       }
-    ]
+    ],
+    "registry_results_posted": true
   },
   {
     "acronym": "TANDEM I (CroíValve)",
@@ -1001,7 +1012,7 @@
     "comparator": "None (single-arm)",
     "population": "Severe symptomatic TR",
     "risk_group": "High surgical risk",
-    "sample_size": "early feasibility",
+    "sample_size": "10 estimated",
     "enrollment": "2022–ongoing",
     "follow_up": "ongoing",
     "trial_type": "Prospective single-arm (EFS)",
@@ -1035,7 +1046,8 @@
     "doi": "",
     "pmid": "",
     "caveat": "",
-    "key_papers": []
+    "key_papers": [],
+    "registry_results_posted": false
   },
   {
     "acronym": "MitraClip in TR (early)",
@@ -1097,19 +1109,19 @@
     "key_papers": [
       {
         "label": "Predictors of outcome",
-        "citation": "Besler C, et al. JACC Cardiovasc Interv 2018;11(12):1119-1128.",
+        "citation": "Besler C, et al. JACC Cardiovasc Interv. 2018.",
         "doi": "10.1016/j.jcin.2018.05.002",
         "pmid": "29929631"
       },
       {
         "label": "HF hospitalization reduction",
-        "citation": "Orban M, et al. JACC Heart Fail 2020;8(4):265-276.",
+        "citation": "Orban M, et al. JACC Heart Fail. 2020.",
         "doi": "10.1016/j.jchf.2019.12.006",
         "pmid": "32241534"
       },
       {
         "label": "Impact of baseline tricuspid regurgitation",
-        "citation": "Schueler R, et al. Clinical research in cardiology : official journal of the German Cardiac Society 2017;106(5):350-358.",
+        "citation": "Schueler R, et al. Clin Res Cardiol. 2017.",
         "doi": "10.1007/s00392-016-1062-1",
         "pmid": "27999930"
       }
@@ -1177,72 +1189,73 @@
     "key_papers": [
       {
         "label": "Which patients are treated",
-        "citation": "Taramasso M, et al. JACC Cardiovasc Interv 2017;10(19):1982-1990.",
+        "citation": "Taramasso M, et al. JACC Cardiovasc Interv. 2017.",
         "doi": "10.1016/j.jcin.2017.08.011",
         "pmid": "28982563"
       },
       {
         "label": "Mid-term (all devices)",
-        "citation": "Taramasso M, et al. JACC Cardiovasc Interv 2019;12(2):155-165.",
+        "citation": "Taramasso M, et al. JACC Cardiovasc Interv. 2019.",
         "doi": "10.1016/j.jcin.2018.10.022",
-        "pmid": ""
+        "pmid": "30594510"
       },
       {
         "label": "1-year edge-to-edge (TEER)",
-        "citation": "Mehr M, et al. JACC Cardiovasc Interv 2019;12(15):1451-1461.",
+        "citation": "Mehr M, et al. JACC Cardiovasc Interv. 2019.",
         "doi": "10.1016/j.jcin.2019.04.019",
         "pmid": "31395215"
       },
       {
         "label": "Conduction/pacemaker",
-        "citation": "Taramasso M, et al. JACC. Cardiovascular interventions 2020;13(5):554-564.",
+        "citation": "Taramasso M, et al. JACC Cardiovasc Interv. 2020.",
         "doi": "10.1016/j.jcin.2019.10.058",
         "pmid": "31954676"
       },
       {
         "label": "Mitral regurgitation evolution after transcatheter",
-        "citation": "Cannata F, et al. European heart journal. Cardiovascular Imaging 2024;26(1):135-147.",
+        "citation": "Cannata F, et al. Eur Heart J Cardiovasc Imaging. 2024.",
         "doi": "10.1093/ehjci/jeae227",
         "pmid": "39189600"
       },
       {
         "label": "Effects of tricuspid transcatheter edgetoedge",
-        "citation": "Russo G, et al. International journal of cardiology 2024;405:131934.",
+        "citation": "Russo G, et al. Int J Cardiol. 2024.",
         "doi": "10.1016/j.ijcard.2024.131934",
         "pmid": "38437953"
       },
       {
         "label": "Transcatheter Tricuspid Valve Intervention in",
-        "citation": "Muntané-Carol G, et al. Circulation. Cardiovascular interventions 2021;14(2):e009685.",
+        "citation": "Muntané-Carol G, et al. Circ Cardiovasc Interv. 2021.",
         "doi": "10.1161/circinterventions.120.009685",
         "pmid": "33541097"
       },
       {
         "label": "Incidence Predictors and Outcomes of",
-        "citation": "Dykun I, et al. JACC. Cardiovascular interventions 2026;19(6):711-722.",
+        "citation": "Dykun I, et al. JACC Cardiovasc Interv. 2026.",
         "doi": "10.1016/j.jcin.2026.01.288",
         "pmid": "41881647"
       },
       {
         "label": "Right VentricularPulmonary Arterial Coupling and",
-        "citation": "Brener MI, et al. Journal of the American College of Cardiology 2022;79(5):448-461.",
+        "citation": "Brener MI, et al. J Am Coll Cardiol. 2022.",
         "doi": "10.1016/j.jacc.2021.11.031",
         "pmid": "35115101"
       },
       {
         "label": "Impact of Massive or Torrential",
-        "citation": "Miura M, et al. JACC. Cardiovascular interventions 2020;13(17):1999-2009.",
+        "citation": "Miura M, et al. JACC Cardiovasc Interv. 2020.",
         "doi": "10.1016/j.jcin.2020.05.011",
         "pmid": "32912460"
       },
       {
         "label": "TRIVALVE Score A Risk Score",
-        "citation": "Russo G, et al. JACC. Cardiovascular interventions 2024;17(18):2170-2179.",
+        "citation": "Russo G, et al. JACC Cardiovasc Interv. 2024.",
         "doi": "10.1016/j.jcin.2024.08.009",
         "pmid": "39322365"
       }
     ],
-    "caveat": "Multi-device registry (TEER plus other devices); propensity-matched, not randomized."
+    "caveat": "Multi-device registry (TEER plus other devices); propensity-matched, not randomized.",
+    "registry_results_posted": false
   },
   {
     "acronym": "EuroTR Registry",
@@ -1306,24 +1319,25 @@
     "key_papers": [
       {
         "label": "30-day / early experience",
-        "citation": "Wild MG, et al. JACC Cardiovasc Interv 2022;15(13):1352-1363.",
+        "citation": "Wild MG, et al. JACC Cardiovasc Interv. 2022.",
         "doi": "10.1016/j.jcin.2022.05.041",
         "pmid": "35798479"
       },
       {
         "label": "Invasive Hemodynamics and Risk Stratification",
-        "citation": "Masiero G, et al. Circulation. Cardiovascular interventions 2026;19(1):e015964.",
+        "citation": "Masiero G, et al. Circ Cardiovasc Interv. 2026.",
         "doi": "10.1161/circinterventions.125.015964",
         "pmid": "41235431"
       },
       {
         "label": "Prognostic Value of NTproBNP in",
-        "citation": "von Stein J, et al. JACC. Cardiovascular interventions 2026;19(10):1225-1239.",
+        "citation": "von Stein J, et al. JACC Cardiovasc Interv. 2026.",
         "doi": "10.1016/j.jcin.2026.02.013",
         "pmid": "41777168"
       }
     ],
-    "caveat": "Observational EuroTR registry; the previous linked JACC paper reported the separate PASTE registry."
+    "caveat": "Observational EuroTR registry; the previous linked JACC paper reported the separate PASTE registry.",
+    "registry_results_posted": false
   },
   {
     "acronym": "TVT Registry — TTVR",
@@ -1459,6 +1473,7 @@
     "doi": "10.1016/j.jacc.2024.10.068",
     "pmid": "39466215",
     "key_papers": [],
-    "caveat": "PASTE and EuroTR are separate registries with different NCT identifiers."
+    "caveat": "PASTE and EuroTR are separate registries with different NCT identifiers.",
+    "registry_results_posted": false
   }
 ]

@@ -53,19 +53,37 @@ def validate() -> list[str]:
                 errors.append(f"{where}: malformed primary PMID {pmid!r}")
             if row.get("doi") and not re.match(r"^10\.\d{4,9}/\S+$", row["doi"], re.I):
                 errors.append(f"{where}: malformed primary DOI {row['doi']!r}")
+            if row.get("status") == "published":
+                for field in ("pmid", "doi", "authors", "journal", "year"):
+                    if not row.get(field):
+                        errors.append(f"{where}: published card is missing {field}")
+            elif row.get("pmid") or row.get("doi"):
+                errors.append(f"{where}: primary paper on a non-published card")
+            if row.get("status") == "results_posted" and not row.get("registry_results_posted"):
+                errors.append(f"{where}: results-posted card needs a posted registry result")
+            for related in row.get("related_ncts", []):
+                if not re.fullmatch(r"(?:NCT\d{8}|ISRCTN\d{8})", related):
+                    errors.append(f"{where}: malformed related registration {related!r}")
+                if related == nct:
+                    errors.append(f"{where}: related registration repeats primary registration")
             if any("DRAFT" in str(row.get(k, "")).upper() for k in ("acronym", "quick_summary", "takeaway")):
                 errors.append(f"{where}: draft placeholder in public data")
             paper_ids = []
+            paper_dois = []
             for p in row.get("key_papers", []):
                 if not isinstance(p, dict):
                     errors.append(f"{where}: key paper is not an object")
                     continue
                 if p.get("pmid"):
                     paper_ids.append(p["pmid"])
+                if p.get("doi"):
+                    paper_dois.append(p["doi"].casefold())
                 if p.get("pmid") and p["pmid"] == pmid:
                     errors.append(f"{where}: primary paper duplicated in follow-ups")
             if len(paper_ids) != len(set(paper_ids)):
                 errors.append(f"{where}: duplicate follow-up PMID")
+            if len(paper_dois) != len(set(paper_dois)):
+                errors.append(f"{where}: duplicate follow-up DOI")
     names = Counter(row.get("acronym", "").casefold() for _, row in records)
     slugs = Counter(Trial.from_dict(row).slug for _, row in records)
     for label, counts in (("acronym", names), ("slug", slugs)):

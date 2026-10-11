@@ -42,6 +42,7 @@ CATEGORY_HUE = {
     "Aortic Regurgitation":       "#B0344B",
     "Frontier / Next-Gen Device": "#2C6E8F",
     "Mitral TEER — Primary / Degenerative MR":   "#C0392B",
+    "Mitral TEER — Mixed-Etiology / Feasibility": "#A64B75",
     "Mitral TEER — Secondary / Functional MR":   "#B23A5B",
     "Secondary MR — Direct Annuloplasty":        "#A6572B",
     "Secondary MR — Indirect Annuloplasty":      "#C77A2B",
@@ -65,7 +66,7 @@ VALVE_CATEGORIES = {
 }
 STATUS_META = {
     "published":  ("🟢", "Published"),
-    "results_posted": ("📊", "Registry results"),
+    "results_posted": ("📊", "Results posted"),
     "ongoing":    ("🔵", "Ongoing"),
     "terminated": ("⛔", "Terminated"),
     "withdrawn": ("⛔", "Withdrawn"),
@@ -120,8 +121,8 @@ def paper_links(t: Trial) -> List[Tuple[str, str, str]]:
     if t.status == "published" and not t.doi and not t.pmid:
         out.append(("Find on PubMed",
                     f"https://pubmed.ncbi.nlm.nih.gov/?term={quote(_pubmed_query(t))}", "search"))
-    if t.status == "results_posted" and t.nct:
-        out.append(("View posted results", link_nct(t.nct) + "?tab=results", "primary"))
+    if t.registry_results_posted and t.nct:
+        out.append(("View posted results", link_nct(t.nct) + "?tab=results", "registry"))
     if t.nct:
         label = "ISRCTN" if t.nct.upper().startswith("ISRCTN") else "ClinicalTrials.gov"
         out.append((label, link_nct(t.nct), "registry"))
@@ -158,16 +159,28 @@ def overview_table(t: Trial) -> str:
     return f"<table class='overview'><tbody>{body}</tbody></table>"
 def paper_bar(t: Trial) -> str:
     links = paper_links(t)
-    if not links:
-        return "<div class='paperbar none'>Not yet published — trial ongoing.</div>"
-    a = [f"<a class='plink {kind}' href='{url}' target='_blank' rel='noopener'>{e(label)} ↗</a>"
-         for label, url, kind in links]
+    groups = {"primary": [], "search": [], "registry": []}
+    for label, url, kind in links:
+        groups[kind].append(f"<a class='plink {kind}' href='{url}' target='_blank' rel='noopener'>{e(label)} ↗</a>")
+    for nct in t.related_ncts:
+        groups["registry"].append(
+            f"<a class='plink registry' href='{link_nct(nct)}' target='_blank' rel='noopener'>Related registration {e(nct)} ↗</a>"
+        )
     cite = []
-    if t.authors: cite.append(e(t.authors))
-    if t.journal: cite.append(f"<em>{e(t.journal)}</em>")
-    if t.year: cite.append(e(t.year))
+    if t.doi or t.pmid:
+        if t.authors: cite.append(e(t.authors))
+        if t.journal: cite.append(f"<em>{e(t.journal)}</em>")
+        if t.year: cite.append(e(t.year))
     cite_line = f"<span class='paper-cite'>{' · '.join(cite)}</span>" if cite else ""
-    return f"<div class='paperbar'><div class='plinks'>{''.join(a)}</div>{cite_line}</div>"
+    paper_label = "Primary publication" if t.doi or t.pmid else "Publication status"
+    paper_items = ''.join(groups['primary'] + groups['search'])
+    if not paper_items:
+        paper_items = "<span class='source-empty'>No primary paper linked</span>"
+    registration = ''.join(groups['registry']) or "<span class='source-empty'>No registration linked</span>"
+    return (f"<div class='paperbar'>"
+            f"<div class='source-group'><strong>{paper_label}</strong><div class='plinks'>{paper_items}</div>{cite_line}</div>"
+            f"<div class='source-group'><strong>Study registration and posted results</strong><div class='plinks'>{registration}</div></div>"
+            f"</div>")
 def _followup_sort_key(p: dict):
     """Order follow-ups sequentially: by publication year, then by the follow-up
     duration named in the label (30-day < 6-month < 1-year < 2-year ...)."""
@@ -391,7 +404,7 @@ def build_home() -> str:
             term = sum(1 for t in ts if t.status in {"terminated", "withdrawn"})
             seg = [f"{pub} published"]
             if posted:
-                seg.append(f"{posted} registry results")
+                seg.append(f"{posted} results posted")
             if ong:
                 seg.append(f"{ong} ongoing")
             if term:
@@ -435,7 +448,7 @@ def build_valve_list_page(valve_key: str) -> str:
   <h1>{e(lbl)} Valve Trials</h1>
   <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
      collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
-  <p class="meta">{n} trials · {n_pub} published · {n_posted} registry results · {n_ongoing} ongoing · {n_terminated} stopped/withdrawn · {n_analyses} linked analyses</p>
+  <p class="meta">{n} trials · {n_pub} published · {n_posted} results posted · {n_ongoing} ongoing · {n_terminated} stopped/withdrawn · {n_analyses} linked analyses</p>
   <div class="legend">
     <span>All outcomes included, including negative trials</span>
     <span>Oldest → newest within each category</span><span>⚠ Caveat inside</span>
@@ -506,10 +519,12 @@ EDITOR_FIELDS = [
     ("acronym", "Acronym *", "text"),
     ("full_name", "Full name", "text"),
     ("nct", "NCT / ISRCTN id", "text"),
+    ("related_ncts", "Related registration IDs (one per line)", "list"),
     ("__section__", "Classification", None),
     ("valve", "Valve", "select"),
     ("category", "Category", "select"),
     ("status", "Status", "select"),
+    ("registry_results_posted", "ClinicalTrials.gov results posted", "bool"),
     ("signal", "Result signal", "select"),
     ("practice_changing", "Practice changing", "bool"),
     ("landmark", "Landmark", "bool"),
@@ -891,7 +906,10 @@ details.row[open] > summary .chev{transform:rotate(45deg)}
 .dates{display:flex;flex-direction:column;align-items:flex-end;gap:1px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);line-height:1.35}
 .dates .d-pub{color:#33474a}
 .body-inner{padding:2px 18px 20px;border-top:1px solid var(--line)}
-.paperbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:14px 0 6px;padding:12px 14px;background:#f5f8f7;border:1px solid var(--line);border-radius:10px}
+.paperbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:14px 0 6px;padding:12px 14px;background:#f5f8f7;border:1px solid var(--line);border-radius:10px}
+.source-group{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.source-group strong{font:600 11px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:#516b70}
+.source-empty{font-size:12px;color:var(--muted)}
 .paperbar.none{color:var(--muted);font-style:italic}
 ul.papers{list-style:none;margin:6px 0 0;padding:0}
 ul.papers li{padding:8px 0;border-top:1px solid #eef2f1;font-size:13.5px;line-height:1.5}
@@ -923,7 +941,7 @@ h3 .pc-count{display:inline-block;min-width:18px;text-align:center;font-size:11p
 .plink.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .plink.search{color:#33474a}
 .plink:hover{filter:brightness(.96)}
-.paper-cite{font-size:12.5px;color:#33474a;margin-left:auto}.paper-cite em{font-style:italic}
+.paper-cite{font-size:12.5px;color:#33474a}.paper-cite em{font-style:italic}
 .d-caveat{margin:8px 0;font-size:13px;color:#9c3a2f;background:#faeeec;border:1px dashed #e6c3bd;border-radius:8px;padding:9px 12px}
 .d-summary{color:#33474a;margin:8px 0 4px;font-size:14.5px}
 .d-grid{display:grid;grid-template-columns:1fr 290px;gap:26px;padding-top:8px}
@@ -1108,7 +1126,7 @@ details.row[open]{border-color:#b9ccc6}
   .row-meta{flex-direction:row;flex-wrap:wrap;align-items:center;min-width:0;gap:5px 6px;text-align:left}
   .dates{width:100%;flex-direction:row;align-items:center;gap:6px;font-size:10px}
   .body-inner{padding:2px 13px 17px}
-  .paperbar{padding:10px;gap:8px}
+  .paperbar{grid-template-columns:1fr;padding:10px;gap:14px}
   .plinks{gap:6px}
   .plink{display:inline-flex;align-items:center;font-size:11px;padding:7px 9px}
   .d-grid{gap:11px}

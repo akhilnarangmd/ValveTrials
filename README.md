@@ -17,6 +17,8 @@ Run `python validate_data.py` and `python valve_trials.py site` to validate the 
 
 The public editor is generated at `editor.html`. Save an edited trial to the list, then export **both** JSON files and replace the corresponding repository files. The editor preserves fields that are not exposed in its form, including linked papers. Review the JSON diff and run validation before publishing.
 
+`status` describes the card's primary evidence (peer-reviewed publication, posted registry results without a primary paper, or study progress). `registry_results_posted` is a separate flag: a published or terminated study can also have results posted on ClinicalTrials.gov. `related_ncts` lists registrations for overlapping or pooled cohorts without implying that they are the primary paper's registration.
+
 ## Editorial review
 
 See [DATA_AUDIT.md](DATA_AUDIT.md) for the latest source audit, corrected records, and remaining review limits. New papers and registry IDs proposed by the discovery scripts require human review when the study identity or cohort is ambiguous. Negative and terminated studies remain visible in the catalog.

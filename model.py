@@ -35,6 +35,7 @@ CATEGORIES = [
     "Frontier / Next-Gen Device",
     # --- Mitral ---
     "Mitral TEER — Primary / Degenerative MR",
+    "Mitral TEER — Mixed-Etiology / Feasibility",
     "Mitral TEER — Secondary / Functional MR",
     "Secondary MR — Direct Annuloplasty",
     "Secondary MR — Indirect Annuloplasty",
@@ -57,6 +58,8 @@ class Trial:
     full_name: str
     nct: str                       # NCT/ISRCTN id, or "" if none / registry
     category: str                  # one of CATEGORIES (drives colour + filter)
+    related_ncts: List[str] = field(default_factory=list)  # other registered cohorts used by a report
+    registry_results_posted: bool = False  # independent of peer-reviewed publication status
     tags: List[str] = field(default_factory=list)  # extra chips shown on card
 
     # --- Status flags (drive badges) ---
