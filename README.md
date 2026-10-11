@@ -11,11 +11,11 @@ A static, cardiology-facing reference of selected aortic, mitral, and tricuspid 
 | `model.py` | Data schema and controlled vocabularies |
 | `data.py` | Loads both data files |
 | `validate_data.py` | Offline checks for duplicate cards and malformed or missing identifiers |
-| `valve_trials.py` | Generates the static pages, including the editor |
+| `valve_trials.py` | Generates the public static pages |
 
 Run `python validate_data.py` and `python valve_trials.py site` to validate the catalog and build the website into `site/`. The GitHub Actions workflow runs validation before publishing changes pushed to `main`.
 
-The public editor is generated at `editor.html`. Save an edited trial to the list, then export **both** JSON files and replace the corresponding repository files. The editor preserves fields that are not exposed in its form, including linked papers. Review the JSON diff and run validation before publishing.
+Edit the JSON source files in the repository to update trial records. Review the diff and run validation before publishing. The public site has no trial editor.
 
 `status` describes the card's primary evidence (peer-reviewed publication, posted registry results without a primary paper, or study progress). `registry_results_posted` is a separate flag: a published or terminated study can also have results posted on ClinicalTrials.gov. `related_ncts` lists registrations for overlapping or pooled cohorts without implying that they are the primary paper's registration.
 

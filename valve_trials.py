@@ -65,11 +65,11 @@ VALVE_CATEGORIES = {
     "Tricuspid": [c for c in CATEGORIES if c.startswith("Tricuspid")],
 }
 STATUS_META = {
-    "published":  ("🟢", "Published"),
-    "results_posted": ("📊", "Results posted"),
-    "ongoing":    ("🔵", "Ongoing"),
-    "terminated": ("⛔", "Terminated"),
-    "withdrawn": ("⛔", "Withdrawn"),
+    "published": "Published",
+    "results_posted": "Results posted",
+    "ongoing": "Ongoing",
+    "terminated": "Terminated",
+    "withdrawn": "Withdrawn",
 }
 # --- Feedback form -----------------------------------------------------------
 # Static sites can't send email themselves; FormSubmit.co forwards submissions to
@@ -137,8 +137,8 @@ def result_bullets(items: List[str]) -> str:
         return "<p class='empty'>No results recorded yet.</p>"
     return "<ul class='results'>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
 def status_badge(t: Trial) -> str:
-    icon, label = STATUS_META.get(t.status, ("•", t.status.title()))
-    return f"<span class='badge status-{t.status}'>{icon} {e(label)}</span>"
+    label = STATUS_META.get(t.status, t.status.title())
+    return f"<span class='badge status-{e(t.status)}'><span class='badge-dot' aria-hidden='true'></span>{e(label)}</span>"
 def row_dates(t: Trial) -> str:
     bits = []
     if t.enrollment:
@@ -335,7 +335,7 @@ def site_header(active: str) -> str:
     return f"""
 <header class="site">
   <a class="brand" href="index.html">Valve<span>Trials</span>.org</a>
-  <nav class="site-nav" aria-label="Main navigation">{nav}<a href='editor.html' class='{'active' if active == 'editor' else ''}'>Editor</a></nav>
+  <nav class="site-nav" aria-label="Main navigation">{nav}</nav>
 </header>""".strip()
 def feedback_form() -> str:
     options_html = "".join(f"<option>{e(o)}</option>" for o in FEEDBACK_OPTIONS)
@@ -381,6 +381,7 @@ def page_shell(title: str, active: str, body: str, script: str = "") -> str:
 <style>{CSS}</style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 {site_header(active)}
 {body}
 {feedback_form()}
@@ -411,7 +412,7 @@ def build_home() -> str:
                 seg.append(f"{term} stopped/withdrawn")
             analyses = sum(len(getattr(t, "key_papers", []) or []) for t in ts)
             pill = f"<span class='pill'>{' · '.join(seg)}</span>"
-            an_txt = f" · {analyses} analyses" if analyses else ""
+            an_txt = f" · {analyses} related papers" if analyses else ""
             go = f"<span class='go'>{n} trials{an_txt} →</span>"
             soon = ""
         else:
@@ -424,10 +425,10 @@ def build_home() -> str:
             f"<h2>{e(lbl)}</h2><p>{e(desc)}</p>{pill}{go}</a>"
         )
     body = f"""
-<main class="home">
+<main class="home" id="main-content">
   <p class="kicker">Cardiology · Valvular Heart Disease · Trial Reference</p>
   <h1 class="home-h1">Valve trial evidence, clearly organized.</h1>
-  <p class="home-lede">Browse selected major trials by valve, category and result status. Open each card for its source papers and registry.</p>
+  <p class="home-lede">Explore selected major trials by valve, category, and result status. Each entry connects the evidence summary to its original sources.</p>
   <div class="valve-cards">{''.join(cards)}</div>
 </main>
 """
@@ -442,30 +443,37 @@ def build_valve_list_page(valve_key: str) -> str:
     n_ongoing = sum(1 for t in trials if t.status == "ongoing")
     n_terminated = sum(1 for t in trials if t.status in {"terminated", "withdrawn"})
     n_analyses = sum(len(t.key_papers or []) for t in trials)
+    status_tabs = [("all", "All"), ("published", "Published")]
+    status_tabs += [(key, label) for key, label, count in [
+        ("results_posted", "Results posted", n_posted),
+        ("ongoing", "Ongoing", n_ongoing),
+        ("terminated", "Terminated", sum(t.status == "terminated" for t in trials)),
+        ("withdrawn", "Withdrawn", sum(t.status == "withdrawn" for t in trials)),
+    ] if count]
+    status_buttons = "".join(
+        f'<button class="{"active" if key == "all" else ""}" data-value="{key}" '
+        f'aria-pressed="{"true" if key == "all" else "false"}">{label}</button>'
+        for key, label in status_tabs
+    )
+    summary_bits = [f"{n_pub} published"]
+    if n_posted: summary_bits.append(f"{n_posted} results posted")
+    if n_ongoing: summary_bits.append(f"{n_ongoing} ongoing")
+    if n_terminated: summary_bits.append(f"{n_terminated} stopped or withdrawn")
     body = f"""
 <header class="mast">
   <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · {e(lbl)}</p>
   <h1>{e(lbl)} Valve Trials</h1>
-  <p class="lede">Major transcatheter (and key comparator) {e(lbl.lower())}-valve trials, grouped into
-     collapsible categories and ordered oldest to newest. Click any trial to read the full entry and open the paper.</p>
-  <p class="meta">{n} trials · {n_pub} published · {n_posted} results posted · {n_ongoing} ongoing · {n_terminated} stopped/withdrawn · {n_analyses} linked analyses</p>
+  <p class="lede">Selected {e(lbl.lower())}-valve trials and key comparators. Browse by study category, then open a trial to review its findings and sources.</p>
+  <p class="meta"><strong>{n} trials</strong><span>{' · '.join(summary_bits)}</span><span>{n_analyses} related papers</span></p>
   <div class="legend">
-    <span>All outcomes included, including negative trials</span>
-    <span>Oldest → newest within each category</span><span>⚠ Caveat inside</span>
+    <span>Includes neutral and negative results</span><span>⚠ marks an important caveat</span>
   </div>
 </header>
 <div class="controls">
   <div class="controls-inner">
     <div class="searchbar">
       <input id="search" type="search" placeholder="Search trial, device, NCT, population…" aria-label="Search trials">
-      <div class="seg" data-group="status">
-        <button class="active" data-value="all" aria-pressed="true">All</button>
-        <button data-value="published" aria-pressed="false">Published</button>
-        <button data-value="results_posted" aria-pressed="false">Results posted</button>
-        <button data-value="ongoing" aria-pressed="false">Ongoing</button>
-        <button data-value="terminated" aria-pressed="false">Terminated</button>
-        <button data-value="withdrawn" aria-pressed="false">Withdrawn</button>
-      </div>
+      <div class="seg" data-group="status" role="group" aria-label="Filter by study status">{status_buttons}</div>
       <div class="actions">
         <button id="expandAll">Expand all</button>
         <button id="collapseAll">Collapse all</button>
@@ -475,7 +483,7 @@ def build_valve_list_page(valve_key: str) -> str:
     <div class="countline"><span id="count" role="status" aria-live="polite">{n} / {n} trials shown</span><button id="clearFilters" type="button">Clear filters</button></div>
   </div>
 </div>
-<main class="list">
+<main class="list" id="main-content">
   {render_list(trials)}
   <p id="noresults" class="noresults">No trials match those filters. Clear the search or pick “All”.</p>
 </main>
@@ -498,7 +506,7 @@ def build_coming_soon_page(valve_key: str) -> str:
   <p class="lede">This section is being built. The structure below is reserved — trials will populate
      these categories as we add them.</p>
 </header>
-<main class="list" style="--hue:{hue}">
+<main class="list" id="main-content" style="--hue:{hue}">
   <div class="soon-box">
     <h2>Trials coming soon</h2>
     <p>We’re curating the {e(lbl.lower())} evidence base with the same standardized entries and verified
@@ -510,311 +518,6 @@ def build_coming_soon_page(valve_key: str) -> str:
 </main>
 """
     return page_shell(f"{lbl} Valve Trials — Coming soon — ValveTrials.org", valve_key, body)
-# ---------------------------------------------------------------------------
-# Editor page — add / edit / delete trials via a form; exports trials.json
-# ---------------------------------------------------------------------------
-# (key, label, kind). kind: text | textarea | list | select | bool | num
-EDITOR_FIELDS = [
-    ("__section__", "Identity", None),
-    ("acronym", "Acronym *", "text"),
-    ("full_name", "Full name", "text"),
-    ("nct", "NCT / ISRCTN id", "text"),
-    ("related_ncts", "Related registration IDs (one per line)", "list"),
-    ("__section__", "Classification", None),
-    ("valve", "Valve", "select"),
-    ("category", "Category", "select"),
-    ("status", "Status", "select"),
-    ("registry_results_posted", "ClinicalTrials.gov results posted", "bool"),
-    ("signal", "Result signal", "select"),
-    ("practice_changing", "Practice changing", "bool"),
-    ("landmark", "Landmark", "bool"),
-    ("caveat", "Caveat (⚠ shown if set)", "text"),
-    ("__section__", "One-liners", None),
-    ("takeaway", "Takeaway (headline)", "textarea"),
-    ("quick_summary", "Quick summary", "textarea"),
-    ("__section__", "Study overview", None),
-    ("device", "Device", "text"),
-    ("intervention", "Intervention", "text"),
-    ("comparator", "Comparator", "text"),
-    ("population", "Population", "text"),
-    ("risk_group", "Risk group", "text"),
-    ("sample_size", "Sample size", "text"),
-    ("enrollment", "Enrollment years", "text"),
-    ("follow_up", "Follow-up", "text"),
-    ("trial_type", "Trial type", "text"),
-    ("disease", "Disease", "text"),
-    ("procedure", "Procedure", "text"),
-    ("__section__", "Clinical detail (one item per line)", None),
-    ("inclusion", "Inclusion criteria", "list"),
-    ("primary_endpoint", "Primary endpoint", "textarea"),
-    ("secondary_endpoints", "Secondary endpoints", "list"),
-    ("key_results", "Key results", "list"),
-    ("why_matters", "Why this trial matters", "textarea"),
-    ("pearls", "Clinical pearls", "list"),
-    ("limitations", "Limitations", "list"),
-    ("tags", "Tags (chips)", "list"),
-    ("__section__", "Guidelines / regulatory / timeline", None),
-    ("guideline_acc", "ACC / AHA", "textarea"),
-    ("guideline_esc", "ESC / EACTS", "textarea"),
-    ("fda_impact", "FDA / regulatory", "textarea"),
-    ("timeline", "Timeline (one item per line)", "list"),
-    ("__section__", "Citation", None),
-    ("authors", "Authors", "text"),
-    ("journal", "Journal", "text"),
-    ("year", "Year", "text"),
-    ("doi", "DOI", "text"),
-    ("pmid", "PubMed ID", "text"),
-]
-SELECT_OPTIONS = {
-    "valve": ["Aortic", "Mitral", "Tricuspid"],
-    "status": ["published", "results_posted", "ongoing", "terminated", "withdrawn"],
-    "signal": ["positive", "neutral", "negative", "descriptive", "pending"],
-    "category": [],  # populated dynamically from valve
-}
-def _editor_field_html(key: str, label: str, kind: str) -> str:
-    if key == "__section__":
-        return f"<h3 class='ed-sec'>{e(label)}</h3>"
-    fid = f"f_{key}"
-    if kind == "text":
-        return (f"<label class='ed-field'><span>{e(label)}</span>"
-                f"<input id='{fid}' data-key='{key}' type='text'></label>")
-    if kind == "textarea":
-        return (f"<label class='ed-field wide'><span>{e(label)}</span>"
-                f"<textarea id='{fid}' data-key='{key}' rows='2'></textarea></label>")
-    if kind == "list":
-        return (f"<label class='ed-field wide'><span>{e(label)}</span>"
-                f"<textarea id='{fid}' data-key='{key}' rows='3' "
-                f"placeholder='One item per line'></textarea></label>")
-    if kind == "bool":
-        return (f"<label class='ed-check'><input id='{fid}' data-key='{key}' type='checkbox'>"
-                f"<span>{e(label)}</span></label>")
-    if kind == "select":
-        opts = "".join(f"<option value='{e(o)}'>{e(o)}</option>" for o in SELECT_OPTIONS.get(key, []))
-        return (f"<label class='ed-field'><span>{e(label)}</span>"
-                f"<select id='{fid}' data-key='{key}'>{opts}</select></label>")
-    return ""
-def build_editor_page() -> str:
-    import json as _json
-    fields_html = "".join(_editor_field_html(k, lbl, kind) for k, lbl, kind in EDITOR_FIELDS)
-    trials_json = _json.dumps([t.to_dict() for t in TRIALS], ensure_ascii=False).replace("</", "<\\/")
-    cats_by_valve = _json.dumps(VALVE_CATEGORIES, ensure_ascii=False)
-    text_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "text"]
-    ta_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "textarea"]
-    list_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "list"]
-    sel_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "select"]
-    bool_keys = [k for k, _, kind in EDITOR_FIELDS if kind == "bool"]
-    body = f"""
-<main class="editor">
-  <div class="ed-intro">
-    <p class="kicker"><a class="crumb" href="index.html">ValveTrials.org</a> · Editor</p>
-    <h1>Trial editor</h1>
-    <p class="lede">Add, edit, or delete trials with the form — no code. Changes stay in your browser
-      until you <b>export</b>. Then commit the downloaded <span class="mono">trials.json</span> to your
-      repository and the site rebuilds automatically (see the README).</p>
-    <div class="ed-actions">
-      <button id="btnNew" class="ed-btn primary">＋ New trial</button>
-      <button id="btnExport" class="ed-btn">⬇ Export data files</button>
-      <button id="btnCopyPy" class="ed-btn">⧉ Copy this trial as Python</button>
-      <span id="edCount" class="ed-count"></span>
-      <span id="edDirty" class="ed-dirty" hidden>● unsaved form changes</span>
-    </div>
-  </div>
-  <div class="ed-cols">
-    <aside class="ed-side">
-      <input id="edSearch" class="ed-search" type="search" placeholder="Filter trials…">
-      <div id="edList" class="ed-listbox"></div>
-    </aside>
-    <section class="ed-form">
-      <div class="ed-formhead">
-        <h2 id="edFormTitle">New trial</h2>
-        <div class="ed-formbtns">
-          <button id="btnApply" class="ed-btn primary">Save to list</button>
-          <button id="btnDelete" class="ed-btn danger" hidden>Delete</button>
-        </div>
-      </div>
-      <div class="ed-grid">{fields_html}</div>
-    </section>
-  </div>
-  <dialog id="exportDlg" class="ed-dialog">
-    <form method="dialog"><button class="ed-x" aria-label="Close">✕</button></form>
-    <h3>Export</h3>
-    <p>Download both files and replace both files in the repository. Aortic and mitral trials live in
-       <span class="mono">trials.json</span>; tricuspid trials live in
-       <span class="mono">trials_tricuspid.json</span>. Keeping the files separate prevents duplicate cards.</p>
-    <div class="ed-dialog-actions"><button id="btnExportMain" class="ed-btn primary" type="button">⬇ trials.json</button>
-      <button id="btnExportTri" class="ed-btn primary" type="button">⬇ trials_tricuspid.json</button></div>
-    <p id="exportLabel" class="mono"></p>
-    <textarea id="exportText" rows="12" readonly></textarea>
-    <div class="ed-dialog-actions"><button id="btnCopyJson" class="ed-btn">⧉ Copy JSON</button></div>
-  </dialog>
-</main>
-<script>
-const TRIALS = {trials_json};
-const CATS_BY_VALVE = {cats_by_valve};
-const TEXT = {_json.dumps(text_keys)};
-const TA = {_json.dumps(ta_keys)};
-const LISTF = {_json.dumps(list_keys)};
-const SEL = {_json.dumps(sel_keys)};
-const BOOLF = {_json.dumps(bool_keys)};
-let editIndex = -1;
-let dirty = false;
-const $ = s => document.querySelector(s);
-const listEl = $('#edList');
-const searchEl = $('#edSearch');
-function markDirty(v){{ dirty = v; $('#edDirty').hidden = !v; }}
-function setCount(){{ $('#edCount').textContent = TRIALS.length + ' trials in memory'; }}
-function catOptions(valve, selected){{
-  const cats = CATS_BY_VALVE[valve] || [];
-  const sel = $('#f_category');
-  sel.innerHTML = '<option value=""></option>' +
-    cats.map(c => `<option value="${{c.replace(/"/g,'&quot;')}}" ${{c===selected?'selected':''}}>${{c}}</option>`).join('');
-}}
-function renderList(){{
-  const q = (searchEl.value||'').toLowerCase();
-  const groups = {{}};
-  TRIALS.forEach((t,i)=>{{
-    const hay = [t.acronym,t.full_name,t.nct,t.category,t.valve].join(' ').toLowerCase();
-    if(q && !hay.includes(q)) return;
-    const v = t.valve || 'Aortic';
-    (groups[v] = groups[v] || []).push([t,i]);
-  }});
-  const esc = s => String(s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}})[c]);
-  let html='';
-  ['Aortic','Mitral','Tricuspid'].forEach(v=>{{
-    if(!groups[v]) return;
-    html += `<div class="ed-group">${{v}} <span>${{groups[v].length}}</span></div>`;
-    groups[v].forEach(([t,i])=>{{
-      html += `<button class="ed-item ${{i===editIndex?'active':''}}" data-i="${{i}}">
-        <b>${{esc(t.acronym||'(no acronym)')}}</b><span>${{esc(t.category||'')}}</span></button>`;
-    }});
-  }});
-  listEl.innerHTML = html || '<p class="ed-empty">No matches.</p>';
-  listEl.querySelectorAll('.ed-item').forEach(b=>b.addEventListener('click',()=>loadTrial(+b.dataset.i)));
-}}
-function blank(){{
-  const o = {{practice_changing:false, landmark:false, evidence_stars:0, intervention:'', valve:'Aortic'}};
-  return o;
-}}
-function populate(t){{
-  TEXT.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = t[k]||''; }});
-  TA.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = t[k]||''; }});
-  LISTF.forEach(k=> {{ const el=$('#f_'+k); if(el) el.value = Array.isArray(t[k])?t[k].join('\\n'):''; }});
-  BOOLF.forEach(k=> {{ const el=$('#f_'+k); if(el) el.checked = !!t[k]; }});
-  $('#f_valve').value = t.valve||'Aortic';
-  $('#f_status').value = t.status||'published';
-  $('#f_signal').value = t.signal||'descriptive';
-  catOptions(t.valve||'Aortic', t.category||'');
-}}
-function readForm(){{
-  const o = {{}};
-  TEXT.forEach(k=> o[k] = $('#f_'+k).value.trim());
-  TA.forEach(k=> o[k] = $('#f_'+k).value.trim());
-  LISTF.forEach(k=> o[k] = $('#f_'+k).value.split('\\n').map(s=>s.trim()).filter(Boolean));
-  BOOLF.forEach(k=> o[k] = $('#f_'+k).checked);
-  o.valve = $('#f_valve').value;
-  o.status = $('#f_status').value;
-  o.signal = $('#f_signal').value;
-  o.category = $('#f_category').value;
-  return o;
-}}
-function loadTrial(i){{
-  if(dirty && !confirm('Discard unsaved changes to the current trial?')) return;
-  editIndex = i;
-  populate(TRIALS[i]);
-  $('#edFormTitle').textContent = 'Editing: ' + (TRIALS[i].acronym||'(trial)');
-  $('#btnDelete').hidden = false;
-  markDirty(false);
-  renderList();
-}}
-function newTrial(){{
-  if(dirty && !confirm('Discard unsaved changes to the current trial?')) return;
-  editIndex = -1;
-  populate(blank());
-  $('#edFormTitle').textContent = 'New trial';
-  $('#btnDelete').hidden = true;
-  markDirty(false);
-  renderList();
-}}
-function apply(){{
-  const o = readForm();
-  if(!o.acronym){{ alert('Acronym is required.'); return; }}
-  if(!o.full_name || !o.category){{ alert('Full name and category are required.'); return; }}
-  if(TRIALS.some((t,i)=>i!==editIndex && t.acronym.toLowerCase()===o.acronym.toLowerCase())){{
-    alert('Another trial already uses that acronym.'); return;
-  }}
-  if(editIndex === -1){{ TRIALS.push(o); editIndex = TRIALS.length-1; }}
-  else {{ TRIALS[editIndex] = {{...TRIALS[editIndex], ...o}}; }}
-  $('#edFormTitle').textContent = 'Editing: ' + o.acronym;
-  $('#btnDelete').hidden = false;
-  markDirty(false); setCount(); renderList();
-}}
-function del(){{
-  if(editIndex === -1) return;
-  if(!confirm('Delete "'+(TRIALS[editIndex].acronym||'this trial')+'" from the list?')) return;
-  TRIALS.splice(editIndex,1);
-  newTrial(); setCount();
-}}
-function download(name, text){{
-  const blob = new Blob([text], {{type:'application/json'}});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href=url; a.download=name; a.click();
-  URL.revokeObjectURL(url);
-}}
-function exportJson(){{
-  if(dirty){{ alert('Save the current trial to the list before exporting.'); return; }}
-  $('#exportText').value = '';
-  $('#exportLabel').textContent = 'Choose a file to download.';
-  $('#exportDlg').showModal();
-}}
-function exportFile(name){{
-  const selected = TRIALS.filter(t => name==='trials_tricuspid.json' ? t.valve==='Tricuspid' : t.valve!=='Tricuspid');
-  const text = JSON.stringify(selected, null, 2) + '\\n';
-  download(name, text);
-  $('#exportLabel').textContent = name + ' · ' + selected.length + ' trials';
-  $('#exportText').value = text;
-}}
-function pyStr(s){{ return '"' + String(s).replace(/\\\\/g,'\\\\\\\\').replace(/"/g,'\\\\"') + '"'; }}
-function toPython(o){{
-  const lines = ['Trial('];
-  const order = ['acronym','full_name','nct','category','valve','procedure','disease','tags',
-    'status','signal','practice_changing','landmark','caveat','quick_summary','takeaway',
-    'device','intervention','comparator','population','risk_group','sample_size','enrollment',
-    'follow_up','trial_type','inclusion','primary_endpoint','secondary_endpoints','key_results',
-    'why_matters','pearls','limitations','guideline_acc','guideline_esc','fda_impact','timeline',
-    'authors','journal','year','doi','pmid'];
-  order.forEach(k=>{{
-    let v = o[k];
-    if(v===undefined || v==='' || (Array.isArray(v)&&v.length===0)) return;
-    if(Array.isArray(v)) v = '[' + v.map(pyStr).join(', ') + ']';
-    else if(typeof v === 'boolean') v = v?'True':'False';
-    else v = pyStr(v);
-    lines.push('    '+k+'='+v+',');
-  }});
-  lines.push(')');
-  return lines.join('\\n');
-}}
-$('#btnNew').addEventListener('click', newTrial);
-$('#btnApply').addEventListener('click', apply);
-$('#btnDelete').addEventListener('click', del);
-$('#btnExport').addEventListener('click', exportJson);
-$('#btnExportMain').addEventListener('click',()=>exportFile('trials.json'));
-$('#btnExportTri').addEventListener('click',()=>exportFile('trials_tricuspid.json'));
-$('#btnCopyPy').addEventListener('click', ()=>{{
-  navigator.clipboard.writeText(toPython(readForm())).then(()=>alert('Python Trial(...) block copied.'));
-}});
-$('#btnCopyJson').addEventListener('click', ()=>{{
-  navigator.clipboard.writeText($('#exportText').value).then(()=>alert('JSON copied.'));
-}});
-searchEl.addEventListener('input', renderList);
-document.querySelectorAll('.ed-grid [data-key]').forEach(el=>{{
-  const ev = (el.type==='checkbox'||el.tagName==='SELECT') ? 'change':'input';
-  el.addEventListener(ev, ()=>markDirty(true));
-}});
-$('#f_valve').addEventListener('change', ()=> catOptions($('#f_valve').value, ''));
-setCount(); newTrial();
-</script>
-"""
-    return page_shell("Trial editor — ValveTrials.org", "editor", body)
 # ---------------------------------------------------------------------------
 CSS = r"""
 :root{--ink:#0E262B;--page:#EAEFEE;--card:#FFFFFF;--line:#D2DEDB;--muted:#5B6E6B;
@@ -995,51 +698,6 @@ details.feedback[open] .fb-toggle{border-radius:10px 10px 0 0}
 .fb-btn:hover{filter:brightness(1.12)}
 @media (max-width:820px){.fb-row{grid-template-columns:1fr}}
 footer.pagefoot{max-width:1080px;margin:0 auto;padding:22px 24px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
-/* editor */
-.site-nav a.editlink{border:1px solid rgba(255,255,255,.25)}
-.editor{max-width:1180px;margin:0 auto;padding:30px 24px 80px}
-.editor .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-.editor h1{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(26px,4vw,40px);margin:0 0 10px}
-.editor .lede{max-width:70ch;color:#33474a;margin:0 0 16px}
-.ed-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:8px}
-.ed-btn{border:1px solid var(--line);background:var(--card);color:#243b3e;padding:9px 14px;border-radius:9px;font-size:13px;cursor:pointer;font-family:inherit}
-.ed-btn:hover{border-color:var(--accent);color:var(--accent)}
-.ed-btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-.ed-btn.primary:hover{filter:brightness(1.1);color:#fff}
-.ed-btn.danger{color:#9c3a2f;border-color:#e6c3bd}
-.ed-count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
-.ed-dirty{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent)}
-.ed-cols{display:grid;grid-template-columns:290px 1fr;gap:22px;margin-top:14px}
-.ed-side{position:sticky;top:14px;align-self:start}
-.ed-search{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);font-size:14px;margin-bottom:10px}
-.ed-listbox{max-height:70vh;overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:6px}
-.ed-group{font-family:"Archivo",sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:10px 8px 4px;display:flex;justify-content:space-between}
-.ed-item{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:8px;padding:8px 10px;cursor:pointer;font-family:inherit}
-.ed-item:hover{background:#f0f4f3}
-.ed-item.active{background:var(--ink);color:#fff}
-.ed-item b{display:block;font-family:"Archivo",sans-serif;font-size:14px}
-.ed-item span{font-size:11px;color:var(--muted)}
-.ed-item.active span{color:#cdd8d6}
-.ed-empty{color:var(--muted);padding:16px;font-style:italic}
-.ed-form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.ed-formhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.ed-formhead h2{font-family:"Archivo",sans-serif;font-size:18px;margin:0}
-.ed-formbtns{display:flex;gap:8px}
-.ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px}
-.ed-sec{grid-column:1/-1;font-family:"Archivo",sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--hue,#2C6E8F);margin:10px 0 2px;padding-top:8px;border-top:1px solid #eef2f1}
-.ed-field{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted)}
-.ed-field.wide{grid-column:1/-1}
-.ed-field input,.ed-field select,.ed-field textarea{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff}
-.ed-field textarea{resize:vertical;line-height:1.4}
-.ed-field input:focus,.ed-field select:focus,.ed-field textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
-.ed-check{grid-column:auto;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);padding-top:18px}
-.ed-dialog{width:min(760px,94vw);border:0;border-radius:14px;padding:0 24px 24px;box-shadow:0 30px 80px rgba(10,30,34,.35)}
-.ed-dialog::backdrop{background:rgba(11,28,31,.5)}
-.ed-dialog h3{font-family:"Archivo",sans-serif;margin:18px 0 8px}
-.ed-dialog textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:"IBM Plex Mono",monospace;font-size:12px}
-.ed-dialog-actions{margin-top:10px}
-.ed-x{position:absolute;right:14px;top:14px;border:1px solid var(--line);background:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer}
-@media (max-width:820px){.ed-cols{grid-template-columns:1fr}.ed-side{position:static}.ed-grid{grid-template-columns:1fr}}
 @media (max-width:820px){
   .valve-cards{grid-template-columns:1fr}
   summary{grid-template-columns:18px 1fr;gap:8px}
@@ -1084,6 +742,38 @@ details.row[open]{border-color:#b9ccc6}
 .d-main section{margin-bottom:23px}
 .paperbar{background:#F3F7F5}
 .plink:focus-visible,.fchip:focus-visible,.seg button:focus-visible,.actions button:focus-visible,.countline button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* Publication layout: quiet surfaces, legible labels, and consistent controls. */
+.skip-link{position:absolute;left:14px;top:-60px;z-index:100;padding:10px 14px;background:#fff;color:var(--ink);border-radius:8px;font-weight:600}
+.skip-link:focus{top:10px}
+.site-nav a{font-weight:500}
+.home{padding-bottom:82px}
+.home .kicker,.mast .kicker{color:#38616a}
+.vcard{border-left-width:5px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.vcard:hover{border-color:#aec7c0;box-shadow:0 18px 38px rgba(14,38,43,.11)}
+.vcard .pill{font-family:"Inter",system-ui,sans-serif;font-size:12px;line-height:1.5;background:#edf3f0;color:#405c58;padding:6px 10px}
+.vcard .go{font-family:"Inter",system-ui,sans-serif;font-weight:700;letter-spacing:-.01em}
+.mast .meta{display:flex;align-items:center;flex-wrap:wrap;gap:7px 14px;font-family:"Inter",system-ui,sans-serif;font-size:13px;margin:20px 0 0;color:#46605b}
+.mast .meta strong{color:var(--ink);font-size:14px}
+.mast .meta span{padding-left:14px;border-left:1px solid #bfcbc7}
+.legend{margin-top:10px;color:#5d706d}
+.controls{box-shadow:0 5px 18px rgba(14,38,43,.035)}
+.searchbar input,.seg,.actions button,.fchip{box-shadow:0 1px 2px rgba(14,38,43,.025)}
+.searchbar input::placeholder{color:#687c78}
+.seg button:hover:not(.active),.fchip:hover:not(.active){background:#eef4f1;color:var(--ink)}
+.actions button{font-weight:600}
+.grouphead{scroll-margin-top:190px}
+details.row > summary{min-height:82px}
+details.row > summary:hover{background:#f9fbfa}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600}
+.badge-dot{width:7px;height:7px;flex:none;border-radius:50%;background:currentColor}
+.dates{font-size:11px}
+.source-group strong{color:#3b6063}
+.plink{font-weight:600}
+.plink:hover{filter:none;border-color:#99b5ad;box-shadow:0 2px 7px rgba(14,38,43,.1)}
+.plink.primary:hover{background:#9f3428;border-color:#9f3428}
+.d-summary{font-size:15px;line-height:1.6;margin:12px 0 5px}
+.feedback{padding-top:28px}
+footer.pagefoot{line-height:1.6}
 @media (max-width:820px){
   .site{padding:13px 18px;gap:11px}
   .brand{font-size:19px}
@@ -1099,8 +789,10 @@ details.row[open]{border-color:#b9ccc6}
   .vcard p{font-size:13px}
   .mast{padding:31px 18px 20px}
   .mast .lede{font-size:14px}
-  .mast .meta{font-size:11px;line-height:1.6}
-  .legend{font-size:11px}
+  .mast .meta{gap:5px 9px;margin-top:13px;font-size:11.5px;line-height:1.45}
+  .mast .meta strong{font-size:12px}
+  .mast .meta span{padding-left:9px}
+  .legend{font-size:11px;margin-top:8px;gap:4px 12px}
   .controls{position:static;padding:13px 0 11px;backdrop-filter:none}
   .controls-inner{gap:9px}
   .searchbar{padding:0 18px;gap:9px}
@@ -1135,10 +827,8 @@ details.row[open]{border-color:#b9ccc6}
   .overview th{width:36%}
   .qf dl{grid-template-columns:minmax(90px,auto) 1fr}
   .feedback,footer.pagefoot{padding-left:18px;padding-right:18px}
-  .ed-actions{align-items:stretch}
-  .ed-actions .ed-btn{min-height:42px}
-  .ed-form{padding:14px}
-  .ed-formhead{align-items:flex-start;flex-direction:column}
+  details.row > summary{min-height:0}
+  .vcard .pill{font-size:11.5px}
 }
 @media (max-width:380px){.seg button{font-size:10px}.badge{font-size:10px;padding:3px 7px}}
 """
@@ -1207,7 +897,6 @@ def main():
     for k, *_ in VALVES:
         pages[f"{k}.html"] = (build_valve_list_page(k) if trials_for(k)
                               else build_coming_soon_page(k))
-    pages["editor.html"] = build_editor_page()
     for name, content in pages.items():
         with open(os.path.join(outdir, name), "w", encoding="utf-8") as f:
             f.write(content)
