@@ -144,7 +144,7 @@ def _selftest() -> int:
         # already an attached follow-up -> dropped (known)
         Candidate(pmid="40159089", title="2-year", nct_accessions=["NCT03904147"],
                   pubtypes=["multicenter study"]),
-        # a genuine NEW primary with its own NCT -> kept, NEW_TRIAL
+        # a new primary with its own NCT -> kept for registry/cohort REVIEW
         Candidate(pmid="55550001", doi="10.1/x",
                   title="First-in-Human Transcatheter Mitral Replacement: the NovaMitral Trial",
                   authors=["Roe J"], journal="JACC Cardiovasc Interv", year="2026",
@@ -160,7 +160,7 @@ def _selftest() -> int:
     ]
     picks = select(cands, store, min_conf="MEDIUM")
     got = {(p["pmid"], p["action"]) for p in picks}
-    want = {("55550001", "NEW_TRIAL"), ("55550002", "SUBANALYSIS")}
+    want = {("55550001", "REVIEW"), ("55550002", "SUBANALYSIS")}
     dropped_known = "36876753" not in {p["pmid"] for p in picks} and \
                     "40159089" not in {p["pmid"] for p in picks}
     dropped_review = "55550003" not in {p["pmid"] for p in picks}
