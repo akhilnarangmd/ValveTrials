@@ -6707,7 +6707,14 @@
     "doi": "10.1016/S0140-6736(25)02073-2",
     "pmid": "41167201",
     "caveat": "",
-    "key_papers": [],
+    "key_papers": [
+      {
+        "label": "2-year",
+        "citation": "Webb J, et al. Journal of the American College of Cardiology 2026.",
+        "doi": "10.1016/j.jacc.2026.10.047",
+        "pmid": "42980633"
+      }
+    ],
     "registry_results_posted": false
   },
   {
