@@ -125,7 +125,7 @@ def _cli():
               + (f"->{p['parent']}" if p['parent'] else "") + f"] PMID {p['pmid']}  {p['title'][:70]}")
     if args.emit:
         with open(args.emit, "w") as fh:
-            fh.write("\n".join(p["pmid"] for p in picks))
+            fh.writelines(p["pmid"] + "\n" for p in picks)
         print(f"\nWrote {len(picks)} PMID(s) to {args.emit}")
     return 0
 
